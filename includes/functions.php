@@ -196,6 +196,46 @@ if (!function_exists('imgDims')) {
     }
 }
 
+if (!function_exists('imageVariantSrcset')) {
+    /** '/assets/images/x-480.avif 480w, …' for the -480/-960/-1600 variants of $name that exist on disk ('' if none). */
+    function imageVariantSrcset(string $name, string $ext): string {
+        $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
+        $out = [];
+        foreach ([480, 960, 1600] as $w) {
+            $web = '/assets/images/' . $name . '-' . $w . '.' . $ext;
+            if (is_file($root . $web)) $out[] = $web . ' ' . $w . 'w';
+        }
+        return implode(', ', $out);
+    }
+}
+
+if (!function_exists('pictureTag')) {
+    /**
+     * <picture> for an on-disk photo: AVIF source first, WebP srcset on the <img>, the .jpg as src.
+     * $name is the basename in /assets/images/ without extension. Only variants present on disk are listed.
+     * $opts: class (img), loading ('lazy'|'eager'), fetchpriority, width/height (default: true size of the .jpg).
+     */
+    function pictureTag(string $name, string $alt, string $sizes, array $opts = []): string {
+        $src = '/assets/images/' . $name . '.jpg';
+        $file = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/') . $src;
+        $info = is_file($file) ? @getimagesize($file) : false;
+        $w   = (int) ($opts['width']  ?? ($info[0] ?? 1200));
+        $hgt = (int) ($opts['height'] ?? ($info[1] ?? 800));
+        $eager = ($opts['loading'] ?? 'lazy') === 'eager';
+        $avif = imageVariantSrcset($name, 'avif');
+        $webp = imageVariantSrcset($name, 'webp');
+        $out = '<picture>';
+        if ($avif !== '') $out .= '<source type="image/avif" srcset="' . h($avif) . '" sizes="' . h($sizes) . '">';
+        $out .= '<img src="' . h($src) . '"';
+        if ($webp !== '') $out .= ' srcset="' . h($webp) . '" sizes="' . h($sizes) . '"';
+        $out .= sprintf(' alt="%s" width="%d" height="%d"', h($alt), $w, $hgt);
+        if (!empty($opts['class'])) $out .= ' class="' . h($opts['class']) . '"';
+        $out .= $eager ? ' loading="eager"' : ' loading="lazy" decoding="async"';
+        if (!empty($opts['fetchpriority'])) $out .= ' fetchpriority="' . h($opts['fetchpriority']) . '"';
+        return $out . '></picture>';
+    }
+}
+
 /* ---- SEO: canonical + meta + title defaults ---------------------------------------------------- */
 
 if (!function_exists('computeCanonicalPath')) {

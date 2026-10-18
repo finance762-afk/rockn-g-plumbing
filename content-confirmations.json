@@ -1,0 +1,20 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "useful_because": "The homepage is the only page that puts all eight Rock'n G services side by side with the client's own job photos (trench excavation, under-floor drain lines, a garage softener and filter install, gas piping to a standby generator, a finished kitchen remodel), and it carries a symptom board that maps what a homeowner notices (hot water running short, crust on faucets, several drains gurgling, a warm spot on the floor, soggy yard patches) to the likely cause and the Rock'n G service that handles it, plus a gas-smell safety note. It also states the verified facts in one place: Eli Gomez as Responsible Master Plumber on Texas license M-44822, three generations, 20+ years, Mon–Fri 8–6 hours, free estimates, military discounts, and the Tom Green County towns served.",
+      "needs_confirmation": [
+        { "fact": "The four-step job process (call/form → free estimate → customer decides → work done under the master license)", "question": "Walk us through a typical job: is the free estimate given on-site or by phone, how soon do you usually come out, and do you do anything after the work (walkthrough, cleanup, warranty)?", "where": "about/process section" },
+        { "fact": "What happens after a web form is submitted", "question": "When someone sends the website form, who calls them back and roughly how soon?", "where": "estimate section — What happens next" },
+        { "fact": "Military discount amount and who qualifies", "question": "What is the military discount (percentage or dollar amount), and does it cover veterans and active-duty families?", "where": "FAQ — military discount" },
+        { "fact": "FAQ questions are built from intake facts, not recorded customer questions", "question": "What are the questions customers ask you most often on the phone? We'll swap them into the homepage FAQ.", "where": "FAQ section" },
+        { "fact": "Water heater types serviced (gas, electric, brands)", "question": "Do you work on both gas and electric water heaters, and are there brands of tankless units you install?", "where": "services grid — Water Heater card" },
+        { "fact": "Whether Rock'n G owns the excavation equipment shown in photos", "question": "Is the mini excavator in your job photos your own equipment? If so we can say digs are handled in-house.", "where": "services grid — Sewer card" },
+        { "fact": "Insurance coverage", "question": "Is Rock'n G Plumbing insured (general liability / workers' comp)? Intake left this blank, so the site does not say 'insured'.", "where": "hero chips / proof strip" },
+        { "fact": "Job photos for water heaters and sprinkler/irrigation work", "question": "Can you send a few photos of water heater installs and sprinkler or irrigation repairs? Those two service cards currently reuse other job photos.", "where": "services grid" },
+        { "fact": "Founding year", "question": "What year did Rock'n G Plumbing start? The site says '20+ years' and never prints an 'Est.' year until you confirm one.", "where": "proof strip" }
+      ]
+    }
+  ],
+  "consolidate": []
+}
