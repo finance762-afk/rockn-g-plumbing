@@ -1,0 +1,775 @@
+{
+  "seo": {
+    "serp_context": null,
+    "target_radius": 25,
+    "primary_keyword": "plumber san angelo tx",
+    "secondary_keywords": [
+      "plumber san angelo",
+      "plumbing san angelo",
+      "water heater repair san angelo",
+      "drain cleaning san angelo",
+      "christoval plumber"
+    ]
+  },
+  "tier": "premium",
+  "email": "gomez.eli21@gmail.com",
+  "pages": [
+    {
+      "slug": "water-heater-repair-installation",
+      "type": "service",
+      "title": "Water Heater Repair & Installation in San Angelo, TX",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Water Heater Repair & Installation"
+      ],
+      "primary_keyword": "water heater repair & installation San Angelo TX"
+    },
+    {
+      "slug": "water-softeners-filtration",
+      "type": "service",
+      "title": "Water Softeners & Filtration in San Angelo, TX",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Water Softeners & Filtration"
+      ],
+      "primary_keyword": "water softeners & filtration San Angelo TX"
+    },
+    {
+      "slug": "drain-cleaning-clog-removal",
+      "type": "service",
+      "title": "Drain Cleaning & Clog Removal in San Angelo, TX",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Drain Cleaning & Clog Removal"
+      ],
+      "primary_keyword": "drain cleaning & clog removal San Angelo TX"
+    },
+    {
+      "slug": "sewer-line-repair-camera-inspection",
+      "type": "service",
+      "title": "Sewer Line Repair & Camera Inspection in San Angelo, TX",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Sewer Line Repair & Camera Inspection"
+      ],
+      "primary_keyword": "sewer line repair & camera inspection San Angelo TX"
+    },
+    {
+      "slug": "leak-detection-slab-leak-repair",
+      "type": "service",
+      "title": "Leak Detection & Slab Leak Repair in San Angelo, TX",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Leak Detection & Slab Leak Repair"
+      ],
+      "primary_keyword": "leak detection & slab leak repair San Angelo TX"
+    },
+    {
+      "slug": "gas-line-installation-repair",
+      "type": "service",
+      "title": "Gas Line Installation & Repair in San Angelo, TX",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Gas Line Installation & Repair"
+      ],
+      "primary_keyword": "gas line installation & repair San Angelo TX"
+    },
+    {
+      "slug": "sprinkler-irrigation-repair",
+      "type": "service",
+      "title": "Sprinkler & Irrigation Repair in San Angelo, TX",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Sprinkler & Irrigation Repair"
+      ],
+      "primary_keyword": "sprinkler & irrigation repair San Angelo TX"
+    },
+    {
+      "slug": "new-construction-remodel-plumbing",
+      "type": "service",
+      "title": "New Construction & Remodel Plumbing in San Angelo, TX",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "New Construction & Remodel Plumbing"
+      ],
+      "primary_keyword": "new construction & remodel plumbing San Angelo TX"
+    }
+  ],
+  "phone": "(325) 650-7000",
+  "assets": {
+    "logo": {
+      "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/logo/1792338870980-1gn8po-IMG_2415-4be83c5c-1920w.jpg",
+      "storage_path": "rockn-g-plumbing/logo/1792338870980-1gn8po-IMG_2415-4be83c5c-1920w.jpg"
+    },
+    "images": [
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/logo/1792338870980-1gn8po-IMG_2415-4be83c5c-1920w.jpg",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "logo",
+        "storage_path": "rockn-g-plumbing/logo/1792338870980-1gn8po-IMG_2415-4be83c5c-1920w.jpg",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/photos/1792338717749-5zf0ze-IMG_2415-4be83c5c-1920w.jpg",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "rockn-g-plumbing/photos/1792338717749-5zf0ze-IMG_2415-4be83c5c-1920w.jpg",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/photos/1792338718400-lf3sce-IMG_3340-1920w.JPG",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "rockn-g-plumbing/photos/1792338718400-lf3sce-IMG_3340-1920w.JPG",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/photos/1792338719138-x50d6i-IMG_4788-1920w.jpg",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "rockn-g-plumbing/photos/1792338719138-x50d6i-IMG_4788-1920w.jpg",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/photos/1792338719824-c0lv56-IMG_6151-1920w.JPG",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "rockn-g-plumbing/photos/1792338719824-c0lv56-IMG_6151-1920w.JPG",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/photos/1792338720778-j4yizc-IMG_6369-1920w.jpg",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "rockn-g-plumbing/photos/1792338720778-j4yizc-IMG_6369-1920w.jpg",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/photos/1792338722752-4javrh-IMG_6994-1920w.jpg",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "rockn-g-plumbing/photos/1792338722752-4javrh-IMG_6994-1920w.jpg",
+        "quality_score": null
+      }
+    ],
+    "page_allocations": null,
+    "recommended_hero_image": {
+      "alt": "",
+      "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/rockn-g-plumbing/logo/1792338870980-1gn8po-IMG_2415-4be83c5c-1920w.jpg",
+      "context": "logo",
+      "quality_score": null
+    }
+  },
+  "design": {
+    "fonts": {},
+    "notes": "",
+    "style": "bold",
+    "colors": {
+      "accent": "#06b6d4",
+      "primary": "#1a2b3c",
+      "secondary": "#4d5e6f",
+      "extracted_from_logo": true
+    },
+    "logo_analysis": {}
+  },
+  "domain": "rockngplumbing.com",
+  "phases": [
+    {
+      "name": "scaffold",
+      "phase": 1,
+      "status": "pending"
+    },
+    {
+      "name": "nav_footer_head",
+      "phase": 2,
+      "status": "pending"
+    },
+    {
+      "name": "homepage",
+      "phase": 3,
+      "status": "pending"
+    },
+    {
+      "name": "inner_pages",
+      "phase": 4,
+      "status": "pending"
+    },
+    {
+      "name": "seo_aeo_deploy",
+      "phase": 5,
+      "status": "pending"
+    }
+  ],
+  "address": {
+    "zip": "",
+    "city": "San Angelo",
+    "state": "TX",
+    "street": ""
+  },
+  "content": {
+    "usps": [
+      "Three generations of plumbers",
+      "20+ years experience",
+      "Residential, commercial and industrial",
+      "Free estimates",
+      "Military discounts"
+    ],
+    "years": 20,
+    "insurance": "",
+    "description": "SEO BRIEF (P1 SEO BOT, Oct 18 2026; full version /workspace/seo/briefs/rockn-g-plumbing.md on the shared box)\nNAP (GBP = source of truth): Rock'n G Plumbing | San Angelo, TX service-area business, NO street address anywhere (site or schema) | (325) 650-7000 | Mon-Fri 8 AM-6 PM, Sat-Sun closed. Schema Plumber/LocalBusiness with areaServed, hasMap = https://maps.google.com/maps?cid=13994749718880990816, no streetAddress, no aggregateRating. Use Calvin's GBP map embed (in Site Config) on contact, footer and area pages.\nLICENSE (verified TSBPE): \"Texas Master Plumber License M-44822\" (Jerry Eli Gomez, Responsible Master Plumber, exp 08/31/2027) in footer and on About. Do NOT market backflow testing (no WSP endorsement).\nSITE MAP: Home (title \"Plumber in San Angelo, TX | Rock'n G Plumbing\", H1 \"San Angelo Plumbing from a Family of Plumbers\"); /services/ hub + one page per service: /water-heaters/, /water-filtration-softeners/, /drain-cleaning/, /sewer-line-repair/, /leak-detection-repair/, /gas-line-services/, /irrigation-sprinkler-repair/, /new-construction-remodel-plumbing/. Each service title = service + \"in San Angelo, TX | Rock'n G\". Areas: /service-area/christoval-tx/ (\"Plumber in Christoval, TX | Rock'n G Plumbing\", H1 \"Your Christoval Plumber\") plus ONE /areas-we-serve/ page with map and town list (Wall, Veribest, Carlsbad, Grape Creek, Water Valley). No templated town pages. Also /about/ (Eli Gomez, Master Plumber M-44822, three generations, military discount), /reviews/, /projects/ (real job photos), /contact/, /faqs/ (content only, no FAQ schema), /blog/.\nDO NOT BUILD (unconfirmed): emergency/24-hour plumbing page, rainwater harvesting page, backflow testing. No llms.txt, FAQ schema or aggregateRating.\nREDIRECTS (301): /water-heaters-and-filtration-systems -> /water-heaters/; /drain-and-sewer-solutions -> /drain-cleaning/; /irrigation-services -> /irrigation-sprinkler-repair/; /new-construction-and-remodel-plumbing -> /new-construction-remodel-plumbing/; /gas-line-services -> /gas-line-services/; old /service-area/* pages -> /service-area/christoval-tx/ or /areas-we-serve/; the 8 root-level town blog posts move under /blog/ with 301s.\nREVIEWS GAP: 5.0 stars from 3 reviews vs competitors 100-1,240. Feature real job photos and a prominent review button: https://search.google.com/local/writereview?placeid=ChIJY4n-xr4zoKURYDZm0rhWN8I\nKEEP CLAIMS: free estimates, military discounts, 20+ years / three generations, residential, commercial and industrial.",
+    "certifications": [
+      "Texas Master Plumber License M-44822"
+    ]
+  },
+  "reviews": [],
+  "tagline": "",
+  "industry": "plumbing",
+  "services": [
+    {
+      "name": "Water Heater Repair & Installation",
+      "keywords": [
+        "water heater installation San Angelo TX",
+        "water heater replacement San Angelo",
+        "tankless water heater San Angelo TX",
+        "water heater repair San Angelo",
+        "hot water heater plumber San Angelo"
+      ],
+      "description": "repair, replacement, tankless"
+    },
+    {
+      "name": "Water Softeners & Filtration",
+      "keywords": [
+        "water softener San Angelo TX",
+        "water filtration San Angelo TX",
+        "whole house water filter San Angelo",
+        "reverse osmosis San Angelo",
+        "hard water San Angelo"
+      ],
+      "description": "softeners, reverse osmosis, whole-house filters, San Angelo hard water"
+    },
+    {
+      "name": "Drain Cleaning & Clog Removal",
+      "keywords": [
+        "drain cleaning San Angelo",
+        "drain unclogging San Angelo TX",
+        "clogged drain plumber San Angelo TX",
+        "kitchen drain cleaning San Angelo"
+      ],
+      "description": ""
+    },
+    {
+      "name": "Sewer Line Repair & Camera Inspection",
+      "keywords": [
+        "sewer line repair San Angelo",
+        "sewer camera inspection San Angelo TX",
+        "sewer cleaning San Angelo TX",
+        "main line sewer repair San Angelo"
+      ],
+      "description": ""
+    },
+    {
+      "name": "Leak Detection & Slab Leak Repair",
+      "keywords": [
+        "leak detection San Angelo TX",
+        "slab leak detection San Angelo TX",
+        "slab leak repair San Angelo",
+        "water line repair San Angelo",
+        "hidden leak repair San Angelo"
+      ],
+      "description": "water line repair/replacement"
+    },
+    {
+      "name": "Gas Line Installation & Repair",
+      "keywords": [
+        "gas line repair San Angelo TX",
+        "gas line installation San Angelo",
+        "gas plumber San Angelo"
+      ],
+      "description": ""
+    },
+    {
+      "name": "Sprinkler & Irrigation Repair",
+      "keywords": [
+        "sprinkler repair San Angelo TX",
+        "irrigation repair San Angelo TX",
+        "lawn sprinkler repair San Angelo",
+        "irrigation system San Angelo TX"
+      ],
+      "description": ""
+    },
+    {
+      "name": "New Construction & Remodel Plumbing",
+      "keywords": [
+        "new construction plumbing San Angelo TX",
+        "remodel plumbing San Angelo",
+        "commercial plumbing San Angelo TX",
+        "residential plumbing contractor San Angelo TX"
+      ],
+      "description": "residential and commercial"
+    }
+  ],
+  "owner_name": "Eli Gomez",
+  "client_slug": "rockn-g-plumbing",
+  "form_action": "https://db.pageone.cloud/functions/v1/leads/rockn-g-plumbing",
+  "github_repo": "",
+  "pipeline_v2": {
+    "service_tiers": [
+      {
+        "name": "Water Heater Repair & Installation",
+        "tier": "standard"
+      },
+      {
+        "name": "Water Softeners & Filtration",
+        "tier": "standard"
+      },
+      {
+        "name": "Drain Cleaning & Clog Removal",
+        "tier": "standard"
+      },
+      {
+        "name": "Sewer Line Repair & Camera Inspection",
+        "tier": "standard"
+      },
+      {
+        "name": "Leak Detection & Slab Leak Repair",
+        "tier": "standard"
+      },
+      {
+        "name": "Gas Line Installation & Repair",
+        "tier": "standard"
+      },
+      {
+        "name": "Sprinkler & Irrigation Repair",
+        "tier": "standard"
+      },
+      {
+        "name": "New Construction & Remodel Plumbing",
+        "tier": "standard"
+      }
+    ],
+    "standards_doc": "CLAUDE.md (V2 STANDARDS section)",
+    "keyword_page_map": [
+      {
+        "heading": null,
+        "keyword": "plumber san angelo tx",
+        "page_path": "index.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "water heater repair & installation",
+        "page_path": "services/water-heater-repair-installation.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "water heater installation san angelo tx",
+        "page_path": "services/water-heater-repair-installation.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "water heater replacement san angelo",
+        "page_path": "services/water-heater-repair-installation.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "tankless water heater san angelo tx",
+        "page_path": "services/water-heater-repair-installation.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "water heater repair san angelo",
+        "page_path": "services/water-heater-repair-installation.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "hot water heater plumber san angelo",
+        "page_path": "services/water-heater-repair-installation.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "water softeners & filtration",
+        "page_path": "services/water-softeners-filtration.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "water softener san angelo tx",
+        "page_path": "services/water-softeners-filtration.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "water filtration san angelo tx",
+        "page_path": "services/water-softeners-filtration.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "whole house water filter san angelo",
+        "page_path": "services/water-softeners-filtration.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "reverse osmosis san angelo",
+        "page_path": "services/water-softeners-filtration.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "hard water san angelo",
+        "page_path": "services/water-softeners-filtration.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "drain cleaning & clog removal",
+        "page_path": "services/drain-cleaning-clog-removal.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "drain cleaning san angelo",
+        "page_path": "services/drain-cleaning-clog-removal.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "drain unclogging san angelo tx",
+        "page_path": "services/drain-cleaning-clog-removal.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "clogged drain plumber san angelo tx",
+        "page_path": "services/drain-cleaning-clog-removal.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "kitchen drain cleaning san angelo",
+        "page_path": "services/drain-cleaning-clog-removal.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "sewer line repair & camera inspection",
+        "page_path": "services/sewer-line-repair-camera-inspection.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "sewer line repair san angelo",
+        "page_path": "services/sewer-line-repair-camera-inspection.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "sewer camera inspection san angelo tx",
+        "page_path": "services/sewer-line-repair-camera-inspection.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "sewer cleaning san angelo tx",
+        "page_path": "services/sewer-line-repair-camera-inspection.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "main line sewer repair san angelo",
+        "page_path": "services/sewer-line-repair-camera-inspection.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "leak detection & slab leak repair",
+        "page_path": "services/leak-detection-slab-leak-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "leak detection san angelo tx",
+        "page_path": "services/leak-detection-slab-leak-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "slab leak detection san angelo tx",
+        "page_path": "services/leak-detection-slab-leak-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "slab leak repair san angelo",
+        "page_path": "services/leak-detection-slab-leak-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "water line repair san angelo",
+        "page_path": "services/leak-detection-slab-leak-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "hidden leak repair san angelo",
+        "page_path": "services/leak-detection-slab-leak-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "gas line installation & repair",
+        "page_path": "services/gas-line-installation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "gas line repair san angelo tx",
+        "page_path": "services/gas-line-installation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "gas line installation san angelo",
+        "page_path": "services/gas-line-installation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "gas plumber san angelo",
+        "page_path": "services/gas-line-installation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "sprinkler & irrigation repair",
+        "page_path": "services/sprinkler-irrigation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "sprinkler repair san angelo tx",
+        "page_path": "services/sprinkler-irrigation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "irrigation repair san angelo tx",
+        "page_path": "services/sprinkler-irrigation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "lawn sprinkler repair san angelo",
+        "page_path": "services/sprinkler-irrigation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "irrigation system san angelo tx",
+        "page_path": "services/sprinkler-irrigation-repair.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "new construction & remodel plumbing",
+        "page_path": "services/new-construction-remodel-plumbing.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "new construction plumbing san angelo tx",
+        "page_path": "services/new-construction-remodel-plumbing.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "remodel plumbing san angelo",
+        "page_path": "services/new-construction-remodel-plumbing.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "commercial plumbing san angelo tx",
+        "page_path": "services/new-construction-remodel-plumbing.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "residential plumbing contractor san angelo tx",
+        "page_path": "services/new-construction-remodel-plumbing.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "plumber san angelo",
+        "page_path": "index.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "plumbing san angelo",
+        "page_path": "services/new-construction-remodel-plumbing.php",
+        "competitive_tier": "standard"
+      },
+      {
+        "heading": null,
+        "keyword": "christoval plumber",
+        "page_path": "index.php",
+        "competitive_tier": "standard"
+      }
+    ]
+  },
+  "web_sources": [],
+  "company_name": "Rock'n G Plumbing",
+  "integrations": {
+    "geo": {
+      "lat": 31.431059049999998,
+      "lng": -100.4462461
+    },
+    "bbb_url": null,
+    "booking": {
+      "days": [],
+      "windows": [],
+      "authorized": false
+    },
+    "spanish": false,
+    "financing": null,
+    "photo_day": null,
+    "accepts_sms": false,
+    "gbp_place_id": "ChIJY4n-xr4zoKURYDZm0rhWN8I",
+    "estimate_tool": {
+      "pricing": [],
+      "authorized": false
+    },
+    "gbp_map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113621.35813329648!2d-100.4462461!3d31.431059049999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa5a033bec6fe8963%3A0xc23756b8d2663660!2sRock%27n%20G%20Plumbing!5e1!3m2!1sen!2sus!4v1792338463931!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=place_id:ChIJY4n-xr4zoKURYDZm0rhWN8I",
+    "elfsight_embed": null,
+    "financing_note": null,
+    "scheduling_url": null,
+    "text_us_number": null,
+    "review_request_url": "https://search.google.com/local/writereview?placeid=ChIJY4n-xr4zoKURYDZm0rhWN8I",
+    "certification_links": []
+  },
+  "service_areas": [
+    {
+      "zip": "76901",
+      "city": "San Angelo",
+      "state": "TX",
+      "primary": true
+    },
+    {
+      "zip": "76935",
+      "city": "Christoval",
+      "state": "TX",
+      "primary": false
+    }
+  ],
+  "address_public": false,
+  "business_hours": "Mon–Fri 8:00 AM–6:00 PM, Sat–Sun Closed",
+  "image_curation": null,
+  "research_brief": null,
+  "competitor_urls": [
+    "blackplumbing.com",
+    "callearls.com",
+    "brothersplumbingtx.com",
+    "lsc-texas.com",
+    "truetexplumbing.com"
+  ],
+  "phone_secondary": "",
+  "service_grouping": {
+    "cap": 16,
+    "tier": "premium",
+    "groups": [
+      {
+        "page": "Water Heater Repair & Installation",
+        "solo": true,
+        "services": [
+          "Water Heater Repair & Installation"
+        ]
+      },
+      {
+        "page": "Water Softeners & Filtration",
+        "solo": true,
+        "services": [
+          "Water Softeners & Filtration"
+        ]
+      },
+      {
+        "page": "Drain Cleaning & Clog Removal",
+        "solo": true,
+        "services": [
+          "Drain Cleaning & Clog Removal"
+        ]
+      },
+      {
+        "page": "Sewer Line Repair & Camera Inspection",
+        "solo": true,
+        "services": [
+          "Sewer Line Repair & Camera Inspection"
+        ]
+      },
+      {
+        "page": "Leak Detection & Slab Leak Repair",
+        "solo": true,
+        "services": [
+          "Leak Detection & Slab Leak Repair"
+        ]
+      },
+      {
+        "page": "Gas Line Installation & Repair",
+        "solo": true,
+        "services": [
+          "Gas Line Installation & Repair"
+        ]
+      },
+      {
+        "page": "Sprinkler & Irrigation Repair",
+        "solo": true,
+        "services": [
+          "Sprinkler & Irrigation Repair"
+        ]
+      },
+      {
+        "page": "New Construction & Remodel Plumbing",
+        "solo": true,
+        "services": [
+          "New Construction & Remodel Plumbing"
+        ]
+      }
+    ],
+    "grouped_count": 8,
+    "original_count": 8
+  },
+  "lead_notification_email": "gomez.eli21@gmail.com",
+  "lead_notification_phone": "325-650-7000",
+  "google_business_profile_url": "https://www.google.com/maps/place/?q=place_id:ChIJY4n-xr4zoKURYDZm0rhWN8I"
+}
