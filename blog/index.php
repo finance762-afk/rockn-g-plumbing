@@ -309,7 +309,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="answer-block">The newest guide, published <?php echo h($bgFeatured['date']); ?> by Page One Insights LLC for Rock'n G Plumbing, is &ldquo;<?php echo h($bgFeatured['title']); ?>&rdquo; (<?php echo h($bgFeatured['readtime']); ?>).</p>
       </div>
       <a class="bg-feature reveal-scale" href="/blog/<?php echo h($bgFeatured['slug']); ?>/">
-        <div class="bg-feature__image"><?php echo pictureTag($bgFeatured['photo'], $bgFeatured['alt'], '(max-width: 900px) 100vw, 700px', ['loading' => 'eager']); ?></div>
+        <div class="bg-feature__image"><?php echo pictureTag($bgFeatured['photo'], $bgFeatured['alt'], '(max-width: 900px) calc(100vw - 2rem), 700px', ['loading' => 'eager']); ?></div>
         <div class="bg-feature__body">
           <span class="bg-feature__tag"><?php echo h($bgFeatured['category']); ?></span>
           <h3><?php echo h($bgFeatured['title']); ?></h3>

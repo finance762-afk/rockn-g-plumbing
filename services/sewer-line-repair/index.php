@@ -1068,7 +1068,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     <div class="container-wide">
       <div class="sl-spread reveal-up">
         <figure class="sl-spread__photo">
-          <?php echo pictureTag('rockn-trench-dig', "Rock'n G plumber in a red company shirt standing in an open trench dug through pavement", '(max-width: 900px) 100vw, 640px'); ?>
+          <?php echo pictureTag('rockn-trench-dig', "Rock'n G plumber in a red company shirt standing in an open trench dug through pavement", '(max-width: 900px) calc(100vw - 2rem), 640px'); ?>
           <figcaption>A Rock'n G plumber down in the trench on the same dig shown at the top of this page.</figcaption>
         </figure>
         <div class="sl-spread__copy">
@@ -1133,7 +1133,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See every <a href="/services/">plumbing service Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['drain-cleaning', 'leak-detection-repair', 'new-construction-remodel-plumbing'], '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['drain-cleaning', 'leak-detection-repair', 'new-construction-remodel-plumbing'], '(max-width: 640px) calc(100vw - 2rem), (max-width: 1000px) calc(50vw - 1.5rem), 380px'); ?>
       </div>
     </div>
   </section>

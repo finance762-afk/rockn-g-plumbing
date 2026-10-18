@@ -662,3 +662,74 @@ dialog.estimate-dialog h2 { font-size: 1.25rem; }
 .footer-more svg { display: inline; vertical-align: -3px; margin-left: .2rem; }
 .site-header > .navbar { height: 100%; }
 .has-dropdown > .dropdown::before { content: ""; position: absolute; left: 0; right: 0; top: -.5rem; height: .5rem; } /* hover bridge across the gap under the link */
+
+/* === Mobile optimization pass (2026-10-18): legibility floor, form controls, tap targets, CLS, safe-area ===
+   Mirrored in includes/critical.css (tokens, footer/grain containment, breadcrumb, logo) so nothing shifts when this file lands. */
+/* CLS: the grain layer is absolute inside a positioned footer/section and never takes part in layout */
+.site-footer, .footer-v7 { position: relative; isolation: isolate; }
+.grain, .grain-layer { contain: strict; }
+/* logo <picture>: the <img> stays the flex item so the header/footer sizing rules above still apply */
+.site-logo picture, .footer-logo picture { display: contents; }
+/* long source URLs in blog posts wrap instead of widening the page */
+.blog-post__content a, .blog-post__content li { overflow-wrap: anywhere; }
+/* GBP map: the box is always exactly as wide as its column; the iframe can never force it wider */
+.map-embed { width: 100%; max-width: 100%; min-width: 0; }
+.map-embed iframe { width: 100% !important; max-width: 100%; min-width: 0; }
+@media (max-width: 767px) {
+  main#main-content { overflow-x: clip; }
+  /* fixed 300px height instead of min-height: min-height + aspect-ratio pushed the box to 531px wide */
+  .map-embed { aspect-ratio: auto; height: 300px; }
+}
+@media (max-width: 1024px) {
+  /* type floor (phones + tablets): running text 16px, labels/eyebrows/captions >= 13px */
+  :root { --fs-small: 1rem; --fs-eyebrow: .8125rem; --font-size-xs: .8125rem; --font-size-sm: 1rem; }
+  .service-card__desc, .svc p, .service-card-with-image ul li, .blog-card__excerpt, .faq p, .faq-answer, .next-steps li,
+  .nap, .footer-brand p, .footer-col p, .footer-nap, .footer-contact, .footer-entity, .footer-hours, .review-text,
+  .process li span, .process-steps li span, .process-steps p, .process-step p, .legal-prose, .legal-disclaimer,
+  .about-copy p, .answer-block p, .form-footnote, .footnote, .site-footer ul a, .footer-v7 ul a { font-size: 1rem; }
+  .consent, .form-field--checkbox, .tcpa-consent, .form-consent-item, .p1-consent-line,
+  dialog.estimate-dialog .consent, .hero-form .consent { font-size: 1rem; line-height: 1.45; }
+  .blog-card__meta, .blog-post__meta, .form-disclaimer, .gallery-item__tag, .blog-card__category, .photo-stack__tag span,
+  .footer-badges span, .trust-badge, .site-footer h4, .footer-v7 h4, .footer-col h4, .brand-sub, .logo-tagline,
+  .services-grid--featured > :first-child .service-card__image::after, .services-grid--featured > :first-child[data-featured-label]::after { font-size: .8125rem; }
+  .footer-legal-row, .footer-legal-inner, .footer-bottom-inner, .cookie-bar, .cookie-banner, .gallery-item figcaption, .sp-gallery-item figcaption { font-size: .875rem; }
+  .ticker-track, .marquee-track { font-size: max(.8125rem, 1em); }
+}
+@media (max-width: 1024px), (pointer: coarse) {
+  /* form controls: 16px text (no iOS zoom), 22px checkboxes, >= 44px label rows */
+  input, select, textarea { font-size: 16px; }
+  .consent input, .form-field--checkbox input, .tcpa-consent input, .form-consent-item input, .p1-consent-line input,
+  dialog.estimate-dialog .consent input, .hero-form input[type="checkbox"], input[type="checkbox"], input[type="radio"] { width: 22px; height: 22px; margin-top: 1px; font-size: 16px; }
+  .consent, .form-field--checkbox, .tcpa-consent, .form-consent-item, .p1-consent-line, dialog.estimate-dialog .consent { min-height: 44px; padding-block: .25rem; }
+
+  /* tap targets >= 44px */
+  .link-call, .btn-sm, .service-card__cta, .svc__more, .learn-more, .footer-more a, .cookie-bar button, .cookie-banner__dismiss, .dialog-close { min-height: 44px; }
+  .cookie-bar button, .cookie-banner__dismiss, .dialog-close { min-width: 44px; }
+  .btn-sm { padding-block: .6rem; }
+  .faq summary, .faq-question, details > summary { min-height: 44px; }
+  nav.breadcrumb a, .breadcrumb a { display: inline-flex; align-items: center; min-height: 44px; }
+  .site-footer ul, .footer-v7 ul, .footer-col ul { gap: 0; }
+  .site-footer ul a, .footer-v7 ul a, .footer-nap a, .footer-contact a, .nap a { display: inline-flex; align-items: center; min-height: 44px; }
+  .footer-nap div, .nap div { align-items: center; }
+  .footer-nap svg, .nap svg { margin-top: 0; }
+  .footer-nap, .nap { gap: 0; }
+  [class$="-toc"] a, .toc a { display: flex; align-items: center; min-height: 44px; }
+  /* stacked link lists (table cells, list items, captions, footer, mobile menu): >= 44x44 box.
+     :where() keeps this at class-level specificity so page styles that set their own display still win */
+  :where(main, .site-footer, .mobile-menu) :where(li, td, dd, figcaption) > a:not(.btn) { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+  .ab-job figcaption a { display: flex; }
+  .site-footer ul a, .footer-v7 ul a, .footer-legal-row a, .footer-legal-links a { min-width: 44px; }
+  .footer-legal-row a, .footer-legal-links a { min-height: 44px; padding-inline: .25rem; justify-content: center; }
+  .mobile-menu-inner > nav > ul > li > a { display: flex; align-items: center; min-height: 44px; }
+  .mobile-menu .sub a, .mobile-submenu a, .mobile-submenu-item a { display: flex; align-items: center; min-height: 44px; padding-block: .3rem; }
+  /* links inside sentences stay inline; padding-block grows the hit box to >= 24px without reflowing the line */
+  :where(p, label, .consent-label, li > span, dd) a:not(.btn):not(.link-call) { padding-block: .3rem; }
+  /* tel: links inside running text: taller hit area without reflowing the line */
+  :is(p, li, dd, td, span, strong) > a[href^="tel:"]:not(.btn):not(.link-call) { padding-block: .8rem; }
+}
+@media (max-width: 760px) {
+  /* sticky call bar: 46px buttons + .5rem padding x2 + 1px border, plus the home-indicator inset */
+  body.has-sticky-bar { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  .cookie-bar, .cookie-banner { bottom: calc(76px + env(safe-area-inset-bottom)); }
+  .cookie-bar button, .cookie-banner__dismiss { min-width: 44px; }
+}

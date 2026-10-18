@@ -252,7 +252,8 @@ ob_start();
   padding-block: var(--space-3);
 }
 .home-ticker .ticker-track {
-  color: var(--color-ink);
+  color: var(--color-white);   /* white on the red band = 6.3:1 (dark ink was 2.27:1) */
+  font-size: var(--fs-body);
   gap: var(--space-10);
 }
 .home-ticker .ticker-track span {
@@ -947,7 +948,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <?php foreach ($homeServices as $i => $svc): $tint = ($i % 3) + 1; ?>
       <article class="service-card-with-image card-tint-<?php echo $tint; ?> reveal-up reveal-delay-<?php echo $tint; ?>">
         <div class="service-card__image">
-          <?php echo pictureTag($svc['photo'], $svc['alt'], '(max-width: 440px) 100vw, (max-width: 720px) 50vw, (max-width: 1000px) 33vw, 340px'); ?>
+          <?php echo pictureTag($svc['photo'], $svc['alt'], '(max-width: 440px) calc(100vw - 2rem), (max-width: 720px) calc(50vw - 1.5rem), (max-width: 1000px) calc(33vw - 1.5rem), 340px'); ?>
         </div>
         <div class="service-card__body">
           <div class="service-card__icon"><?php echo icon($svc['icon'], 22); ?></div>
@@ -1112,7 +1113,7 @@ if ($homeReviews !== ''): ?>
       <p>Rock'n G Plumbing's blog answers the questions that come up before a plumbing job: what drives a water heater price, how to protect pipes before a freeze, and what an estimate should spell out.</p>
     </div>
     <a class="home-blog__feature reveal-scale" href="/blog/<?php echo h($homePost['slug']); ?>/">
-      <div class="home-blog__image"><?php echo pictureTag($homePost['photo'], $homePost['alt'], '(max-width: 900px) 100vw, 640px'); ?></div>
+      <div class="home-blog__image"><?php echo pictureTag($homePost['photo'], $homePost['alt'], '(max-width: 900px) calc(100vw - 2rem), 640px'); ?></div>
       <div class="home-blog__body">
         <span class="home-blog__tag"><?php echo h($homePost['category']); ?></span>
         <h3><?php echo h($homePost['title']); ?></h3>

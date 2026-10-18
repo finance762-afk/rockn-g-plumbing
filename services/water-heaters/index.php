@@ -525,7 +525,7 @@ ob_start();
 }
 .wh-steps span {
   color: var(--color-ink-2);
-  font-size: var(--fs-small);
+  font-size: max(var(--fs-small), .8125rem);
 }
 @supports (animation-timeline: view()) {
   .wh-steps li {
@@ -534,8 +534,9 @@ ob_start();
     animation-range: entry 5% cover 35%;
   }
   @keyframes wh-step-in {
-    from { opacity: .6; transform: translateX(var(--space-4)); border-color: var(--color-line); }
-    to   { opacity: 1; transform: none; border-color: var(--color-accent); }
+    /* no opacity fade: at .6 the step text dropped to 3.3–4.5:1 contrast while the card scrolled in */
+    from { transform: translateX(var(--space-4)); border-color: var(--color-line); }
+    to   { transform: none; border-color: var(--color-accent); }
   }
 }
 
@@ -1050,7 +1051,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See the full list of <a href="/services/">plumbing services Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['gas-line-services', 'leak-detection-repair', 'new-construction-remodel-plumbing'], '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['gas-line-services', 'leak-detection-repair', 'new-construction-remodel-plumbing'], '(max-width: 640px) calc(100vw - 2rem), (max-width: 1000px) calc(50vw - 1.5rem), 380px'); ?>
       </div>
     </div>
   </section>

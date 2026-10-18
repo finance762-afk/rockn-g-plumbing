@@ -210,10 +210,15 @@ ob_start();
   box-shadow: var(--shadow);
 }
 .ld-clue input {
+  /* invisible, but sized and placed over the 30px .ld-clue__box so the real control is a full-size target */
   position: absolute;
+  inset-block-start: var(--space-5);
+  inset-inline-start: var(--space-5);
   opacity: 0;
-  width: 1px;
-  height: 1px;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  font-size: 16px;
 }
 .ld-clue__box {
   grid-row: span 2;
@@ -1041,7 +1046,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See every <a href="/services/">plumbing service Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['water-heaters', 'sewer-line-repair', 'drain-cleaning'], '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['water-heaters', 'sewer-line-repair', 'drain-cleaning'], '(max-width: 640px) calc(100vw - 2rem), (max-width: 1000px) calc(50vw - 1.5rem), 380px'); ?>
       </div>
     </div>
   </section>

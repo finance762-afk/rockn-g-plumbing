@@ -76,7 +76,7 @@ if (!function_exists('serviceCardData')) {
      * <article class="service-card-with-image"> cards for $slugs in the order given. Tints and reveal delays rotate
      * 1 → 2 → 3 so adjacent cards never share a tint. $sizes is the img "sizes" value for the grid the cards sit in.
      */
-    function renderServiceCards(array $slugs, string $sizes = '(max-width: 440px) 100vw, (max-width: 720px) 50vw, (max-width: 1000px) 33vw, 340px'): string {
+    function renderServiceCards(array $slugs, string $sizes = '(max-width: 440px) calc(100vw - 2rem), (max-width: 720px) calc(50vw - 1.5rem), (max-width: 1000px) calc(33vw - 1.5rem), 340px'): string {
         $scData = serviceCardData();
         $scOut = '';
         $scI = 0;

@@ -623,7 +623,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See the full list of <a href="/services/">plumbing services Rock'n G offers</a> or read the <a href="/service-area/christoval-tx/">Christoval plumbing page</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['water-filtration-softeners', 'drain-cleaning', 'leak-detection-repair'], '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['water-filtration-softeners', 'drain-cleaning', 'leak-detection-repair'], '(max-width: 640px) calc(100vw - 2rem), (max-width: 1000px) calc(50vw - 1.5rem), 380px'); ?>
       </div>
     </div>
   </section>

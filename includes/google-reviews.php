@@ -133,7 +133,7 @@ if (!function_exists('p1_google_reviews_data')) {
   .p1gr-nav--prev { left: -14px; } .p1gr-nav--next { right: -14px; }
   .p1gr-foot { margin: 0; font-size: .85rem; color: var(--p1gr-ink2); }
   .p1gr-foot a { color: inherit; font-weight: 600; }
-  @media (max-width: 700px) { .p1gr-track { grid-auto-columns: 86%; } .p1gr-nav { display: none; } .p1gr-head { padding: var(--space-md, 1rem); } .p1gr-write { width: 100%; justify-content: center; } }
+  @media (max-width: 700px) { .p1gr-track { grid-auto-columns: 86%; } .p1gr-nav { display: none; } .p1gr-head { padding: var(--space-md, 1rem); } .p1gr-write { width: 100%; justify-content: center; } .p1gr-reply, .p1gr-foot { font-size: 1rem; } .p1gr-count, .p1gr-when, .p1gr-more summary .p1gr-toggle { font-size: .875rem; } .p1gr-more summary .p1gr-toggle { min-height: 44px; display: inline-flex; align-items: center; margin-top: 0; } .p1gr-foot a { display: inline-block; padding-block: .8rem; margin-block: -.8rem; } }
 </style>
 <?php   endif; ?>
 <div class="p1gr" id="p1gr-<?php echo $instance; ?>">

@@ -20,7 +20,7 @@ $navPhone    = formatPhone($phone);
   <nav class="navbar" aria-label="Main navigation">
     <div class="navbar-inner container">
       <a class="site-logo" href="/" aria-label="<?php echo h($siteName); ?> — home">
-        <img class="logo--square" src="<?php echo h($navLogoSrc); ?>" alt="<?php echo h($siteName); ?> logo" width="<?php echo $navLogoW; ?>" height="<?php echo $navLogoH; ?>" decoding="async">
+        <?php echo logoPictureTag($navLogoSrc, $siteName . ' logo', $navLogoW, $navLogoH, '(max-width: 1000px) 73px, 89px', ['class' => 'logo--square', 'decoding' => 'async']); ?>
       </a>
 
       <ul class="navbar-links">

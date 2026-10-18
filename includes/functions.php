@@ -196,14 +196,23 @@ if (!function_exists('imgDims')) {
     }
 }
 
+if (!function_exists('assetVer')) {
+    /** '/assets/images/x.webp' → '/assets/images/x.webp?v=<filemtime>' (cache-bust past Cloudflare); unchanged if the file is missing. */
+    function assetVer(string $webPath): string {
+        $file = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/') . $webPath;
+        $mtime = is_file($file) ? @filemtime($file) : false;
+        return $mtime ? $webPath . '?v=' . $mtime : $webPath;
+    }
+}
+
 if (!function_exists('imageVariantSrcset')) {
-    /** '/assets/images/x-480.avif 480w, …' for the -480/-960/-1600 variants of $name that exist on disk ('' if none). */
+    /** '/assets/images/x-480.avif?v=… 480w, …' for the -480/-640/-960/-1600 variants of $name that exist on disk ('' if none). */
     function imageVariantSrcset(string $name, string $ext): string {
         $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
         $out = [];
-        foreach ([480, 960, 1600] as $w) {
+        foreach ([480, 640, 960, 1600] as $w) {
             $web = '/assets/images/' . $name . '-' . $w . '.' . $ext;
-            if (is_file($root . $web)) $out[] = $web . ' ' . $w . 'w';
+            if (is_file($root . $web)) $out[] = assetVer($web) . ' ' . $w . 'w';
         }
         return implode(', ', $out);
     }
@@ -226,12 +235,32 @@ if (!function_exists('pictureTag')) {
         $webp = imageVariantSrcset($name, 'webp');
         $out = '<picture>';
         if ($avif !== '') $out .= '<source type="image/avif" srcset="' . h($avif) . '" sizes="' . h($sizes) . '">';
-        $out .= '<img src="' . h($src) . '"';
+        $out .= '<img src="' . h(assetVer($src)) . '"';
         if ($webp !== '') $out .= ' srcset="' . h($webp) . '" sizes="' . h($sizes) . '"';
         $out .= sprintf(' alt="%s" width="%d" height="%d"', h($alt), $w, $hgt);
         if (!empty($opts['class'])) $out .= ' class="' . h($opts['class']) . '"';
         $out .= $eager ? ' loading="eager"' : ' loading="lazy" decoding="async"';
         if (!empty($opts['fetchpriority'])) $out .= ' fetchpriority="' . h($opts['fetchpriority']) . '"';
+        return $out . '></picture>';
+    }
+}
+
+if (!function_exists('logoPictureTag')) {
+    /**
+     * <picture> for a logo PNG with its -160/-320 WebP variants (only those on disk are listed); the PNG stays the fallback src.
+     * $sizes is the rendered CSS width of the logo; $attrs are extra <img> attributes (class, loading, decoding …).
+     */
+    function logoPictureTag(string $pngPath, string $alt, int $w, int $h, string $sizes, array $attrs = []): string {
+        $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
+        $base = preg_replace('/\.png$/i', '', $pngPath);
+        $set = [];
+        foreach ([160, 320] as $vw) {
+            if (is_file($root . $base . '-' . $vw . '.webp')) $set[] = assetVer($base . '-' . $vw . '.webp') . ' ' . $vw . 'w';
+        }
+        $out = '<picture>';
+        if ($set) $out .= '<source type="image/webp" srcset="' . h(implode(', ', $set)) . '" sizes="' . h($sizes) . '">';
+        $out .= sprintf('<img src="%s" alt="%s" width="%d" height="%d"', h(assetVer($pngPath)), h($alt), $w, $h);
+        foreach ($attrs as $k => $v) $out .= ' ' . h($k) . '="' . h($v) . '"';
         return $out . '></picture>';
     }
 }

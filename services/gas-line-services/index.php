@@ -1101,7 +1101,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See every <a href="/services/">plumbing service Rock'n G offers around San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['water-heaters', 'new-construction-remodel-plumbing', 'leak-detection-repair'], '(max-width: 560px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['water-heaters', 'new-construction-remodel-plumbing', 'leak-detection-repair'], '(max-width: 560px) calc(100vw - 2rem), (max-width: 1000px) calc(50vw - 1.5rem), 380px'); ?>
       </div>
     </div>
   </section>

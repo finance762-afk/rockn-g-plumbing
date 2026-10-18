@@ -161,7 +161,7 @@ if (!function_exists('blogPostBySlug')) {
     }
 
     /** One <a class="blog-card"> from a registry entry; $sizes is the img sizes value of the grid it sits in. */
-    function renderBlogCard(array $bp, string $sizes = '(max-width: 600px) 100vw, (max-width: 900px) 50vw, 380px'): string {
+    function renderBlogCard(array $bp, string $sizes = '(max-width: 600px) calc(100vw - 2rem), (max-width: 900px) calc(50vw - 1.5rem), 380px'): string {
         return '<a class="blog-card" href="' . h(blogUrl($bp)) . '">'
             . '<div class="blog-card__image">' . pictureTag($bp['photo'], $bp['alt'], $sizes) . '</div>'
             . '<div class="blog-card__body">'

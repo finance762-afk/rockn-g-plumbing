@@ -547,7 +547,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
     <article class="fz-article" aria-labelledby="fz-h1">
       <figure class="fz-featured blog-post__featured-image">
-        <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 1000px) 100vw, 780px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
+        <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 1000px) calc(100vw - 2rem), 780px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
         <figcaption>A floor cut open to reach the plumbing under a slab.</figcaption>
       </figure>
 

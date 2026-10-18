@@ -419,7 +419,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
     <article class="wc-article" aria-labelledby="wc-h1">
       <figure class="wc-featured blog-post__featured-image">
-        <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 1000px) 100vw, 780px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
+        <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 1000px) calc(100vw - 2rem), 780px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
         <figcaption>A Rock'n G water treatment install in a garage utility corner. Equipment that shares a wall with the water heater is one more thing a replacement has to fit around.</figcaption>
       </figure>
 
