@@ -22,20 +22,19 @@ $smPages = [['path' => '/', 'file' => $smRoot . '/index.php', 'priority' => '1.0
 foreach ((array) glob($smRoot . '/*/index.php') as $smFile) {
     $smDir = basename(dirname($smFile));
     if (in_array($smDir, $smSkip, true) || $smDir[0] === '.') continue;
-    $smPriority = '0.7'; $smFreq = 'monthly';
-    if ($smDir === 'services')                         { $smPriority = '0.9'; }
+    $smPriority = '0.6'; $smFreq = 'monthly';
+    if ($smDir === 'services')                         { $smPriority = '0.8'; }
     elseif (in_array($smDir, ['privacy-policy', 'terms', 'cookie-policy', 'accessibility'], true)) { $smPriority = '0.3'; $smFreq = 'yearly'; }
-    elseif (in_array($smDir, ['areas-we-serve'], true)) { $smPriority = '0.8'; }
     $smPages[] = ['path' => '/' . $smDir . '/', 'file' => $smFile, 'priority' => $smPriority, 'changefreq' => $smFreq];
 }
 // Nested pages: /services/{slug}/ and /service-area/{town}/
 foreach ((array) glob($smRoot . '/services/*/index.php') as $smFile) {
     $smSlug = basename(dirname($smFile));
     $smImg = isset($smCards[$smSlug]) ? ['src' => '/assets/images/' . $smCards[$smSlug]['photo'] . '.jpg', 'caption' => $smCards[$smSlug]['alt']] : null;
-    $smPages[] = ['path' => '/services/' . $smSlug . '/', 'file' => $smFile, 'priority' => '0.9', 'changefreq' => 'monthly', 'image' => $smImg];
+    $smPages[] = ['path' => '/services/' . $smSlug . '/', 'file' => $smFile, 'priority' => '0.8', 'changefreq' => 'monthly', 'image' => $smImg];
 }
 foreach ((array) glob($smRoot . '/service-area/*/index.php') as $smFile) {
-    $smPages[] = ['path' => '/service-area/' . basename(dirname($smFile)) . '/', 'file' => $smFile, 'priority' => '0.8', 'changefreq' => 'monthly'];
+    $smPages[] = ['path' => '/service-area/' . basename(dirname($smFile)) . '/', 'file' => $smFile, 'priority' => '0.6', 'changefreq' => 'monthly'];
 }
 if (is_file($smRoot . '/blog/index.php')) {
     $smPages[] = ['path' => '/blog/', 'file' => $smRoot . '/blog/index.php', 'priority' => '0.6', 'changefreq' => 'weekly'];

@@ -887,7 +887,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="hero-text">
         <span class="eyebrow"><?php echo h($address['city'] . ', ' . $address['state']); ?> · <?php echo h($companyCounty); ?> County</span>
         <h1 class="hero-title" id="home-h1">San Angelo Plumbing from a Family of Plumbers</h1>
-        <p class="hero-answer">Your San Angelo, TX plumber for water heaters, drains, sewer, gas lines and slab leaks, from San Angelo to Christoval.</p>
+        <p class="hero-answer">Rock'n G Plumbing is a San Angelo, TX plumber from three generations of plumbers, with 20+ years of experience. Eli Gomez, Texas Master Plumber M-44822, handles water heaters, drains, sewer, gas lines and slab leaks for homes and businesses from San Angelo to Christoval.</p>
         <div class="hero-actions">
           <button type="button" class="btn btn-primary btn-lg hero-form-open" data-open-estimate>Get a free estimate</button>
           <a class="link-call" href="<?php echo h($telHref); ?>"><?php echo icon('phone', 18); ?>or call <?php echo h($phoneFmt); ?></a>
@@ -1140,6 +1140,8 @@ if ($homeReviews !== ''): ?>
         <?php echo p1_attribution_fields('estimate-section'); ?>
         <input type="hidden" name="consent_version" value="v2.1">
         <input type="hidden" name="consent_page" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+        <input type="hidden" name="_consent_version" value="v2.1">
+        <input type="hidden" name="_consent_page" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
         <div class="form-grid">
           <label class="field" for="est-name"><span>Your name</span><input id="est-name" type="text" name="name" autocomplete="name" required></label>
           <label class="field" for="est-phone"><span>Phone</span><input id="est-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>

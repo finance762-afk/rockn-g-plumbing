@@ -589,6 +589,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <input type="hidden" name="form_location" value="about-band">
           <input type="hidden" name="consent_version" value="v2.1">
           <input type="hidden" name="consent_page" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+          <input type="hidden" name="_consent_version" value="v2.1">
+          <input type="hidden" name="_consent_page" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
           <?php echo p1_attribution_fields('about-band'); ?>
           <div class="form-row"><label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required></label></div>
           <div class="form-row"><label class="field"><span>Phone</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label></div>

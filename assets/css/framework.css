@@ -62,6 +62,8 @@
   --color-gray-light: var(--color-line); --color-gray-dark: var(--color-ink-2);
   --color-bg: var(--color-paper); --color-bg-alt: var(--color-paper-2); --color-bg-dark: var(--color-dark);
   --color-border: var(--color-line); --color-text: var(--color-ink); --color-text-light: var(--color-muted);
+  /* aliases the v8 components (zip-check, estimate-tool, booking-window, recent-work, before-after) read; resolve to the same values their inline fallbacks used */
+  --bg-alt: var(--color-paper-2); --text-light: var(--color-muted); --container-max: var(--max-width); --ba-pos: 50%;
   --color-success: #2f7d4a; --color-warning: #c98a1a; --color-danger: #b83232; --color-star: #f2b84b;
   --color-card-tint-1: color-mix(in srgb, var(--color-primary) 8%, white);
   --color-card-tint-2: color-mix(in srgb, var(--color-secondary) 9%, white);

@@ -15,7 +15,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/service-cards.php';
 $svc         = serviceBySlug('gas-line-services');
 $pageType    = 'service';
 $serviceSlug = $svc['slug'];
-$pageTitle       = "Gas Line Plumber in San Angelo, TX | Rock'n G";
+$pageTitle       = "Gas Line Plumber in San Angelo, TX | Rock'n G Plumbing";
 $pageDescription = "Gas line plumber in San Angelo, TX • New lines, repairs & extensions for appliances • Master Plumber M-44822, free estimates. Call (325) 650-7000.";
 $canonicalUrl    = $siteUrl . '/services/gas-line-services/';
 $currentPage     = 'services/gas-line-services';
@@ -903,6 +903,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <input type="hidden" name="form_location" value="hero">
           <input type="hidden" name="consent_version" value="v2.1">
           <input type="hidden" name="consent_page" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+          <input type="hidden" name="_consent_version" value="v2.1">
+          <input type="hidden" name="_consent_page" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
           <?php echo p1_attribution_fields('hero'); ?>
           <div class="form-row"><label class="sr-only" for="hero-name">Name</label><input id="hero-name" type="text" name="name" placeholder="Name" autocomplete="name" required></div>
           <div class="form-row"><label class="sr-only" for="hero-phone">Phone</label><input id="hero-phone" type="tel" name="phone" placeholder="Phone" autocomplete="tel" inputmode="tel" required></div>

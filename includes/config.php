@@ -30,9 +30,9 @@ $addressPublic = false;
 $address = ['street' => '', 'city' => 'San Angelo', 'state' => 'TX', 'zip' => ''];
 
 // ---- Domain / URLs ----------------------------------------------------------------------------
-// build-plan has no production_domain -> preview default "${slug}.pageone.cloud".
-// (build-plan "domain" is rockngplumbing.com — swap it in here at launch.)
-$domain  = 'rockn-g-plumbing.pageone.cloud';
+// Launch domain (build-plan "domain"). seo-aeo-2026.md Part H: $siteUrl is the launch domain as soon as it is known, even while the
+// site is parked on preview — canonicals/OG/schema/sitemap/robots all point here; the preview host stays noindex via nginx.
+$domain  = 'rockngplumbing.com';
 $siteUrl = 'https://' . $domain;
 // $canonicalUrl is NOT set here — each page sets its own from $siteUrl + path before head.php.
 
@@ -161,8 +161,9 @@ $geo = ['lat' => 31.431059049999998, 'lng' => -100.4462461];
 
 // ---- Social / analytics -----------------------------------------------------------------------
 $schemaSameAs = ['https://maps.google.com/maps?cid=13994749718880990816'];
-// SEO indexing switch: false on staging (noindex meta + X-Robots-Tag). Set to true at launch.
-$allowIndexing = false;
+// Indexing switch. true = no site-level noindex (seo-aeo-2026.md Part H: never noindex in site code — it would ship to the launch
+// domain). The preview host (preview-*.pageone.cloud) is kept out of the index by the nginx X-Robots-Tag header instead.
+$allowIndexing = true;
 
 $socialLinks       = [];                                  // none provided — footer renders icons only for platforms the client uses
 $googleAnalyticsId = 'G-XXXXXXXXXX';                      // placeholder until the client's GA4 measurement ID is set
@@ -180,7 +181,7 @@ $textUsNumber   = '';   // integrations.text_us_number is null (accepts_sms fals
 $financing      = [];   // integrations.financing is null
 $serviceZips    = [];   // integrations.service_zips not provided
 
-$cssVersion = '1';      // the SINGLE framework.css cache-bust; bump here on every framework.css / critical.css change
+$cssVersion = '2';      // the SINGLE framework.css cache-bust; bump here on every framework.css / critical.css change
 
 // ---- Legal pages ------------------------------------------------------------------------------
 // Intake did not collect business entity type or state of formation. The entity suffix stays empty (legal pages omit it

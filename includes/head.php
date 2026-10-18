@@ -70,11 +70,7 @@ $hdBodyClass = 'has-sticky-bar' . (isset($currentPage) && $currentPage !== '' ? 
 <!-- Google Analytics 4 -->
 <script defer src="https://www.googletagmanager.com/gtag/js?id=<?php echo h($googleAnalyticsId); ?>"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','<?php echo h($googleAnalyticsId); ?>');</script>
-<?php else: ?>
-<!-- Google Analytics 4 — placeholder until the client's measurement ID replaces $googleAnalyticsId in includes/config.php:
-<script defer src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
--->
+<?php else: /* GA4 not wired yet: set $googleAnalyticsId (G-XXXXXXXXXX) in includes/config.php and the tag below prints automatically. Nothing is emitted until then. */ ?>
 <?php endif; ?>
 <?php if (!empty($gscVerification)): ?>
 <meta name="google-site-verification" content="<?php echo h($gscVerification); ?>">

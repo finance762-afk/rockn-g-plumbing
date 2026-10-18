@@ -65,6 +65,17 @@ DirectoryIndex index.php index.html
     # Dynamic sitemap — /sitemap.xml is served by sitemap.php
     RewriteRule ^sitemap\.xml$ /sitemap.php [L]
 
+    # 301s from the old site's URLs (SEO brief, Oct 18 2026) — one hop to the final URL
+    RewriteRule ^water-heaters-and-filtration-systems/?$ /services/water-heaters/ [R=301,L]
+    RewriteRule ^drain-and-sewer-solutions/?$ /services/drain-cleaning/ [R=301,L]
+    RewriteRule ^irrigation-services/?$ /services/irrigation-sprinkler-repair/ [R=301,L]
+    RewriteRule ^new-construction-and-remodel-plumbing/?$ /services/new-construction-remodel-plumbing/ [R=301,L]
+    # the brief's root-level service slugs now live under /services/
+    RewriteRule ^(water-heaters|water-filtration-softeners|drain-cleaning|sewer-line-repair|leak-detection-repair|gas-line-services|irrigation-sprinkler-repair|new-construction-remodel-plumbing)/?$ /services/$1/ [R=301,L]
+    # old town pages -> the one Christoval page or the single areas hub (no templated town pages)
+    RewriteRule ^service-area/?$ /areas-we-serve/ [R=301,L]
+    RewriteRule ^service-area/(?!christoval-tx/?$).+$ /areas-we-serve/ [R=301,L]
+
     RewriteCond %{REQUEST_URI} !^/assets/
     RewriteCond %{REQUEST_URI} !^/includes/
     RewriteCond %{REQUEST_FILENAME} !-f

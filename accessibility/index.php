@@ -12,7 +12,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/functions.php';
  */
 $pageType        = 'other';
 $pageTitle       = "Accessibility Statement | Rock'n G Plumbing";
-$pageDescription = "Accessibility Statement for the Rock'n G Plumbing website in San Angelo, TX: our WCAG 2.1 AA goal, features and known issues. Call (325) 650-7000 to report a barrier.";
+$pageDescription = "Accessibility Statement for the Rock'n G Plumbing website in San Angelo, TX: our WCAG 2.1 AA goal and known issues. Call (325) 650-7000 to report a barrier.";
 $canonicalUrl    = $siteUrl . '/accessibility/';
 $ogImage         = '/assets/images/og-default-v1.jpg';
 $currentPage     = 'accessibility';
