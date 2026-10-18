@@ -12,6 +12,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/functions.php';
  * SEO brief (Oct 18 2026) overrides the generic Phase 3 prompt here: FAQs are visible content only — no FAQPage
  * schema on this site — and nothing mentions emergency/24-hour service or backflow testing.
  */
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/blog-data.php';   // $blogPosts registry → "From the Blog" card
+
 $pageTitle       = defaultPageTitle();   // "Plumber in San Angelo, TX | Rock'n G Plumbing" (SEO brief)
 $pageDescription = "Plumber in San Angelo, TX • Texas Master Plumber M-44822 • 3 generations, 20+ years • Free estimates, military discounts. Call (325) 650-7000.";
 $canonicalUrl    = $siteUrl . '/';
@@ -771,11 +773,96 @@ ob_start();
     display: none;
   }
 }
+/* ---------- From the Blog (registry-driven featured card) ---------- */
+.home-blog {
+  background:
+    radial-gradient(ellipse 45% 50% at 0% 100%, color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 70%),
+    var(--color-paper-2);
+}
+.home-blog__feature {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-slow);
+}
+.home-blog__feature:hover {
+  transform: translateY(calc(-1 * var(--space-1)));
+}
+.home-blog__image {
+  min-height: 300px;
+  overflow: hidden;
+}
+.home-blog__image picture,
+.home-blog__image img {
+  width: 100%;
+  height: 100%;
+}
+.home-blog__image img {
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+.home-blog__feature:hover .home-blog__image img {
+  transform: scale(1.04);
+}
+.home-blog__body {
+  display: grid;
+  gap: var(--space-3);
+  align-content: center;
+  padding: clamp(var(--space-6), 4vw, var(--space-12));
+}
+.home-blog__tag {
+  justify-self: start;
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-family: var(--font-accent);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.home-blog__body h3 {
+  font-size: var(--fs-h2);
+}
+.home-blog__body p {
+  margin: 0;
+  color: var(--color-ink-2);
+}
+.home-blog__meta {
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+}
+.home-blog__cta {
+  justify-self: start;
+  font-weight: 700;
+  color: var(--color-primary);
+  border-block-end: 2px solid var(--color-accent);
+}
+.home-blog__all {
+  margin-block-start: var(--space-8);
+}
+@media (max-width: 900px) {
+  .home-blog__feature {
+    grid-template-columns: 1fr;
+  }
+  .home-blog__image {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .home-hero .hero-bg img,
   .home-proof .stats-row::before {
     animation: none;
   }
+  .home-blog__feature,
+  .home-blog__image img,
   .home-services .service-card-with-image::before,
   .signs-table tbody tr,
   .home-about .process-steps li {
@@ -1014,6 +1101,30 @@ if ($homeReviews !== ''): ?>
     </div>
   </div>
 </section>
+
+<!-- ============ FROM THE BLOG (registry: newest post) ============ -->
+<?php if (!empty($blogPosts)): $homePost = $blogPosts[0]; ?>
+<section class="section home-blog" aria-labelledby="home-blog-title">
+  <div class="container-wide">
+    <div class="section-head reveal-up">
+      <span class="eyebrow">From the Blog</span>
+      <h2 id="home-blog-title">What should San Angelo homeowners read before calling a plumber?</h2>
+      <p>Rock'n G Plumbing's blog answers the questions that come up before a plumbing job: what drives a water heater price, how to protect pipes before a freeze, and what an estimate should spell out.</p>
+    </div>
+    <a class="home-blog__feature reveal-scale" href="/blog/<?php echo h($homePost['slug']); ?>/">
+      <div class="home-blog__image"><?php echo pictureTag($homePost['photo'], $homePost['alt'], '(max-width: 900px) 100vw, 640px'); ?></div>
+      <div class="home-blog__body">
+        <span class="home-blog__tag"><?php echo h($homePost['category']); ?></span>
+        <h3><?php echo h($homePost['title']); ?></h3>
+        <p><?php echo h($homePost['excerpt']); ?></p>
+        <span class="home-blog__meta"><?php echo h($homePost['date']); ?> · <?php echo h($homePost['readtime']); ?></span>
+        <span class="home-blog__cta">Read article</span>
+      </div>
+    </a>
+    <p class="home-blog__all reveal-up"><a class="btn btn-secondary" href="/blog/">View all articles</a></p>
+  </div>
+</section>
+<?php endif; ?>
 
 <!-- ============ ESTIMATE SECTION ============ -->
 <section class="section home-estimate" id="estimate" aria-labelledby="home-estimate-title">

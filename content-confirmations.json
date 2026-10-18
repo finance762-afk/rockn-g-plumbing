@@ -568,6 +568,111 @@
           "where": "Terms of Service, sections 5-7"
         }
       ]
+    },
+    {
+      "path": "/service-area/christoval-tx/",
+      "useful_because": "This is the only page that explains plumbing in Christoval specifically: the South Concho River (rising at Anson Springs, running south to north through town and on to Twin Buttes Reservoir), its flood history in 1936 and 2007, the mix of town lots and rural property where the water source and waste line vary, and the 20-mile drive from San Angelo. It maps eight everyday symptoms to the Rock'n G service that handles each, shows the license on record, and tells a Christoval caller what to say when booking. Town facts are sourced from Wikipedia and the Handbook of Texas (listed in the file header).",
+      "needs_confirmation": [
+        {
+          "fact": "Scheduling and travel to Christoval",
+          "question": "Is there a trip charge, service-call minimum or typical lead time for a job in Christoval? The page only tells callers to ask the office when the crew can get there.",
+          "where": "local conditions card - About 20 miles from San Angelo"
+        },
+        {
+          "fact": "Water source in and around Christoval",
+          "question": "Are Christoval customers mostly on a utility, a shared rural system or private wells, and do you treat well water (iron, sulfur smell)? The page says the source varies and does not promise well-water treatment.",
+          "where": "local conditions card - Town lots and rural ground; problem rows"
+        },
+        {
+          "fact": "Septic work",
+          "question": "Do you work on septic systems or only sewer lines? The page asks callers whether they are on a sewer main or septic but does not promise septic service.",
+          "where": "problem rows - sewer line"
+        },
+        {
+          "fact": "Flood-related plumbing checks",
+          "question": "Have you been called to check plumbing after flooding along the South Concho? If so, what do you check? The page gives general after-flood advice only.",
+          "where": "local conditions card - A river that has flooded"
+        },
+        {
+          "fact": "Past work in Christoval",
+          "question": "Which of your job photos (if any) were taken in Christoval, and can we name the town in the captions? No photo on the page is described as being in Christoval.",
+          "where": "hero and problems photo captions"
+        },
+        {
+          "fact": "Christoval ZIP and service boundary",
+          "question": "Do you also cover the ranch and river-lot ground around Christoval, and how far out of town will the crew go?",
+          "where": "hero answer / local conditions"
+        }
+      ]
+    },
+    {
+      "path": "/areas-we-serve/",
+      "useful_because": "This is the only page that lists every town Rock'n G Plumbing serves around San Angelo (San Angelo, Christoval, Wall, Veribest, Carlsbad, Grape Creek, Water Valley) with a sourced fact set for each (ZIP codes, highways, school districts, founding details) and a schematic map plotted from published coordinates. It also tells callers what to say when phoning from outside the city: town and road, water source, sewer or septic, and what the plumbing is doing. The Google Maps listing is embedded as a service-area business.",
+      "needs_confirmation": [
+        {
+          "fact": "The five towns listed (Wall, Veribest, Carlsbad, Grape Creek, Water Valley)",
+          "question": "Are these the right towns, and are there others you serve (for example Miles, Mereta, Eola, Tom Green County towns not listed) or ones you will not travel to?",
+          "where": "town cards, hero answer, schema areaServed"
+        },
+        {
+          "fact": "Distance limits",
+          "question": "How far from San Angelo will the crew travel, and does the distance change the estimate or scheduling?",
+          "where": "town cards / what to tell the office"
+        },
+        {
+          "fact": "Grape Creek ZIP",
+          "question": "Which ZIP code do you use for Grape Creek jobs? The page does not print one because the sources checked did not state it.",
+          "where": "Grape Creek card"
+        }
+      ]
+    },
+    {
+      "path": "/blog/",
+      "useful_because": "The blog index is the only page listing every Rock'n G Plumbing guide in one place, newest first, with topics, read times and the service page each guide leads to. It is driven by the registry in includes/blog-data.php, so new guides appear here, on the homepage and in the sitemap automatically.",
+      "needs_confirmation": [
+        {
+          "fact": "Blog topics",
+          "question": "What are the plumbing questions you hear most from customers? We will use them to choose the next guides instead of guessing.",
+          "where": "registry / next posts"
+        }
+      ]
+    },
+    {
+      "path": "/blog/water-heater-replacement-cost-san-angelo/",
+      "useful_because": "This guide is the only place that breaks a San Angelo water heater replacement price into the five things that drive it (tank or tankless, fuel, capacity, connections, location), explains why tankless usually costs more to install, links hard water to heater wear, and gives a checklist of what a written estimate should list. It uses a Rock'n G garage install photo to point out that heater placement has to work around other equipment on the same wall.",
+      "needs_confirmation": [
+        {
+          "fact": "Price ranges",
+          "question": "What is a typical installed price range for a standard tank replacement and for a tankless install in San Angelo? The post contains no dollar figures until you confirm ranges.",
+          "where": "section - What decides the cost"
+        },
+        {
+          "fact": "Permit, haul-away and warranty",
+          "question": "Do you pull the City of San Angelo permit, haul away the old heater, and what is your labor warranty? The post tells readers to ask every plumber these and makes no Rock'n G promise.",
+          "where": "section - What should the estimate list"
+        },
+        {
+          "fact": "Owner review",
+          "question": "Would Eli like to read this post and add one thing he sees on San Angelo water heater jobs? A reviewed-by line from the master plumber strengthens it.",
+          "where": "whole post"
+        }
+      ]
+    },
+    {
+      "path": "/blog/protect-san-angelo-plumbing-before-a-hard-freeze/",
+      "useful_because": "This guide is the only page that gives San Angelo homeowners a single pre-freeze plumbing checklist: testing the main shutoff, the pipes that freeze first ranked by exposure, which faucets to drip, what to do with a frozen versus burst pipe, and how to check the water meter for hidden damage afterward. It routes sprinkler, gas and leak questions to the matching Rock'n G service pages.",
+      "needs_confirmation": [
+        {
+          "fact": "What Rock'n G sees after a freeze",
+          "question": "What do you most often find on freeze-damage calls in San Angelo (garage heater lines, exterior-wall pipes, irrigation)? Your own observation would replace general advice in the pipe-exposure list.",
+          "where": "section - Which pipes freeze first"
+        },
+        {
+          "fact": "Freeze-night availability",
+          "question": "Do you take calls outside Mon-Fri 8-6 during a hard freeze? The post gives office hours only and tells readers to use their own shutoff valve; no emergency or 24-hour service is mentioned.",
+          "where": "section - If a pipe bursts"
+        }
+      ]
     }
   ],
   "consolidate": []
