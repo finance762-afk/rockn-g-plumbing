@@ -17,34 +17,54 @@ Rules below win when they conflict with anything in references.
 
 ---
 
-## MODEL POLICY
+## MODEL POLICY (which Claude model runs each task)
 
-The pipeline selects a Claude model **per task** (Opus for design-critical /
-vision phases, Sonnet for bulk content, QA, fixes, and edits) — it never
-inherits the CLI default. Full per-phase table is in `CLAUDE-websites-v2.md` →
-**MODEL POLICY**; the authoritative config is
-`packages/design-portal/lib/phase-prompts.ts` (`getPhaseModel`, `TASK_MODELS`).
+The pipeline picks a model **per task** — it must never inherit the CLI's
+default model (that once let Fable 5 burn ~$49 of credits on a single premium
+phase). Opus is reserved for design-critical, first-impression, and vision
+work; the bulk of a site — inner pages, structure, QA, fixes, edits — runs on
+Sonnet at roughly one-fifth the per-token cost.
+
+**Authoritative source: `packages/design-portal/lib/phase-config.ts`**
+(`getPhaseModel()`, `BUILD_MODELS`, `TASK_MODELS`, `BUILD_EFFORT`). Generation bumped to Opus 5.5 / Sonnet 5.5 / Haiku 5.5 on 2026-10-09; "Sonnet" below = Sonnet 5.5, "Haiku" = Haiku 5.5. Haiku is never the page writer. This table documents that
+config — change both together.
+
+| Task | Model | Why |
+|---|---|---|
+| Phase 1 — Intake + Logo Analysis | **Opus 5.5** (effort high) | Logo vision + design-token derivation sets the whole site's look |
+| Phase 2 — CSS Architecture + PHP Includes | Sonnet | Mechanical scaffolding; framework.css already exists |
+| Phase 3 — Homepage | **Opus 5.5** (effort high) | The hero and highest-traffic page — the first impression |
+| Phase 4 — Service Pages | **Opus 5.5 (Premium only)** / Sonnet 5.5 (Basic, Standard) | Premium buys editorial depth across many pages; other tiers are fine on Sonnet |
+| Phase 5 — About / Contact / FAQ | Sonnet | Straightforward content pages |
+| Phase 6 — Service Area(s) | Sonnet | Templated area pages |
+| Phase 7 — SEO/AEO + QA generation | Sonnet | Tag/schema generation; QA scoring is a Python script |
+| QA narrative audit (`qa/start`) | Sonnet | Analytical, not generative |
+| QA fixes (`qa-check`, run-phase fix loop, `fix-qa`) | Sonnet | Mechanical corrections |
+| AI edits (`ai-edit`) | Sonnet | Small ad-hoc client/staff edits |
+| Personalization Layer (Phase 8) | Sonnet | Content swaps on an existing build |
+| Blog post writer (Blogs tab, `blogs/[postId]/write`) | Sonnet | Client-facing long-form prose + schema/registry edits — Sonnet is the quality floor |
+| Blog topic scan (`blogs/scan-topics`) | Haiku 5.5 | Constrained JSON selection over pre-computed GSC/keyword signals |
+
+Net effect: Opus runs on **2 phases** for Basic/Standard (1 + 3) and **3** for
+Premium and Flagship (1 + 3 + 4); everything else is Sonnet. Flagship (v8) runs
+Opus 5.5 on Phases 1, 3, and 4, including Phase 4 Session D (the authorization-
+gated conversion components). To shift a phase's tier→model
+mapping, edit `OPUS_PHASES` in `phase-config.ts`. Sonnet here is
+`claude-sonnet-5-5` (since 2026-10-09); bump `BUILD_MODELS.sonnet` to
+upgrade all Sonnet tasks at once.
 
 ---
 
 ## Performance & Asset Standards (v6.2 — MANDATORY, ENFORCED BY `qa_audit.py`)
 
-These are hard QA blockers on every new build. Full spec: `references/performance-2026.md`.
+Orthogonal to the GSC/keyword "V2 STANDARDS" below — these are the performance-v6.2 output rules, hard QA blockers on every new build. Full spec: `references/performance-2026.md`.
 
-- **Self-hosted fonts — NO Google Fonts CDN.** The scaffold copies the chosen variable woff2 into `/assets/fonts/` and declares `@font-face` (with `font-display: swap`) in `framework.css`. Never add `fonts.googleapis.com` / `fonts.gstatic.com` preconnect or `<link>`. Preload only the above-the-fold heading face: `<link rel="preload" href="/assets/fonts/<file>.woff2" as="font" type="font/woff2" crossorigin>`. Font sources live in `references/fonts/`; filenames are the lowercased-hyphenated family name (`Bricolage Grotesque` → `bricolage-grotesque.woff2`).
-- **Inline SVG icons — NO runtime injection.** Paste the raw `<svg>` from `references/lucide-icons/<name>.svg` at build time (add `aria-hidden="true"` + `width`/`height`). Never `<i data-lucide>`, `lucide.createIcons()`, or a Lucide/unpkg CDN `<script>`.
-- **Responsive images.** Every hero/card `<img>` needs `srcset` + `sizes`. The pipeline pre-generates `/assets/images/<name>-480.webp`, `-960.webp`, `-1600.webp` for on-disk photos — reference those exact files (omit a descriptor whose file is absent). Every photo `src` MUST be a local `/assets/images/` path — NEVER hotlink imgur or any other remote host (the localize step puts every manifest photo on disk before the build). Explicit `width`/`height` always; hero uses `loading="eager" fetchpriority="high"`, others `loading="lazy"`.
-- **No CDN JS toys.** No VanillaTilt CDN; carousels are CSS scroll-snap unless a Swiper feature is genuinely required. Total JS ≤ 100KB, hero image ≤ 150KB.
-- **v6.3 performance additions (2026-09-04, visually invisible, enforced by qa_audit.py "PERFORMANCE v6.3"):**
-  - `defer` on EVERY `<script src>` (first- and third-party). A library needed by one page (a real Swiper carousel) loads on that page only and initialises from an IntersectionObserver in `main.js`, never at load.
-  - Photos are `<picture>`: `<source type="image/avif" srcset="…-480/-960/-1600.avif">` + `<img src=".jpg" srcset="…webp">`. The pipeline writes both formats. Below-the-fold images add `decoding="async"`. The hero/LCP image is a `<picture>` with `fetchpriority="high"` (the ONLY element with it — not the nav logo), never a CSS `background-image`, never `loading="lazy"`, plus an `imagesrcset` preload in head.php.
-  - Budgets: any single image file ≤ 250KB (QA FAIL), homepage image payload ≤ 600KB, total page weight ≤ 1.5MB (QA WARN). Never hotlink `db.pageone.cloud/storage/...` originals — same rule as imgur.
-  - Critical CSS: the scaffold writes `includes/critical.css`; head.php inlines it in a `<style>` and loads framework.css via `<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">` + `<noscript>` fallback. No other render-blocking stylesheet (no separate fonts.css — `@font-face` stays in framework.css).
-  - `.htaccess` (Phase 1 template): brotli + gzip, `Cache-Control: public, max-age=31536000, immutable` on static assets (css/js are `?v=`-busted), `no-cache, must-revalidate` on HTML/PHP.
-  - Targets (mobile, cold): DCL < 600ms · load < 1s · LCP < 2.0s · CLS < 0.05 · Lighthouse mobile Performance ≥ 90 (QA FAIL below), Accessibility/Best Practices/SEO ≥ 95 (QA WARN below). Full spec: `references/performance-2026.md` "v6.3 additions".
-- **Forbidden tags (also QA blockers):** `<meta name="keywords">`, any Twitter/X Card tags (`twitter:*`), and `aggregateRating`/`ratingValue` in JSON-LD.
+- **Self-hosted fonts — NO Google Fonts CDN.** The scaffold copies the chosen variable woff2 into `/assets/fonts/` and declares `@font-face` (with `font-display: swap`) in `framework.css`. Never add `fonts.googleapis.com` / `fonts.gstatic.com` preconnect or `<link>`. Preload only the above-the-fold heading face. Sources in `references/fonts/`; filenames are the lowercased-hyphenated family name.
+- **Inline SVG icons — NO runtime injection.** Paste the raw `<svg>` from `references/lucide-icons/<name>.svg` at build time. Never `<i data-lucide>`, `lucide.createIcons()`, or a Lucide/unpkg CDN `<script>`.
+- **Responsive images.** Every hero/card `<img>` needs `srcset` + `sizes`; the pipeline pre-generates `/assets/images/<name>-480.webp`, `-960.webp`, `-1600.webp` for on-disk photos. Explicit `width`/`height`; hero `loading="eager" fetchpriority="high"`.
+- **No CDN JS toys** (no VanillaTilt CDN; CSS scroll-snap carousels). **Forbidden tags:** `<meta name="keywords">`, `twitter:*`, and `aggregateRating` in JSON-LD.
 
-> Pre-v6.2 sites audit with `qa_audit.py --legacy`. New builds are graded against v6.2 by default.
+> Pre-v6.2 sites audit with `qa_audit.py --legacy`; new builds are graded against v6.2 by default.
 
 ---
 
@@ -54,11 +74,10 @@ Every build is assigned a tier in the build prompt. The tier determines the visu
 
 | Tier | CSS lines/page (inline `<style>`) | Distinct techniques/page | QA enforcement on failure |
 |---|---|---|---|
+| **Flagship** (v8, 2026-10-09) | **≥ 400** | **≥ 6** from technique library | **FAIL HARD** — build cannot deploy. Plus: blog REQUIRED (12-post cluster target), 40+ URLs with city pages, all four legal pages, and the Flagship components in `references/conversion-components-v8.md` (estimate tool + booking ONLY with the client's recorded authorization in `build-plan.json` `integrations`; text-first contact, financing block, recent-work feed, serve-my-address checker, ≥ 3 before/after pairs on visual trades, photo/video day, Spanish pages where warranted, launch report) |
 | **Premium** | **≥ 400** | **≥ 6** from technique library | **FAIL HARD** — build cannot deploy |
 | **Standard** | **≥ 200** | **≥ 4** from technique library | WARN — logged but build proceeds |
 | **Basic** | **≥ 100** | **≥ 2** from technique library | WARN — logged but build proceeds |
-
-> **v7 scaffold note (2026-09-02):** when `framework.css` is the v7 scaffold, the craft above lives in the scaffold and `qa_audit.py` treats the per-page inline-CSS line bar as informational and waives the "zero inline `<style>`" fail. Technique detection still runs across framework.css plus page styles. Pages still need real, page-specific composition — the scaffold is a floor, not the design.
 
 ### Automatic-fail conditions (ALL tiers)
 
@@ -156,18 +175,11 @@ Complete page templates, consent HTML/CSS, footer legal row, sitemap entries, Ph
 
 ---
 
-## Lead Form Placement & Attribution (v6.3 — 2026-09-04, MANDATORY, QA-enforced)
-
-- **Placement.** Home, every service page and every city page carry the hero lead form (`.hero-grid--form` + `.hero-form-card`, mobile button opens `#estimate-dialog`). Blog posts, About and FAQ get ONE mid-page `<section class="cta-band" id="estimate">` with the same compact form after the first content section — never a hero form there. Contact keeps the full form. The band is sized to its content: copy column ≈1/3, form card ≈2/3 with the fields three-up (name | phone | email / service | button / consent | footnote), ≈300px tall on desktop — never a 420px card floating in a 490px dark block (Sloan blog, Sep 4). Every form instance has a unique id on its page: `hero`, `cta-band`, `dialog`, `contact`.
-- **Attribution.** The scaffold ships `includes/attribution.php` (canonical: `references/attribution.php`); `config.php` requires it before any output. It sets a first-party 30-day cookie on the first pageview (landing page, referrer, UTM, gclid, session id, device) — in PHP, no JavaScript. Every `<form>` echoes `<?php echo p1_attribution_fields('<form id>'); ?>`, which emits `form_id`, `submit_page_url/path`, `page_type`, `service_slug`, `city_slug`, `landing_page_url/path`, `traffic_referrer`, `utm_*`, `gclid`, `session_id`, `device_type` as hidden inputs. Formsubmit forwards them in the email; the Supabase leads endpoint stores them on `portal_leads` and reporting reads `v_lead_attribution_monthly` (per client per month by submit page, landing page, page type, service, city, source).
-- **Page identity.** Every page sets `$pageType` (`home|service|city|blog|about|faq|contact|other`) before `head.php`, plus `$serviceSlug` on service pages and `$citySlug` on city pages. The path-based fallback in attribution.php is PHP, never client-side parsing.
-- **Why first-touch matters.** A visitor lands on a city page, clicks to a service page, converts there. Without the landing-page cookie the city page looks worthless — and city pages are the Premium upsell.
-
 ## Contact Form Submission (REQUIRED — Formsubmit.co, 2026-07-11 standard)
 
-Every build submits contact forms to the Page One leads endpoint (`https://db.pageone.cloud/functions/v1/leads/{slug}`). Use the exact `form_action` URL from `build-plan.json` verbatim. **Formsubmit.co is retired (Sep 2026)** — never emit a formsubmit.co action or its `_captcha/_template/_subject/_cc` directives; keep `_next`, `_honey`, attribution fields and the consent block.
+New builds submit contact forms via **Formsubmit.co** to the client's email. Use the exact `form_action` URL from `build-plan.json` verbatim (`https://formsubmit.co/{client email}`). Customer Service is CC'd on every submission via `_cc`.
 
-> **Legacy note:** sites still on formsubmit.co or the dead `design.pageone.cloud/api/leads/{slug}` endpoint get repointed to `db.pageone.cloud/functions/v1/leads/{slug}` when touched (then run `patch-leads-spamshield.py`).
+> **Legacy note:** sites migrated in June 2026 post to a Page One lead endpoint (`db.pageone.cloud/functions/v1/leads/{slug}` or `design.pageone.cloud/api/leads/{slug}`). Those are still valid — do NOT rewrite an existing site's form action in either direction unless explicitly instructed.
 
 **READ `references/contact-form-standard.md` BEFORE writing any form — it contains the full REQUIRED markup to copy verbatim.** Hard rules QA enforces:
 
@@ -230,8 +242,6 @@ RewriteRule ^ /%1 [NC,L,R=301]
 
 The `RewriteCond %{DOCUMENT_ROOT}/$1.php -f` target-existence condition is MANDATORY. Without it, a request for a real directory (`/services/`, `/about/`) is rewritten to `dir/.php` and 404s sitewide on Apache/Hostinger (confirmed live on god-s-country-tree-service-llc and xtreme-construction-llc, 2026-07-17); nginx previews mask the bug. With the condition, directories fall through to DirectoryIndex on every host.
 
-**v6.3 headers (2026-09-04):** the Phase 1 `.htaccess` template also carries `mod_brotli` + `mod_deflate` compression, `Cache-Control: public, max-age=31536000, immutable` on css/js/fonts/images (css/js are `?v=`-busted), and `no-cache, must-revalidate` on `.php`/`.html`. Hostinger's CDN already serves brotli + HTTP/2/3; the directives cover hosts without it.
-
 **URL shape rule:** ALL pages — including service pages — are built as `directory/index.php` with trailing-slash URLs (`/services/roof-repair/`). Never the dual flat-`.php` + directory-stub pattern (canonical/internal-link mismatch). See build-phases.md.
 
 ---
@@ -281,28 +291,7 @@ Every build includes:
 
 ---
 
-## Hero, Motion and Archetype (v7 — 2026-09-02, MANDATORY)
-
-The scaffold's `framework.css` is the v7 baseline (template: `~/crm/references/framework-v7.css`). It ships the fluid type scale, `text-wrap: balance/pretty`, a global focus ring, three container widths, the divider family, the grain layer, the gallery, the featured service grid, the proof strip, the compact hero form card, the estimate `<dialog>`, the slim cookie bar and the mobile bar. Pages use these classes; they do not re-author them.
-
-- **Heroes size to content. Never `min-height: 100vh` / `100svh`.** A homepage hero is typically 560–720px on desktop. Interior heroes are compact (`.hero--interior`).
-- **H1 stays on the scaffold scale** (`--fs-h1`, ~42px desktop / ~32px mobile) and reads in ≤ 2 lines on desktop. Owner feedback 2026-09-02: "hero text on most builds is way too large and makes the heroes way too tall." Never override `--fs-h1` upward.
-- **Hero anatomy:** plain-text eyebrow → one-sentence H1 → one-sentence `.hero-answer` (≤ 30 words) → primary CTA + call link → three `.hero-chips` from intake. Desktop shows the compact three-field `.hero-form-card`; below 900px the scaffold hides it and the `data-open-estimate` button opens `#estimate-dialog`.
-- **Hero pattern comes from `design.archetype`** in build-plan.json (set in Phase 2): `editorial-light`, `bold-industrial`, `warm-human`, `minimal-tech`, `rustic`, `proof-led`. The archetype also fixes the divider family, the type pairing and the motion permit. Phase 3 picks one of three section scripts (photo-led / proof-led / editorial) — the homepage section order is not fixed and carries no numbered watermarks.
-- **Rhythm:** alternate `.container` / `.container-wide` / `.container-narrow`, alternate light and dark bands, use ≥ 2 different edge classes (`.slant-top`, `.edge-curve-top`, `.edge-wave-top`, `.edge-torn-top`, `.edge-parallelogram-top`).
-- **Motion is fail-open:** `main.js` adds `js-anim` to `<html>` as its first statement; only then do `.reveal` / `.reveal-*` / `[data-animate]` start hidden, an IntersectionObserver reveals them, and a 2.5 s safety net shows anything left. Never a bare `.reveal { opacity: 0 }`. Never scroll-timeline reveals (a renderer that does not scroll, such as Googlebot, would see opacity 0 below the fold). Nothing inside the hero gets a reveal class.
-- **Mobile first-screen contract (measured by visual QA):** at 390px wide the H1 clears the fixed header, the answer sentence, the primary CTA (top ≤ 620px) and the three chips fit in the first 700px, no paragraph above the CTA runs past two lines, the cookie bar waits for the first scroll, the sticky bar appears only after the hero leaves the viewport.
-- **Proof, not stats:** the proof strip shows four verifiable intake facts. No invented numbers, no counters on made-up values, no ratings without a GBP count in intake.
-- **Link integrity:** a link may only point at a page that exists on disk. Gate area/city links with `is_dir()` until the page is built; curl every internal href before calling a phase complete. One 404 = not complete.
-- **Shared-include variables:** loop variables in header.php, footer.php and partials are prefixed (`$navSvc`, `$footArea`). Never `$svc`, `$area`, `$c`, `$card`, which pages own.
-- **Logos:** knock JPEG fields out to transparency before use; split stacked logos into mark + the logo's own text block for the bar; crop baked-in phone numbers off; name derived assets with a version suffix and never overwrite an image in place (edge cache is immutable for a year).
-- **Area pages:** research first, source URLs in a comment header, elevation as a range, 2023 USDA zone by ZIP, drop any unverifiable name (and fix the config blurb), no frequency claims about past work in a town, build every area in config or gate its links.
-
----
-
 ## Design Anti-Patterns (STRICTLY FORBIDDEN)
-
-- No `100vh` / full-viewport heroes; no H1 above the scaffold `--fs-h1`; no 3-4 line stacked headlines
 
 - No generic centered text blocks repeated section after section
 - No equal-height bland sections stacked with no visual variation
@@ -439,3 +428,89 @@ Appears on: home page (services overview), `/services/index.php`, and the bottom
 - Icons are inline SVG from `references/lucide-icons/*.svg` (never `data-lucide`, `createIcons`, or a CDN); adjacent cards use different icons.
 - Every card has a real client photo from the AVAILABLE CLIENT IMAGES manifest (responsive srcset, explicit width/height); no gradient placeholders or blank divs; stock only as last resort when no client photo exists.
 - 9+ services: first 8 on the home grid + `View All {N} Services →` button; ALL services render on `/services/index.php`.
+
+
+---
+
+# V2 STANDARDS (GSC-DRIVEN — PIPELINE V2 BUILDS ONLY)
+
+> This section exists because real Google Search Console data from deployed Page One sites
+> exposed systematic blind spots in the v1 templates. Each rule below is traced to that
+> evidence. These rules are ADDITIVE to everything above — where they conflict with a v1
+> rule, the V2 rule wins on v2 builds. Enforced by `qa_audit.py --v2`.
+
+## V2.1 Trade-noun language in titles and H1s (REQUIRED)
+
+**Evidence:** searchers use trade nouns ("carpenter near me", "handyman El Cajon"); v1 templates
+used service-category language ("Carpentry & Construction"). Those pages earned impressions only
+on category terms and missed the trade-noun queries entirely.
+
+- Every service page `<title>` and H1 MUST include the trade noun a searcher would use ALONGSIDE
+  the category name: `Carpenter in San Diego, CA | Carpentry & Construction Services`.
+- Map categories to trade nouns at plan time: carpentry → carpenter, plumbing → plumber,
+  tile installation → tile installer, electrical → electrician, landscaping → landscaper,
+  gutters → gutter installer, roofing → roofer, painting → painter, handyman stays handyman.
+- The trade noun MUST also appear naturally in the first 100 words of body copy.
+
+## V2.2 CTR-engineered titles and metas (REQUIRED)
+
+**Evidence:** pages at positions 8–15 with near-zero CTR — the snippet gave no reason to click.
+
+- Meta description formula: **[trade noun + city] + [differentiator] + [CTA]**.
+- Differentiator = at least one concrete USP from the intake: Same-Day Service, Licensed & Insured,
+  ★4.9 Google Rating, 25+ Years, Free Estimates, Financing Available. Use separators (• or |) for
+  scannability.
+- CTA = an action verb phrase: "Call for a free estimate today", "Get your quote in 24 hours".
+- Titles ≤ 60 chars, metas 140–160 chars. NO keyword-only metas; every meta must contain a USP
+  and a CTA — `qa_audit.py --v2` fails the build otherwise.
+
+## V2.3 Competitive-category service tiers (REQUIRED)
+
+**Evidence:** one high-competition page (home theater / TV mounting — specialist companies compete
+for it) earned the most impressions at the worst positions because every service got equal-weight
+treatment.
+
+- Each service in build-plan.json carries `competitive_tier: standard | high_competition`.
+- `high_competition` services get: a DEDICATED page (never grouped), 2× content depth
+  (800+ words), FAQPage schema with 4+ questions, and internal links from EVERY area page.
+- `standard` services follow the normal v1 grouping rules.
+
+## V2.4 Question-format AEO blocks (REQUIRED on every service page)
+
+**Evidence:** a question-format query ranked position 5 for the pilot client — the only
+top-5 ranking the site had.
+
+- Every service page includes at least one H2 phrased as the question a searcher would ask
+  ("How much does seamless gutter installation cost in Madison, MS?") followed by a direct,
+  40–60 word answer paragraph (speakable/snippet-ready), consistent with the AEO standards
+  in aeo-content-schema.md.
+
+## V2.5 Keyword-to-page coverage map (REQUIRED)
+
+**Evidence:** several intake keywords (IKEA, patio, pool table) earned zero impressions despite
+being "on the page" — nothing actually targeted them.
+
+- The build MUST maintain `keyword-map.json` at the repo root: an array of
+  `{ "keyword": "...", "page": "services/x.php", "heading": "the exact H1/H2 that targets it" }`.
+- EVERY keyword in build-plan.json (primary, secondary, per-service) appears exactly once.
+- The referenced page file must exist and the heading text must appear in it.
+- This file is the contract the nightly GSC rules engine checks reality against
+  (zero-impression targets); the 30-day post-launch check runs automatically once the
+  property is registered.
+
+## V2.6 Homepage focus (REQUIRED)
+
+**Evidence:** the pilot homepage sat at position ~97 on mismatched broad terms because it
+targeted generic positioning instead of one cluster.
+
+- The homepage targets ONE primary keyword cluster (the build plan's `primary_keyword` and its
+  close variants). Title, H1, and hero copy all commit to that cluster.
+- Generic positioning ("Your Trusted Local Contractor") may appear only AFTER the
+  cluster-targeted hero, never as the H1/title.
+
+## V2.7 What carries over unchanged
+
+Tinted Image Card pattern, dual-mode navbar, logo analysis Phase 0, the PHP-include
+architecture, the tier system (Basic/Standard/Premium), Formsubmit.co forms, all legal/
+compliance requirements, the performance budget, and the deploy flow are UNCHANGED from the
+standards above.
