@@ -218,7 +218,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <h2>7. Contact Us</h2>
       <div class="lg-contact">
         <p><strong><?php echo h($companyName); ?></strong><br>
-        Email: <a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><br>
+        Email: <!--email_off--><a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><!--/email_off--><br>
         Phone: <a href="tel:<?php echo h($companyPhoneE164); ?>"><?php echo h($companyPhone); ?></a><br>
         Hours: <?php echo h($weekday[0]); ?>, <?php echo h($weekday[1]); ?><br>
         Location: <?php echo h($companyAddress); ?></p>

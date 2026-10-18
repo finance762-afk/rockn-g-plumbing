@@ -103,7 +103,7 @@ if (!function_exists('serviceCardData')) {
             $scCard = $scData[$scSlug];
             $scTint = ($scI % 3) + 1;
             $scOut .= '<article class="service-card-with-image card-tint-' . $scTint . ' reveal-up reveal-delay-' . $scTint . '">'
-                . '<div class="service-card__image">' . pictureTag($scCard['photo'], $scCard['alt'], $sizes) . '</div>'
+                . '<div class="service-card__image">' . pictureTag($scCard['photo'], $scCard['alt'], $sizes, ['card' => true]) . '</div>'
                 . '<div class="service-card__body">'
                 . '<div class="service-card__icon">' . icon($scCard['icon'], 22) . '</div>'
                 . '<h3>' . h($scSvc['name']) . '</h3>'

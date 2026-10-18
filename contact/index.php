@@ -311,7 +311,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
               <label class="form-consent-item" for="contact-email-opt">
                 <input id="contact-email-opt" type="checkbox" name="email_opt_in" value="yes">
-                <span class="consent-label"><strong>Email updates (optional):</strong> I agree to receive emails from <?php echo h($siteName); ?> about my inquiry and its services. I can unsubscribe at any time using the link in any email or by emailing <?php echo h($email); ?>. Message frequency varies.</span>
+                <span class="consent-label"><strong>Email updates (optional):</strong> I agree to receive emails from <?php echo h($siteName); ?> about my inquiry and its services. I can unsubscribe at any time using the link in any email or by emailing <!--email_off--><?php echo h($email); ?><!--/email_off-->. Message frequency varies.</span>
               </label>
 
               <label class="form-consent-item" for="contact-sms-opt">
@@ -335,7 +335,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <h2>Call or email the office</h2>
             <div class="nap">
               <div><?php echo icon('phone', 18); ?><a href="<?php echo h($telHref); ?>"><?php echo h($phoneFmt); ?></a></div>
-              <div><?php echo icon('mail', 18); ?><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a></div>
+              <div><?php echo icon('mail', 18); ?><!--email_off--><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a><!--/email_off--></div>
               <div><?php echo icon('map-pin', 18); ?><span>Serving <?php echo h($address['city']); ?> and Christoval, <?php echo h($address['state']); ?>, plus <?php echo h($townList); ?></span></div>
             </div>
           </div>

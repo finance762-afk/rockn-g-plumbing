@@ -233,7 +233,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <li><strong>Right to non-discrimination</strong> for exercising your rights.</li>
       </ul>
       <div class="lg-note">
-        <p><strong>Do Not Sell or Share My Personal Information:</strong> <?php echo h($companyName); ?> does not sell or share personal information. To make an opt-out or any other privacy request, email <a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a> or call <a href="tel:<?php echo h($companyPhoneE164); ?>"><?php echo h($companyPhone); ?></a>. We will confirm in writing once your request has been honored.</p>
+        <p><strong>Do Not Sell or Share My Personal Information:</strong> <?php echo h($companyName); ?> does not sell or share personal information. To make an opt-out or any other privacy request, email <!--email_off--><a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><!--/email_off--> or call <a href="tel:<?php echo h($companyPhoneE164); ?>"><?php echo h($companyPhone); ?></a>. We will confirm in writing once your request has been honored.</p>
       </div>
 
       <h3>Other State Residents</h3>
@@ -242,11 +242,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <h2>6. Email, Text Messages and Phone Calls (TCPA)</h2>
       <p>Our forms ask for three separate, unbundled choices, and none of them is pre-checked:</p>
       <ul>
-        <li><strong>Email updates (optional):</strong> if you check this box, <?php echo h($companyName); ?> may email you about your inquiry and its services. Unsubscribe at any time with the link in any email or by emailing <a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a>.</li>
+        <li><strong>Email updates (optional):</strong> if you check this box, <?php echo h($companyName); ?> may email you about your inquiry and its services. Unsubscribe at any time with the link in any email or by emailing <!--email_off--><a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><!--/email_off-->.</li>
         <li><strong>Text messages (optional):</strong> if you check this box, <?php echo h($companyName); ?> may text you at the number you provided, such as updates about your request and scheduling. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase.</li>
         <li><strong>Terms and Privacy Policy (required to submit):</strong> by checking this box you agree to our Terms of Service and this Privacy Policy and consent to be contacted about your request, including by phone.</li>
       </ul>
-      <p>You may opt out of texts, calls or emails at any time by any reasonable method: reply STOP to a text, tell us on a call, or email <a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a>. We will confirm that your opt-out was honored.</p>
+      <p>You may opt out of texts, calls or emails at any time by any reasonable method: reply STOP to a text, tell us on a call, or email <!--email_off--><a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><!--/email_off-->. We will confirm that your opt-out was honored.</p>
 
       <h2>7. Data Retention</h2>
       <p>We keep form submissions, consent records and job records for as long as needed to provide services, answer follow-up questions, and meet legal, tax and licensing obligations. After that we delete them or remove identifying details.</p>
@@ -267,7 +267,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <p>For privacy questions or to exercise your rights:</p>
       <div class="lg-contact">
         <p><strong><?php echo h($companyName); ?></strong><br>
-        Email: <a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><br>
+        Email: <!--email_off--><a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><!--/email_off--><br>
         Phone: <a href="tel:<?php echo h($companyPhoneE164); ?>"><?php echo h($companyPhone); ?></a><br>
         Hours: <?php echo h($weekday[0]); ?>, <?php echo h($weekday[1]); ?><br>
         Location: <?php echo h($companyAddress); ?></p>

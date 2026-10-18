@@ -167,7 +167,7 @@ if (!function_exists('blogPostBySlug')) {
      */
     function renderBlogCard(array $bp, string $sizes = '(max-width: 533px) calc(100vw - 2rem), (max-width: 600px) 94vw, (max-width: 900px) calc(47vw - .625rem), (max-width: 1000px) calc(31.3vw - .85rem), (max-width: 1464px) calc(33.3vw - 156px), 332px'): string {
         return '<a class="blog-card" href="' . h(blogUrl($bp)) . '">'
-            . '<div class="blog-card__image">' . pictureTag($bp['photo'], $bp['alt'], $sizes) . '</div>'
+            . '<div class="blog-card__image">' . pictureTag($bp['photo'], $bp['alt'], $sizes, ['card' => true]) . '</div>'
             . '<div class="blog-card__body">'
             . '<span class="blog-card__category">' . h($bp['category']) . '</span>'
             . '<h3 class="blog-card__title">' . h($bp['title']) . '</h3>'

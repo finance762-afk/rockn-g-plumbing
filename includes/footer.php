@@ -95,7 +95,7 @@ $footTexts = !empty($textUsNumber) ? 'sms:' . preg_replace('/[^0-9+]/', '', $tex
           <h4>Contact</h4>
           <div class="footer-nap">
             <div><?php echo icon('phone', 18); ?><a href="<?php echo h($footTel); ?>"><?php echo h($footPhone); ?></a></div>
-            <div><?php echo icon('mail', 18); ?><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a></div>
+            <div><?php echo icon('mail', 18); ?><!--email_off--><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a><!--/email_off--></div>
             <div><?php echo icon('map-pin', 18); ?><span><?php echo empty($addressPublic) ? 'Serving ' . h($address['city']) . ' and Christoval, ' . h($address['state']) : h($address['city'] . ', ' . $address['state']); ?></span></div>
           </div>
           <h4 class="footer-hours-title" style="margin-top:1.4rem">Hours</h4>

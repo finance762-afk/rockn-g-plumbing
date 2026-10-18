@@ -948,7 +948,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <?php foreach ($homeServices as $i => $svc): $tint = ($i % 3) + 1; ?>
       <article class="service-card-with-image card-tint-<?php echo $tint; ?> reveal-up reveal-delay-<?php echo $tint; ?>">
         <div class="service-card__image">
-          <?php echo pictureTag($svc['photo'], $svc['alt'], '(max-width: 440px) calc(100vw - 2rem), (max-width: 533px) calc(50vw - 1.5rem), (max-width: 720px) calc(47vw - .5rem), (max-width: 1000px) calc(31.3vw - .7rem), (max-width: 1464px) calc(25vw - 1.75rem), 338px'); ?>
+          <?php echo pictureTag($svc['photo'], $svc['alt'], '(max-width: 440px) calc(100vw - 2rem), (max-width: 533px) calc(50vw - 1.5rem), (max-width: 720px) calc(47vw - .5rem), (max-width: 1000px) calc(31.3vw - .7rem), (max-width: 1464px) calc(25vw - 1.75rem), 338px', ['card' => true]); ?>
         </div>
         <div class="service-card__body">
           <div class="service-card__icon"><?php echo icon($svc['icon'], 22); ?></div>
@@ -1113,7 +1113,7 @@ if ($homeReviews !== ''): ?>
       <p>Rock'n G Plumbing's blog answers the questions that come up before a plumbing job: what drives a water heater price, how to protect pipes before a freeze, and what an estimate should spell out.</p>
     </div>
     <a class="home-blog__feature reveal-scale" href="/blog/<?php echo h($homePost['slug']); ?>/">
-      <div class="home-blog__image"><?php echo pictureTag($homePost['photo'], $homePost['alt'], '(max-width: 533px) calc(100vw - 2rem), (max-width: 900px) 94vw, (max-width: 1464px) calc(54.5vw - 2rem), 764px'); ?></div>
+      <div class="home-blog__image"><?php echo pictureTag($homePost['photo'], $homePost['alt'], '(max-width: 533px) calc(100vw - 2rem), (max-width: 900px) 94vw, (max-width: 1464px) calc(54.5vw - 2rem), 764px', ['card' => true]); ?></div>
       <div class="home-blog__body">
         <span class="home-blog__tag"><?php echo h($homePost['category']); ?></span>
         <h3><?php echo h($homePost['title']); ?></h3>
@@ -1152,7 +1152,7 @@ if ($homeReviews !== ''): ?>
         </div>
         <fieldset class="form-consent-fieldset">
           <legend class="form-consent-legend">Communication consent</legend>
-          <label class="form-consent-item" for="est-email-opt"><input id="est-email-opt" type="checkbox" name="email_opt_in" value="yes"><span><strong>Email updates (optional):</strong> I agree to receive emails from <?php echo h($siteName); ?> about my inquiry, services, promotions, and news. I can unsubscribe anytime via the link in any email or by emailing <?php echo h($contactEmail); ?>. Message frequency varies.</span></label>
+          <label class="form-consent-item" for="est-email-opt"><input id="est-email-opt" type="checkbox" name="email_opt_in" value="yes"><span><strong>Email updates (optional):</strong> I agree to receive emails from <?php echo h($siteName); ?> about my inquiry, services, promotions, and news. I can unsubscribe anytime via the link in any email or by emailing <!--email_off--><?php echo h($contactEmail); ?><!--/email_off-->. Message frequency varies.</span></label>
           <label class="form-consent-item" for="est-sms-opt"><input id="est-sms-opt" type="checkbox" name="sms_opt_in" value="yes"><span><strong>Text messages (optional):</strong> I agree to receive text messages from <?php echo h($siteName); ?> at the phone number I provided, including appointment reminders, service updates and promotional offers. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe, HELP for help. <strong>Consent is not a condition of purchase.</strong></span></label>
           <label class="form-consent-item" for="est-terms"><input id="est-terms" type="checkbox" name="terms_accepted" value="yes" required><span>I have read and agree to the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms of Service</a>. *</span></label>
         </fieldset>
@@ -1169,7 +1169,7 @@ if ($homeReviews !== ''): ?>
       </ol>
       <div class="nap">
         <div><?php echo icon('phone', 18); ?><a href="<?php echo h($telHref); ?>"><?php echo h($phoneFmt); ?></a></div>
-        <div><?php echo icon('mail', 18); ?><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a></div>
+        <div><?php echo icon('mail', 18); ?><!--email_off--><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a><!--/email_off--></div>
         <div><?php echo icon('clock', 18); ?><span><?php echo h($businessHours); ?></span></div>
       </div>
       <div class="home-estimate__area">
