@@ -4,15 +4,430 @@
       "path": "/",
       "useful_because": "The homepage is the only page that puts all eight Rock'n G services side by side with the client's own job photos (trench excavation, under-floor drain lines, a garage softener and filter install, gas piping to a standby generator, a finished kitchen remodel), and it carries a symptom board that maps what a homeowner notices (hot water running short, crust on faucets, several drains gurgling, a warm spot on the floor, soggy yard patches) to the likely cause and the Rock'n G service that handles it, plus a gas-smell safety note. It also states the verified facts in one place: Eli Gomez as Responsible Master Plumber on Texas license M-44822, three generations, 20+ years, Mon–Fri 8–6 hours, free estimates, military discounts, and the Tom Green County towns served.",
       "needs_confirmation": [
-        { "fact": "The four-step job process (call/form → free estimate → customer decides → work done under the master license)", "question": "Walk us through a typical job: is the free estimate given on-site or by phone, how soon do you usually come out, and do you do anything after the work (walkthrough, cleanup, warranty)?", "where": "about/process section" },
-        { "fact": "What happens after a web form is submitted", "question": "When someone sends the website form, who calls them back and roughly how soon?", "where": "estimate section — What happens next" },
-        { "fact": "Military discount amount and who qualifies", "question": "What is the military discount (percentage or dollar amount), and does it cover veterans and active-duty families?", "where": "FAQ — military discount" },
-        { "fact": "FAQ questions are built from intake facts, not recorded customer questions", "question": "What are the questions customers ask you most often on the phone? We'll swap them into the homepage FAQ.", "where": "FAQ section" },
-        { "fact": "Water heater types serviced (gas, electric, brands)", "question": "Do you work on both gas and electric water heaters, and are there brands of tankless units you install?", "where": "services grid — Water Heater card" },
-        { "fact": "Whether Rock'n G owns the excavation equipment shown in photos", "question": "Is the mini excavator in your job photos your own equipment? If so we can say digs are handled in-house.", "where": "services grid — Sewer card" },
-        { "fact": "Insurance coverage", "question": "Is Rock'n G Plumbing insured (general liability / workers' comp)? Intake left this blank, so the site does not say 'insured'.", "where": "hero chips / proof strip" },
-        { "fact": "Job photos for water heaters and sprinkler/irrigation work", "question": "Can you send a few photos of water heater installs and sprinkler or irrigation repairs? Those two service cards currently reuse other job photos.", "where": "services grid" },
-        { "fact": "Founding year", "question": "What year did Rock'n G Plumbing start? The site says '20+ years' and never prints an 'Est.' year until you confirm one.", "where": "proof strip" }
+        {
+          "fact": "The four-step job process (call/form → free estimate → customer decides → work done under the master license)",
+          "question": "Walk us through a typical job: is the free estimate given on-site or by phone, how soon do you usually come out, and do you do anything after the work (walkthrough, cleanup, warranty)?",
+          "where": "about/process section"
+        },
+        {
+          "fact": "What happens after a web form is submitted",
+          "question": "When someone sends the website form, who calls them back and roughly how soon?",
+          "where": "estimate section — What happens next"
+        },
+        {
+          "fact": "Military discount amount and who qualifies",
+          "question": "What is the military discount (percentage or dollar amount), and does it cover veterans and active-duty families?",
+          "where": "FAQ — military discount"
+        },
+        {
+          "fact": "FAQ questions are built from intake facts, not recorded customer questions",
+          "question": "What are the questions customers ask you most often on the phone? We'll swap them into the homepage FAQ.",
+          "where": "FAQ section"
+        },
+        {
+          "fact": "Water heater types serviced (gas, electric, brands)",
+          "question": "Do you work on both gas and electric water heaters, and are there brands of tankless units you install?",
+          "where": "services grid — Water Heater card"
+        },
+        {
+          "fact": "Whether Rock'n G owns the excavation equipment shown in photos",
+          "question": "Is the mini excavator in your job photos your own equipment? If so we can say digs are handled in-house.",
+          "where": "services grid — Sewer card"
+        },
+        {
+          "fact": "Insurance coverage",
+          "question": "Is Rock'n G Plumbing insured (general liability / workers' comp)? Intake left this blank, so the site does not say 'insured'.",
+          "where": "hero chips / proof strip"
+        },
+        {
+          "fact": "Job photos for water heaters and sprinkler/irrigation work",
+          "question": "Can you send a few photos of water heater installs and sprinkler or irrigation repairs? Those two service cards currently reuse other job photos.",
+          "where": "services grid"
+        },
+        {
+          "fact": "Founding year",
+          "question": "What year did Rock'n G Plumbing start? The site says '20+ years' and never prints an 'Est.' year until you confirm one.",
+          "where": "proof strip"
+        }
+      ]
+    },
+    {
+      "path": "/services/water-heaters/",
+      "useful_because": "This is the only page that walks a San Angelo homeowner through the repair-or-replace decision for a water heater: the four symptoms (short hot water, rumbling, rusty or sulfur-smelling hot water, water at the base) and what each usually means, which parts are commonly repaired versus when the tank itself has failed, what a tankless switch involves (gas supply, venting, wall mounting), and a tank-versus-tankless comparison table that accounts for San Angelo's hard water. It ties the heater to the client's own softener and whole-house filter install photo, shows Eli Gomez's Texas Master Plumber License M-44822 with how to look it up at TSBPE, and carries a gas-smell safety note.",
+      "needs_confirmation": [
+        {
+          "fact": "Gas and electric heaters both serviced",
+          "question": "Do you repair and replace both gas and electric water heaters? The page describes both kinds of parts in general terms but does not promise either.",
+          "where": "service breakdown — Repair card"
+        },
+        {
+          "fact": "Tankless brands installed",
+          "question": "Which tankless water heater brands do you install, and do you also install high-efficiency or hybrid tank heaters?",
+          "where": "service breakdown — Tankless card / comparison table"
+        },
+        {
+          "fact": "Typical price ranges",
+          "question": "What is a typical price range for a standard tank replacement and for a tankless installation in San Angelo?",
+          "where": "comparison section"
+        },
+        {
+          "fact": "Old heater haul-away",
+          "question": "Do you haul away and dispose of the old water heater as part of a replacement?",
+          "where": "service breakdown — Replacement card"
+        },
+        {
+          "fact": "Permits and inspection",
+          "question": "Do you pull the City of San Angelo permit for water heater replacements and handle the inspection?",
+          "where": "process steps"
+        },
+        {
+          "fact": "Warranty on parts and labor",
+          "question": "Is there a labor warranty on water heater installs, and do you register the manufacturer warranty for the customer?",
+          "where": "expert positioning"
+        },
+        {
+          "fact": "How soon a no-hot-water call is answered",
+          "question": "When someone has no hot water, how soon can you usually get out there?",
+          "where": "hero / process"
+        },
+        {
+          "fact": "Water heater job photos",
+          "question": "Can you send photos of water heaters or tankless units you've installed? The page currently uses your softener install photo.",
+          "where": "hero image"
+        }
+      ]
+    },
+    {
+      "path": "/services/water-filtration-softeners/",
+      "useful_because": "This is the only page that explains what San Angelo's hard water does to a house (crust on faucets, spotty glass, stiff laundry, sediment in tank heaters). It compares the three systems Rock'n G installs (softener, reverse osmosis, whole-house filter) side by side: what each removes, where it goes, what it treats, its upkeep, and whether it protects appliances. It also walks through a real Rock'n G garage install part by part on the client's own photo (control valve, resin tank, brine tank, filter housings, shutoff valves), so a homeowner knows what they are buying before the estimate.",
+      "needs_confirmation": [
+        {
+          "fact": "Brands or models of softeners, RO systems and filters installed",
+          "question": "Which brands of water softeners, reverse osmosis systems and whole-house filters do you usually install?",
+          "where": "systems section"
+        },
+        {
+          "fact": "Typical price range for a softener, RO or whole-house filter install",
+          "question": "Can you give a typical price range for a softener install, an RO system and a whole-house filter, so we can show it on the page?",
+          "where": "systems / comparison section"
+        },
+        {
+          "fact": "Whether Rock'n G tests water hardness or quality during the estimate",
+          "question": "Do you test the water (hardness, TDS) during the estimate? If so, how?",
+          "where": "process step 2"
+        },
+        {
+          "fact": "Service work on existing systems",
+          "question": "Do you service or repair softeners and RO systems you didn't install, and do you offer filter or membrane changes?",
+          "where": "systems section"
+        },
+        {
+          "fact": "Well-water treatment for rural customers",
+          "question": "Do you treat private well water (iron, sulfur smell) around Christoval, Water Valley and similar towns, or city water only?",
+          "where": "expert section — local water"
+        },
+        {
+          "fact": "Where the photographed install is",
+          "question": "Which town was the garage softener and filter install in your photos? We'd like to caption it with the town.",
+          "where": "photo breakdown caption"
+        },
+        {
+          "fact": "Warranty on equipment or labor",
+          "question": "Is there a warranty on softener or filter installs (equipment or labor)? The site doesn't mention one until you confirm.",
+          "where": "final CTA"
+        }
+      ]
+    },
+    {
+      "path": "/services/drain-cleaning/",
+      "useful_because": "This page lets a homeowner match the drain that is acting up to its usual cause (kitchen grease, bathroom hair and soap, toilet wipes, laundry lint) and spot when several slow drains point to the main line instead, with a direct route to sewer line repair. It compares five ways people try to clear a clog (plunger, chemical cleaner, boiling water, hand auger, a plumber's mechanical clearing) on what each fixes, its limits and what to watch for, and lists what to keep out of drains. Rock'n G's own crew photo shows when a clog turns into a dig-down repair.",
+      "needs_confirmation": [
+        {
+          "fact": "Drain-clearing equipment used (cable machine, hydro-jetter)",
+          "question": "What equipment do you use to clear drains (cable/snake machine, hydro-jetting)? We kept the page generic until you confirm.",
+          "where": "process section / comparison table"
+        },
+        {
+          "fact": "Typical price for clearing a single drain vs. a main line",
+          "question": "What does a typical drain clearing cost (one fixture vs. the main line)?",
+          "where": "process section"
+        },
+        {
+          "fact": "How soon Rock'n G can come out for a backed-up drain",
+          "question": "When someone calls with a backed-up drain, how soon can you usually get there?",
+          "where": "hero / process step 1"
+        },
+        {
+          "fact": "Camera check after clearing repeat clogs",
+          "question": "On repeat clogs, do you camera-inspect the line after clearing it? Is that a separate charge?",
+          "where": "comparison table / expert section"
+        },
+        {
+          "fact": "Follow-up or callback period on a cleared drain",
+          "question": "If a drain you cleared clogs again soon after, is there a callback period?",
+          "where": "process step 4"
+        },
+        {
+          "fact": "Commercial drain work",
+          "question": "Do you clear commercial drains such as restaurant kitchen grease lines? We can add that if so.",
+          "where": "expert section — homes and businesses"
+        },
+        {
+          "fact": "Customer questions for a FAQ",
+          "question": "What do customers most often ask you about clogged drains on the phone?",
+          "where": "page (no FAQ yet)"
+        }
+      ]
+    },
+    {
+      "path": "/services/sewer-line-repair/",
+      "useful_because": "This page helps a homeowner tell a main sewer line problem from a single clogged drain, using five symptoms with the reason behind each, and sends one-drain problems to the drain cleaning page instead. It explains what a camera inspection actually finds (roots, cracks, offset joints, sags, grease, blockages) and why looking before digging matters, how old clay, cast iron and plastic lines each tend to fail, and lays out the three repair paths (cleaning, section repair, line replacement) in a table showing what each fixes, what the camera shows, how much digging is involved and when it fits. It uses Rock'n G's own dig photos and carries the license lookup details and a 5-step process.",
+      "needs_confirmation": [
+        {
+          "fact": "Camera inspection included in the free estimate",
+          "question": "Is the sewer camera inspection part of the free estimate, or is it a separate charge?",
+          "where": "process step 2 / estimate step"
+        },
+        {
+          "fact": "Customers can see or keep the camera footage",
+          "question": "Do you show customers the camera footage, or give them a recording?",
+          "where": "camera inspection section"
+        },
+        {
+          "fact": "Sewer cleaning method",
+          "question": "How do you clean sewer lines: cable machine, hydro-jetting, or both?",
+          "where": "service breakdown — sewer cleaning card"
+        },
+        {
+          "fact": "Excavation done in-house with your own equipment",
+          "question": "Is the mini excavator in your photos your own, so digs are handled by your crew?",
+          "where": "expert section / repair table"
+        },
+        {
+          "fact": "Permits and city inspection on sewer repairs",
+          "question": "Do you pull the permit and handle the city inspection on sewer line repairs and replacements?",
+          "where": "process section"
+        },
+        {
+          "fact": "Yard, driveway or concrete restoration after digging",
+          "question": "After a dig, do you backfill and restore the yard or concrete, or does the customer arrange that?",
+          "where": "repair table / process"
+        },
+        {
+          "fact": "Typical price ranges",
+          "question": "What do sewer cleaning, a camera inspection and a section repair typically cost?",
+          "where": "service breakdown"
+        },
+        {
+          "fact": "Customer questions for an FAQ",
+          "question": "What do customers usually ask you about sewer lines on the phone?",
+          "where": "FAQ (not built yet)"
+        }
+      ]
+    },
+    {
+      "path": "/services/leak-detection-repair/",
+      "useful_because": "This page gives a homeowner a hands-on way to check for a hidden leak before calling: the water meter test plus five other clues (warm floor spots, running-water sounds, bill jumps against the same month last year, damp baseboards, a water heater that runs too much) in a tick-box list that counts the clues ticked. It explains the three places hidden leaks usually are (walls, under a slab, the yard water line) and compares the three fixes once a leak is found (spot repair, reroute, full water line replacement) in a table covering what gets opened up, when each fits, and the question to ask about each. It also covers water under a floor that comes from a drain rather than a supply line, and uses Rock'n G's own under-floor and trench photos.",
+      "needs_confirmation": [
+        {
+          "fact": "Leak-detection tools and methods",
+          "question": "Which leak-detection tools do you use (acoustic listening, thermal imaging, pressure testing, line tracing)?",
+          "where": "process step 2 / expert section"
+        },
+        {
+          "fact": "Leak locating included in the free estimate",
+          "question": "Is locating the leak part of the free estimate, or is leak detection billed separately?",
+          "where": "process section"
+        },
+        {
+          "fact": "Pipe materials for reroutes and replacements",
+          "question": "When you reroute or replace a water line, what pipe do you usually use (PEX, copper, PVC)?",
+          "where": "comparison table"
+        },
+        {
+          "fact": "Floor, concrete or drywall patching after slab repair",
+          "question": "After opening a slab or a wall, do you patch the concrete or drywall, or does the customer hire someone?",
+          "where": "comparison table / process"
+        },
+        {
+          "fact": "Insurance-claim help",
+          "question": "Do you help customers with paperwork for homeowner's insurance claims on slab leaks?",
+          "where": "service breakdown"
+        },
+        {
+          "fact": "Typical price ranges",
+          "question": "What do leak detection, a slab leak spot repair and a reroute typically cost?",
+          "where": "service breakdown"
+        },
+        {
+          "fact": "Job photos specific to leak repair",
+          "question": "Can you send photos from a slab leak or water line repair? The page currently uses under-floor drain and trench photos.",
+          "where": "hero and photo stack"
+        },
+        {
+          "fact": "Customer questions for an FAQ",
+          "question": "What do customers usually ask you about leaks and slab leaks?",
+          "where": "FAQ (not built yet)"
+        }
+      ]
+    },
+    {
+      "path": "/services/gas-line-services/",
+      "useful_because": "This is the only page that tells a San Angelo homeowner what to do if they smell gas (leave, call 911 or the gas utility from outside, then call Rock'n G for the repair). It maps which household appliances run on gas — water heater, furnace, range, dryer, standby generator, grill or fire pit — and why adding one means checking the line can supply it. It compares a new gas line, a repair and an extension in a table, explains that Texas fuel gas piping falls under the plumbing license law with Rock'n G working under Eli Gomez's Master Plumber License M-44822, and shows the client's own standby-generator gas run and a remodeled kitchen with a gas cooktop.",
+      "needs_confirmation": [
+        {
+          "fact": "Permits and inspections for gas line work",
+          "question": "Do you pull the city or county permit and schedule the inspection for new gas lines, or does the customer handle that?",
+          "where": "service breakdown — 'Good to know' note"
+        },
+        {
+          "fact": "Pressure test and utility relight",
+          "question": "After a new line or a repair, do you do the pressure test yourselves and coordinate with the gas utility to turn service back on and relight appliances?",
+          "where": "service breakdown / comparison table"
+        },
+        {
+          "fact": "Pipe materials used",
+          "question": "What gas piping do you usually install (black iron, CSST/flex, polyethylene underground)?",
+          "where": "service breakdown"
+        },
+        {
+          "fact": "Leak testing on gas lines",
+          "question": "When a customer suspects a small gas leak after the utility has cleared the house, do you find and repair it, and how?",
+          "where": "safety band step 3 / repair card"
+        },
+        {
+          "fact": "Standby generator scope",
+          "question": "On generator jobs, do you only run the gas line, or do you work with an electrician or supplier on the full install?",
+          "where": "appliance map — standby generator tile"
+        },
+        {
+          "fact": "Propane as well as natural gas",
+          "question": "Do you work on propane lines for homes outside city gas service (Wall, Veribest, Water Valley), or natural gas only?",
+          "where": "hero answer / appliance map"
+        },
+        {
+          "fact": "Typical price range for a new gas line or extension",
+          "question": "Is there a typical price range you'd be comfortable showing for a dryer or range hookup versus a generator line?",
+          "where": "comparison table"
+        },
+        {
+          "fact": "Customer questions about gas work",
+          "question": "What do customers most often ask you about gas lines on the phone? We can add a short FAQ built from real questions.",
+          "where": "page (no FAQ section yet)"
+        }
+      ]
+    },
+    {
+      "path": "/services/irrigation-sprinkler-repair/",
+      "useful_because": "This is the only page with a zone-by-zone sprinkler troubleshooting table: soggy patch, dry brown patch, head that won't pop up, zone that won't shut off, weak spray on one zone, zone that won't come on, each with the likely cause and what the homeowner can check first. A San Angelo yards section explains what wears systems down locally — long hot summers, hard water scaling nozzles, hard freezes cracking shallow piping — and reminds customers to check the City of San Angelo's current outdoor watering rules before resetting a controller. It lists the repairs Rock'n G handles and points customers with a high water bill but a normal-looking yard to leak detection.",
+      "needs_confirmation": [
+        {
+          "fact": "Repair only vs new installs",
+          "question": "Do you install new irrigation systems, or only repair existing ones? The page currently says repairs only.",
+          "where": "service breakdown"
+        },
+        {
+          "fact": "TCEQ irrigator license",
+          "question": "Is anyone on the crew a TCEQ licensed irrigator? The page makes no irrigator-license claim until you confirm.",
+          "where": "expert positioning"
+        },
+        {
+          "fact": "Controller and valve wiring repairs",
+          "question": "Do you repair or replace sprinkler controllers/timers and the low-voltage valve wiring, or only the heads, lines and valves?",
+          "where": "service breakdown — troubleshooting card"
+        },
+        {
+          "fact": "Freeze-related repairs and winterizing",
+          "question": "Do you repair freeze-cracked irrigation piping in spring, and do you offer any winter shut-down or start-up service?",
+          "where": "San Angelo yards — hard freezes"
+        },
+        {
+          "fact": "Irrigation job photos",
+          "question": "Can you send a few photos of sprinkler or irrigation repairs? The page currently uses trench and excavation photos from another job.",
+          "where": "hero and expert photo"
+        },
+        {
+          "fact": "Commercial irrigation",
+          "question": "Do you repair irrigation on commercial properties as well as homes?",
+          "where": "expert positioning"
+        },
+        {
+          "fact": "Customer questions about sprinklers",
+          "question": "What do customers ask most often about sprinkler repairs? We can add a short FAQ from real questions.",
+          "where": "page (no FAQ section yet)"
+        }
+      ]
+    },
+    {
+      "path": "/services/new-construction-remodel-plumbing/",
+      "useful_because": "This is the only page that walks a homeowner or builder through the four plumbing stages of a new build (underground, rough-in, top-out, trim) and what usually gets inspected at each. It explains what moving a sink or island actually involves on a slab home, using the client's own photos of drain lines run down into a trench, compares new construction, remodel and commercial build-out plumbing in a table, lists the remodel decisions that move pipe, and states that Rock'n G takes residential, commercial and industrial work under Eli Gomez's master license M-44822.",
+      "needs_confirmation": [
+        {
+          "fact": "Permits and inspections on construction jobs",
+          "question": "On new builds and remodels, do you pull the plumbing permits and handle the city or county inspections, or does the builder?",
+          "where": "phase timeline note / process"
+        },
+        {
+          "fact": "How construction estimates are produced",
+          "question": "For a new build or remodel, do you price the plumbing from the plans, from a walkthrough, or both?",
+          "where": "process step 2"
+        },
+        {
+          "fact": "Working with builders and general contractors",
+          "question": "Do you work directly for builders and general contractors as their plumbing sub, or mostly for homeowners?",
+          "where": "comparison table / who-it's-for section"
+        },
+        {
+          "fact": "Examples of commercial and industrial work",
+          "question": "What kinds of commercial and industrial jobs have you done (restaurants, offices, shops, plants)? Can we name any types or show photos?",
+          "where": "commercial / industrial cards"
+        },
+        {
+          "fact": "Service area for construction work",
+          "question": "How far outside San Angelo do you take new construction and remodel jobs?",
+          "where": "hero / commercial section"
+        },
+        {
+          "fact": "Photos of rough-in and remodel work",
+          "question": "Can you send photos of rough-in, top-out or a remodel in progress? The page currently uses the under-floor drain-line photos and the finished kitchen.",
+          "where": "hero and slab-remodel section"
+        },
+        {
+          "fact": "Whether the finished kitchen in the photo was a Rock'n G job",
+          "question": "Was the farmhouse-sink kitchen in your photos a Rock'n G plumbing job? If so, what plumbing did you do on it?",
+          "where": "hero photo / slab section copy"
+        },
+        {
+          "fact": "Customer questions about construction plumbing",
+          "question": "What do builders and homeowners usually ask you about new construction or remodel plumbing? We'll only add a FAQ from real questions.",
+          "where": "FAQ (not built)"
+        }
+      ]
+    },
+    {
+      "path": "/services/",
+      "useful_because": "The hub is the only page that lists all eight services with their own job photos, shows how a property's plumbing fits together (supply line, treatment, hot water, drains, sewer, plus gas, irrigation and construction branches) with each part linked to the service that covers it, and matches eight real situations (buying an older home, planning a remodel, a water bill that jumped, adding a gas appliance and others) to the right starting service. It names the towns served (San Angelo, Christoval, Wall, Veribest, Carlsbad, Grape Creek, Water Valley) and the license on record.",
+      "needs_confirmation": [
+        {
+          "fact": "Services beyond the eight listed",
+          "question": "Are there jobs you do that aren't one of these eight (faucets, toilets, garbage disposals, repiping, fixture installs)? A Google review mentions a garbage disposal.",
+          "where": "services grid intro"
+        },
+        {
+          "fact": "Whether all eight services are offered in every listed town",
+          "question": "Do you offer all eight services in Christoval, Wall, Veribest, Carlsbad, Grape Creek and Water Valley, or only some there?",
+          "where": "intro note / towns list"
+        },
+        {
+          "fact": "Sewer camera inspections for home buyers",
+          "question": "Do you do sewer camera inspections for people buying a home, and can you share the video with the buyer?",
+          "where": "situation guide — buying an older home"
+        },
+        {
+          "fact": "Military discount eligibility",
+          "question": "Who qualifies for the military discount (active duty, veterans, families), and how much is it?",
+          "where": "expert section"
+        }
       ]
     }
   ],
