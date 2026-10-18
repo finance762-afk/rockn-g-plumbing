@@ -84,6 +84,14 @@ DirectoryIndex index.php index.html
     RewriteRule ^pipe-repair-and-replacement-solutions-for-carlsbad-tx-homes-and-businesses/?$ /blog/slab-leaks-pipe-repair-san-angelo/ [R=301,L]
     RewriteRule ^understanding-backflow-prevention-for-miles-tx-water-systems/?$ /blog/what-is-backflow-san-angelo/ [R=301,L]
     RewriteRule ^water-heater-installation-and-repair-services-available-in-christoval-tx/?$ /blog/water-heater-installation-and-repair-services-available-in-christoval-tx/ [R=301,L]
+    # extra old-site URLs (approved by P1 SEO BOT, Oct 18 2026); mirrored in deploy/nginx-redirects.conf
+    RewriteRule ^contact-us/?$ https://www.rockngplumbing.com/contact/ [R=301,L]
+    RewriteRule ^resources/?$ https://www.rockngplumbing.com/blog/ [R=301,L]
+    RewriteRule ^feed/(rss2|atom)/?$ https://www.rockngplumbing.com/blog/ [R=301,L]
+    RewriteRule ^(commercial|emergency)-plumbing-services/?$ https://www.rockngplumbing.com/services/new-construction-remodel-plumbing/ [R=301,L]
+    RewriteRule ^fixture-installation/?$ https://www.rockngplumbing.com/ [R=301,L]
+    RewriteRule ^water-heaters-filtration/?$ https://www.rockngplumbing.com/services/water-heaters/ [R=301,L]
+    RewriteRule ^pipe-repair-replacement/?$ https://www.rockngplumbing.com/services/leak-detection-repair/ [R=301,L]
 
     RewriteCond %{REQUEST_URI} !^/assets/
     RewriteCond %{REQUEST_URI} !^/includes/
