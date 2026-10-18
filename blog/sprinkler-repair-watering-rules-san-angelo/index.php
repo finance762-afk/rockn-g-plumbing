@@ -444,7 +444,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
     <article class="sp-article" aria-labelledby="sp-h1">
       <figure class="sp-featured blog-post__featured-image">
-        <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 1000px) calc(100vw - 2rem), 780px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
+        <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 533px) calc(100vw - 2rem), (max-width: 1000px) 94vw, (max-width: 1464px) calc(100vw - 428px), 1036px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
       </figure>
 
       <div class="blog-post__content sp-body">

@@ -1051,7 +1051,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See the full list of <a href="/services/">plumbing services Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['gas-line-services', 'leak-detection-repair', 'new-construction-remodel-plumbing'], '(max-width: 640px) calc(100vw - 2rem), (max-width: 1000px) calc(50vw - 1.5rem), 380px'); ?>
+        <?php echo renderServiceCards(['gas-line-services', 'leak-detection-repair', 'new-construction-remodel-plumbing'], relatedServiceSizes(640)); ?>
       </div>
     </div>
   </section>

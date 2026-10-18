@@ -1013,7 +1013,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See the complete list of <a href="/services/">plumbing services Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['leak-detection-repair', 'water-filtration-softeners', 'drain-cleaning'], '(max-width: 600px) calc(100vw - 2rem), (max-width: 1000px) calc(50vw - 1.5rem), 380px'); ?>
+        <?php echo renderServiceCards(['leak-detection-repair', 'water-filtration-softeners', 'drain-cleaning'], relatedServiceSizes(600)); ?>
       </div>
     </div>
   </section>

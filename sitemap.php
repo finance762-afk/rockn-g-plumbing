@@ -5,6 +5,10 @@
  *   - blog posts come from $blogPosts in includes/blog-data.php (lastmod = dateISO), with the post photo attached,
  *   - service pages carry their card photo, so the separate sitemap-images.xml is not needed.
  * Noindex pages (thank-you, 404) and the build folders (includes, assets, references) are never listed.
+ *
+ * STATIC COPY: /sitemap.xml at the repo root is a snapshot of this script's output for nginx hosting (Apache keeps
+ * rewriting /sitemap.xml here). It must be regenerated whenever a blog post, service page or other page is added,
+ * removed or renamed — otherwise nginx keeps serving the old URL list.
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/functions.php';

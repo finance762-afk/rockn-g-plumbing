@@ -206,11 +206,11 @@ if (!function_exists('assetVer')) {
 }
 
 if (!function_exists('imageVariantSrcset')) {
-    /** '/assets/images/x-480.avif?v=… 480w, …' for the -480/-640/-960/-1600 variants of $name that exist on disk ('' if none). */
+    /** '/assets/images/x-320.avif?v=… 320w, …' for the -320/-480/-640/-960/-1600 variants of $name that exist on disk ('' if none). */
     function imageVariantSrcset(string $name, string $ext): string {
         $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
         $out = [];
-        foreach ([480, 640, 960, 1600] as $w) {
+        foreach ([320, 480, 640, 960, 1600] as $w) {
             $web = '/assets/images/' . $name . '-' . $w . '.' . $ext;
             if (is_file($root . $web)) $out[] = assetVer($web) . ' ' . $w . 'w';
         }

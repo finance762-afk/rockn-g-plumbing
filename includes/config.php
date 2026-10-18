@@ -182,7 +182,7 @@ $textUsNumber   = '';   // integrations.text_us_number is null (accepts_sms fals
 $financing      = [];   // integrations.financing is null
 $serviceZips    = [];   // integrations.service_zips not provided
 
-$cssVersion = '5';      // the SINGLE framework.css cache-bust; bump here on every framework.css / critical.css change
+$cssVersion = '6';    // the SINGLE framework.css cache-bust; bump here on every framework.css / critical.css change
 
 // ---- Legal pages ------------------------------------------------------------------------------
 // Intake did not collect business entity type or state of formation. The entity suffix stays empty (legal pages omit it
