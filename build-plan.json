@@ -191,7 +191,17 @@
       "secondary": "#4d5e6f",
       "extracted_from_logo": true
     },
-    "logo_analysis": {}
+    "logo_analysis": {
+      "source": "IMG_2415 JPEG, 1095x1319, black ink on light-grey (#f4f4f4) field, no alpha",
+      "type": "stacked emblem: arched ROCK'N / G / crossed pipe wrenches / arched PLUMBING; city + phone number baked in below",
+      "emblem_aspect_ratio": "920:913 (~1.01:1, square) after cutting the field and cropping off the city/phone lines",
+      "header_logo": "assets/images/logo-mark-v1.png (dark ink, transparent) at 88px desktop / 72px mobile on the white glass bar",
+      "footer_logo": "assets/images/logo-mark-light-v1.png (white ink, transparent) on the dark footer / mobile menu",
+      "nav": "light glass bar, dark links; mobile overlay brand-dark",
+      "favicon": "G block, white on #1a2b3c",
+      "vector_requested": true
+    },
+    "archetype": "bold-industrial"
   },
   "domain": "rockngplumbing.com",
   "phases": [
