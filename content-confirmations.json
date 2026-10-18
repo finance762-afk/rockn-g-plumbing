@@ -28,6 +28,16 @@
           "fact": "Years in business",
           "question": "Is \"20+ years, three generations\" accurate? Our records show you have been in business since 2020.",
           "where": "about page, homepage"
+        },
+        {
+          "fact": "Business hours and after-hours emergency calls",
+          "question": "What are your business hours, and do you take emergency calls after hours? (Whatever you tell us will also go on your Google Business Profile so the two match.)",
+          "where": "site-wide, Google Business Profile"
+        },
+        {
+          "fact": "Shop address",
+          "question": "Is 1225 S Monroe your shop address that customers can visit, or should it stay off the website?",
+          "where": "site-wide (contact, footer, schema)"
         }
       ]
     },
@@ -54,16 +64,6 @@
           "fact": "FAQ questions are built from intake facts, not recorded customer questions",
           "question": "What are the questions customers ask you most often on the phone? We'll swap them into the homepage FAQ.",
           "where": "FAQ section"
-        },
-        {
-          "fact": "Water heater types serviced (gas, electric, brands)",
-          "question": "Do you work on both gas and electric water heaters, and are there brands of tankless units you install?",
-          "where": "services grid — Water Heater card"
-        },
-        {
-          "fact": "Whether Rock'n G owns the excavation equipment shown in photos",
-          "question": "Is the mini excavator in your job photos your own equipment? If so we can say digs are handled in-house.",
-          "where": "services grid — Sewer card"
         },
         {
           "fact": "Insurance coverage",
