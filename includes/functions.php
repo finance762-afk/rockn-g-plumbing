@@ -248,6 +248,58 @@ if (!function_exists('pictureTag')) {
     }
 }
 
+if (!function_exists('heroPictureTag')) {
+    /**
+     * Photo-hero <picture> (LCP image): phones (≤767px) get the single 720w <name>-hero720 file (original aspect ratio —
+     * NOT the 4:3 card "-720" crop); wider screens get the 960/1600 variants. URLs match heroPreloadLinks() byte-for-byte.
+     * Falls back to pictureTag() when the -hero720 avif is missing.
+     */
+    function heroPictureTag(string $name, string $alt): string {
+        $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
+        $m720 = '/assets/images/' . $name . '-hero720';
+        if (!is_file($root . $m720 . '.avif')) {
+            return pictureTag($name, $alt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']);
+        }
+        $src  = '/assets/images/' . $name . '.jpg';
+        $info = is_file($root . $src) ? @getimagesize($root . $src) : false;
+        $w    = (int) ($info[0] ?? 1200);
+        $hgt  = (int) ($info[1] ?? 800);
+        $avif = imageVariantSrcset($name, 'avif', [960, 1600]);
+        $webp = imageVariantSrcset($name, 'webp', [960, 1600]);
+        $out  = '<picture>';
+        $out .= '<source media="(max-width: 767px)" type="image/avif" srcset="' . h(assetVer($m720 . '.avif')) . '">';
+        if (is_file($root . $m720 . '.webp')) {
+            $out .= '<source media="(max-width: 767px)" type="image/webp" srcset="' . h(assetVer($m720 . '.webp')) . '">';
+        }
+        if ($avif !== '') $out .= '<source type="image/avif" srcset="' . h($avif) . '" sizes="100vw">';
+        $out .= '<img src="' . h(assetVer($src)) . '"';
+        if ($webp !== '') $out .= ' srcset="' . h($webp) . '" sizes="100vw"';
+        $out .= sprintf(' alt="%s" width="%d" height="%d"', h($alt), $w, $hgt);
+        return $out . ' loading="eager" fetchpriority="high"></picture>';
+    }
+}
+
+if (!function_exists('heroPreloadLinks')) {
+    /**
+     * Preloads for heroPictureTag(): the -hero720 avif on phones, the 960/1600 avif srcset on wider screens.
+     * Falls back to the old single avif-srcset preload when the -hero720 avif is missing (mirrors pictureTag()).
+     */
+    function heroPreloadLinks(string $name): string {
+        $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
+        $m720 = '/assets/images/' . $name . '-hero720.avif';
+        if (!is_file($root . $m720)) {
+            $set = imageVariantSrcset($name, 'avif');
+            return $set === '' ? '' : '<link rel="preload" as="image" type="image/avif" imagesrcset="' . h($set) . '" imagesizes="100vw" fetchpriority="high">';
+        }
+        $out = '<link rel="preload" as="image" type="image/avif" href="' . h(assetVer($m720)) . '" media="(max-width: 767px)" fetchpriority="high">';
+        $avif = imageVariantSrcset($name, 'avif', [960, 1600]);
+        if ($avif !== '') {
+            $out .= "\n" . '<link rel="preload" as="image" type="image/avif" imagesrcset="' . h($avif) . '" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">';
+        }
+        return $out;
+    }
+}
+
 if (!function_exists('logoPictureTag')) {
     /**
      * <picture> for a logo PNG with its -160/-320 WebP variants (only those on disk are listed); the PNG stays the fallback src.

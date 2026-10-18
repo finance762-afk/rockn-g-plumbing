@@ -24,7 +24,7 @@ $currentPage     = 'home';
 $heroImage        = 'rockn-hero-crew-excavation';
 $heroAlt          = "Rock'n G Plumbing crew in red company shirts digging out a buried line beside a mini excavator";
 $heroPreloadImage = '/assets/images/' . $heroImage . '.jpg';
-$heroPreload      = ['srcset' => imageVariantSrcset($heroImage, 'avif'), 'sizes' => '100vw'];
+$heroPreload      = ['name' => $heroImage];
 
 $telHref  = 'tel:' . $phoneE164;
 $phoneFmt = formatPhone($phone);
@@ -880,7 +880,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <!-- ============ HERO (bold-industrial photo hero) ============ -->
 <section class="hero hero--photo home-hero" aria-labelledby="home-h1">
-  <div class="hero-bg"><?php echo pictureTag($heroImage, $heroAlt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']); ?></div>
+  <div class="hero-bg"><?php echo heroPictureTag($heroImage, $heroAlt); ?></div>
   <div class="hero-overlay"></div>
   <span class="grain" aria-hidden="true"></span>
   <div class="container">

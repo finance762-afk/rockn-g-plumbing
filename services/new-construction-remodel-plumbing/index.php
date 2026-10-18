@@ -23,7 +23,7 @@ $breadcrumbs     = [['name' => 'Services', 'url' => '/services/'], ['name' => $s
 
 $heroImage   = 'rockn-kitchen-remodel';
 $heroAlt     = 'Finished kitchen with a farmhouse sink set in a granite island, a gas cooktop and wood cabinets';
-$heroPreload = ['srcset' => imageVariantSrcset($heroImage, 'avif'), 'sizes' => '100vw'];
+$heroPreload = ['name' => $heroImage];
 $ogImage     = '/assets/images/' . $heroImage . '.jpg';
 
 $telHref  = 'tel:' . $phoneE164;
@@ -883,7 +883,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <!-- ============ HERO ============ -->
 <section class="hero hero--photo hero--interior nc-hero" aria-labelledby="nc-h1">
-  <div class="hero-bg"><?php echo pictureTag($heroImage, $heroAlt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']); ?></div>
+  <div class="hero-bg"><?php echo heroPictureTag($heroImage, $heroAlt); ?></div>
   <div class="hero-overlay"></div>
   <span class="grain" aria-hidden="true"></span>
   <div class="container">

@@ -10,7 +10,8 @@
  *   $ogType           string  default 'website' ('article' on blog posts)
  *   $currentPage      string  drives nav active state: 'home', 'about', 'services', 'services/{slug}', …
  *   $noindex          bool    true on thank-you / 404
- *   $heroPreload      array   ['srcset' => '… 480w, … 960w, … 1600w', 'sizes' => '100vw'] for a photo hero (avif)
+ *   $heroPreload      array   ['name' => $heroImage] for a heroPictureTag() hero (preloads match it exactly), or legacy
+ *                             ['srcset' => '… 480w, … 960w, … 1600w', 'sizes' => '100vw'] for a photo hero (avif)
  *   $schemaMarkup     string|array  page JSON-LD (one node, a JSON string, or a list of either)
  *   $breadcrumbs      array   [['name'=>'Services','url'=>'/services/'], …] → BreadcrumbList (Home prepended)
  *   $extraHead        string  raw HTML appended to <head> (page-level <style> etc.)
@@ -57,7 +58,9 @@ $hdBodyClass = 'has-sticky-bar' . (isset($currentPage) && $currentPage !== '' ? 
 <style><?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/critical.css'; ?></style>
 <link rel="preload" href="/assets/css/framework.css?v=<?php echo $cssVersion; ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/assets/css/framework.css?v=<?php echo $cssVersion; ?>"></noscript>
-<?php if (!empty($heroPreload) && !empty($heroPreload['srcset'])): ?>
+<?php if (!empty($heroPreload['name'])): ?>
+<?php echo heroPreloadLinks((string) $heroPreload['name']), "\n"; ?>
+<?php elseif (!empty($heroPreload) && !empty($heroPreload['srcset'])): ?>
 <link rel="preload" as="image" type="image/avif" imagesrcset="<?php echo h($heroPreload['srcset']); ?>" imagesizes="<?php echo h($heroPreload['sizes'] ?? '100vw'); ?>" fetchpriority="high">
 <?php endif; ?>
 

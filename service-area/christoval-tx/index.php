@@ -31,7 +31,7 @@ $breadcrumbs     = [['name' => 'Service Areas', 'url' => '/areas-we-serve/'], ['
 
 $heroImage   = 'rockn-gas-line-generator';
 $heroAlt     = 'Gas line run along the brick wall of a home to a standby generator';
-$heroPreload = ['srcset' => imageVariantSrcset($heroImage, 'avif'), 'sizes' => '100vw'];
+$heroPreload = ['name' => $heroImage];
 $ogImage     = '/assets/images/' . $heroImage . '.jpg';
 
 $telHref  = 'tel:' . $phoneE164;
@@ -740,7 +740,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <!-- ============ HERO ============ -->
 <section class="hero hero--photo hero--interior cv-hero" aria-labelledby="cv-h1">
-  <div class="hero-bg"><?php echo pictureTag($heroImage, $heroAlt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']); ?></div>
+  <div class="hero-bg"><?php echo heroPictureTag($heroImage, $heroAlt); ?></div>
   <div class="hero-overlay"></div>
   <span class="grain" aria-hidden="true"></span>
   <div class="container">
