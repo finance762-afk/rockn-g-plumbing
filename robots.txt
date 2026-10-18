@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /includes/
 
-Sitemap: https://rockngplumbing.com/sitemap.xml
+Sitemap: https://www.rockngplumbing.com/sitemap.xml

@@ -32,8 +32,9 @@ $address = ['street' => '', 'city' => 'San Angelo', 'state' => 'TX', 'zip' => ''
 // ---- Domain / URLs ----------------------------------------------------------------------------
 // Launch domain (build-plan "domain"). seo-aeo-2026.md Part H: $siteUrl is the launch domain as soon as it is known, even while the
 // site is parked on preview — canonicals/OG/schema/sitemap/robots all point here; the preview host stays noindex via nginx.
+// $domain stays bare (display text on legal pages); the live site serves from www (bare 301s to www), so URLs use www.
 $domain  = 'rockngplumbing.com';
-$siteUrl = 'https://' . $domain;
+$siteUrl = 'https://www.' . $domain;
 // $canonicalUrl is NOT set here — each page sets its own from $siteUrl + path before head.php.
 
 // ---- SEO --------------------------------------------------------------------------------------

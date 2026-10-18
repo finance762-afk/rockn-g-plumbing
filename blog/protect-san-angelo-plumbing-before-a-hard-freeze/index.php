@@ -548,7 +548,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     <article class="fz-article" aria-labelledby="fz-h1">
       <figure class="fz-featured blog-post__featured-image">
         <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 1000px) 100vw, 780px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
-        <figcaption>A Rock'n G job photo: a drain line reached through a trench cut in a concrete slab. Pipes under a floor cannot be wrapped or checked by hand, which is why the steps above the slab matter.</figcaption>
+        <figcaption>A floor cut open to reach the plumbing under a slab.</figcaption>
       </figure>
 
       <div class="blog-post__content fz-body">
