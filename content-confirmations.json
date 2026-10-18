@@ -429,6 +429,145 @@
           "where": "expert section"
         }
       ]
+    },
+    {
+      "path": "/about/",
+      "useful_because": "The About page is the only page that puts Eli Gomez's Texas Master Plumber License M-44822 (holder, role, issuer, the date it is current through) next to the three-generations and 20+ years story, a milestones list limited to facts on record, the company's own job photos linked to the services they show, and a route to the Google reviews. It explains who is behind Rock'n G Plumbing and how a customer can check the company before calling.",
+      "needs_confirmation": [
+        {
+          "fact": "Founding year",
+          "question": "What year did Rock'n G Plumbing start? The About page says '20+ years' and never prints an 'Est.' year until you confirm one.",
+          "where": "story section / milestones timeline"
+        },
+        {
+          "fact": "Family history behind 'three generations'",
+          "question": "Who were the earlier generations (grandfather, father) and where did they work? A short true story would replace the general line in the story section.",
+          "where": "story section / milestones timeline"
+        },
+        {
+          "fact": "Team and crew",
+          "question": "Besides Eli, who is on the crew (names, roles, how many people)? Can we get a photo of Eli to put on the About page?",
+          "where": "principles section / story photo"
+        },
+        {
+          "fact": "Military discount amount and who qualifies",
+          "question": "What is the military discount (percentage or dollar amount), and does it cover veterans and active-duty families?",
+          "where": "principles section"
+        },
+        {
+          "fact": "Insurance coverage",
+          "question": "Is Rock'n G Plumbing insured (general liability / workers' comp)? The page does not say 'insured' until you confirm.",
+          "where": "credentials section"
+        },
+        {
+          "fact": "Where the job photos were taken",
+          "question": "Which towns were the crew-in-the-trench, softener, generator gas line and kitchen remodel photos taken in? We would caption them with the town.",
+          "where": "story photo / recent work strip"
+        },
+        {
+          "fact": "Who is in the crew photo",
+          "question": "Which of the four people in the trench photo are Rock'n G crew (the red-shirt crew members) and which are from other companies, such as a locating or camera crew?",
+          "where": "story photo caption"
+        },
+        {
+          "fact": "Other credentials",
+          "question": "Any other licenses, manufacturer certifications, association memberships or a BBB profile we can link to?",
+          "where": "credentials section"
+        }
+      ]
+    },
+    {
+      "path": "/contact/",
+      "useful_because": "The contact page is the only page with the full estimate form, the three unbundled consent choices (email, text, terms), the office phone and email, the weekday hours, the towns served, what happens after you reach out, and the Google Map of the service area. It states plainly that Rock'n G Plumbing is a service-area business with no storefront to visit.",
+      "needs_confirmation": [
+        {
+          "fact": "What happens after a web form is submitted",
+          "question": "When someone sends the website form, who calls them back and roughly how soon? The page says only that requests are read during business hours.",
+          "where": "what happens after you reach out"
+        },
+        {
+          "fact": "Texting customers",
+          "question": "Do you want to accept text messages from customers? Intake says no, so there is no Text Us button; say so if that changes.",
+          "where": "details column / mobile bar"
+        },
+        {
+          "fact": "Street address",
+          "question": "Do you want a street address or ZIP shown anywhere? The GBP and the SEO brief are service-area only, so the page shows none.",
+          "where": "details column"
+        },
+        {
+          "fact": "Job address on the form",
+          "question": "Would you like the form to ask for the job address (street, city, ZIP)? It helps with the estimate, but it is one more field.",
+          "where": "form"
+        }
+      ]
+    },
+    {
+      "path": "/faqs/",
+      "useful_because": "The FAQs page is the only page that answers 19 plumbing questions in one place: the license and how to check it, office hours, free estimates, the military discount, what each of the eight services covers, what a slab leak or several gurgling drains usually mean, what to do on a gas smell, and which towns the crew serves. It uses no prices or response times, because none have been confirmed.",
+      "needs_confirmation": [
+        {
+          "fact": "FAQ questions are built from intake facts and general plumbing knowledge, not recorded customer questions",
+          "question": "What are the questions customers ask you most often on the phone? We will swap them in here and on the homepage.",
+          "where": "all categories"
+        },
+        {
+          "fact": "Typical prices",
+          "question": "Can you give typical price ranges for a water heater replacement, a drain cleaning and a sewer camera inspection? The pricing answers describe what affects cost but print no numbers.",
+          "where": "pricing category"
+        },
+        {
+          "fact": "Same-day or after-hours availability",
+          "question": "Do you offer same-day appointments or take after-hours calls? No emergency or 24-hour wording is used until you confirm it.",
+          "where": "general category / hours"
+        },
+        {
+          "fact": "Payment methods and financing",
+          "question": "Which payment methods do you accept, and do you offer financing? There is no payment question until you confirm.",
+          "where": "pricing category"
+        },
+        {
+          "fact": "Warranty on work",
+          "question": "Is there a warranty on labor or parts? The Terms say warranties are stated in writing per job.",
+          "where": "pricing category / Terms"
+        },
+        {
+          "fact": "Whether the customer needs to be home",
+          "question": "Does someone need to be home for an estimate or for the work?",
+          "where": "process category"
+        }
+      ]
+    },
+    {
+      "path": "/privacy-policy/ /terms/ /cookie-policy/ /accessibility/",
+      "useful_because": "The four legal pages are the only pages that state, in plain language, how Rock'n G Plumbing handles personal information, consent for emails and texts, cookies and accessibility, and the terms for the website and for estimates and work. They name the lead system, the first-party source-tracking cookie and the Texas governing law.",
+      "needs_confirmation": [
+        {
+          "fact": "Business entity type",
+          "question": "Is Rock'n G Plumbing an LLC, corporation, sole proprietorship or partnership? The legal pages print no entity suffix until you confirm (the partner badge URL suggests 'LLC').",
+          "where": "all four legal pages (company name)"
+        },
+        {
+          "fact": "State of formation",
+          "question": "Which state is the business formed in? The Terms use Texas / Tom Green County for governing law.",
+          "where": "Terms of Service, section 11"
+        },
+        {
+          "fact": "Paid advertising and tracking",
+          "question": "Do you run, or plan to run, Google Ads or Meta Ads? If so the Privacy and Cookie policies need the ad-tracking language added.",
+          "where": "Privacy Policy, Cookie Policy"
+        },
+        {
+          "fact": "GA4 measurement ID",
+          "question": "Which Google Analytics 4 property should the site use? Until the ID is set, the Cookie Policy describes GA4 as in use.",
+          "where": "Cookie Policy"
+        },
+        {
+          "fact": "Cancellation, payment and warranty terms",
+          "question": "What are your actual deposit, payment, cancellation and warranty terms? The Terms point to the written estimate for each.",
+          "where": "Terms of Service, sections 5-7"
+        }
+      ]
     }
   ],
   "consolidate": []
