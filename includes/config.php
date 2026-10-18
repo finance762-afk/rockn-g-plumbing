@@ -134,7 +134,7 @@ $businessHours = 'Mon–Fri 8:00 AM–6:00 PM, Sat–Sun Closed';
 
 // ---- Brand ------------------------------------------------------------------------------------
 // build-plan design.colors (extracted_from_logo: true) — mirrors framework.css :root. Style: bold.
-$colors = ['primary' => '#1a2b3c', 'secondary' => '#4d5e6f', 'accent' => '#06b6d4'];
+$colors = ['primary' => '#2a5c34', 'secondary' => '#3a3a3a', 'accent' => '#b30e02'];
 $designStyle = 'bold';
 // Intake says "20+ years experience" (three generations) — a founding year was NOT provided.
 // Never print an "Est. YYYY" line; use "20+ years" wording only.
@@ -181,7 +181,7 @@ $textUsNumber   = '';   // integrations.text_us_number is null (accepts_sms fals
 $financing      = [];   // integrations.financing is null
 $serviceZips    = [];   // integrations.service_zips not provided
 
-$cssVersion = '2';      // the SINGLE framework.css cache-bust; bump here on every framework.css / critical.css change
+$cssVersion = '3';      // the SINGLE framework.css cache-bust; bump here on every framework.css / critical.css change
 
 // ---- Legal pages ------------------------------------------------------------------------------
 // Intake did not collect business entity type or state of formation. The entity suffix stays empty (legal pages omit it

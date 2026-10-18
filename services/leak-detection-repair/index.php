@@ -133,7 +133,7 @@ ob_start();
 }
 .ld-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .ld-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent-bright);
@@ -238,7 +238,7 @@ ob_start();
 .ld-clue input:checked + .ld-clue__box {
   background: var(--color-accent);
   border-color: var(--color-accent-dark);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .ld-check li:has(input:checked) .ld-clue {
   border-color: var(--color-accent);

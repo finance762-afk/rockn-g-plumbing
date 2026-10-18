@@ -151,7 +151,7 @@ ob_start();
 }
 .ir-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .ir-hero .hero-form-card {
   border-block-start: 4px solid var(--color-success);

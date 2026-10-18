@@ -30,24 +30,24 @@ $telHref  = 'tel:' . $phoneE164;
 $phoneFmt = formatPhone($phone);
 $weekday  = hoursGroups($hours)[0];      // ['Mon–Fri', '8:00 AM – 6:00 PM']
 
-// Services grid — order leads with the brief's secondary keywords (water heaters, drains). Photos are the client's own
-// (assets/images/rockn-*); services with no matching photo reuse the closest job photo, and the alt says what it shows.
+// Services grid — order leads with the brief's secondary keywords (water heaters, drains). Every card now uses a distinct
+// client photo (assets/images/rockn-*); the newer ones come from the client's original website, and each alt says what it shows.
 $homeServiceCards = [
     'water-heaters' => [
-        'photo' => 'rockn-water-treatment-garage', 'icon' => 'flame',
-        'alt'   => 'Water treatment tank and blue filter housings plumbed into a garage utility corner',
+        'photo' => 'rockn-tankless-water-heater', 'icon' => 'flame',
+        'alt'   => 'Wall-mounted tankless water heater with copper and PEX supply manifolds in a utility room',
         'desc'  => 'Water heater repair, full replacement, and tankless water heater installation.',
         'bullets' => ['Repairs on failing tank heaters', 'Worn-out tanks replaced', 'Tankless units installed'],
     ],
     'drain-cleaning' => [
-        'photo' => 'rockn-under-floor-drain-lines', 'icon' => 'waves',
-        'alt'   => 'White PVC drain lines run down through the floor framing of a home under repair',
+        'photo' => 'rockn-drain-pipe-buildup', 'icon' => 'waves',
+        'alt'   => 'Inside of a cut-open drain pipe heavily lined with buildup',
         'desc'  => 'Clearing kitchen, bathroom and laundry drains that run slow or back up.',
         'bullets' => ['Kitchen and bathroom drains', 'Slow and repeat clogs', 'Backups cleared, not masked'],
     ],
     'sewer-line-repair' => [
-        'photo' => 'rockn-trench-dig', 'icon' => 'search',
-        'alt'   => "Rock'n G plumber standing in an excavated trench to reach a buried line",
+        'photo' => 'rockn-sewer-pipe-excavated', 'icon' => 'search',
+        'alt'   => 'Buried sewer pipe opening exposed in red soil during an excavation',
         'desc'  => 'Camera inspection to find the problem, then sewer line repair or cleaning.',
         'bullets' => ['See the problem on camera', 'Main line repair and cleaning', 'Dig-and-repair when needed'],
     ],
@@ -58,8 +58,8 @@ $homeServiceCards = [
         'bullets' => ['New lines for appliances', 'Runs to standby generators', 'Repairs on existing gas piping'],
     ],
     'new-construction-remodel-plumbing' => [
-        'photo' => 'rockn-kitchen-remodel', 'icon' => 'hammer',
-        'alt'   => 'Remodeled kitchen with a farmhouse sink in the island and a gas cooktop',
+        'photo' => 'rockn-new-construction-interior', 'icon' => 'hammer',
+        'alt'   => 'Open-plan new construction interior with kitchen and wood-beam ceiling',
         'desc'  => 'Plumbing for new builds and remodels, residential and commercial.',
         'bullets' => ['Plumbing for new homes', 'Kitchen and bath remodels', 'Commercial build-outs'],
     ],
@@ -70,14 +70,14 @@ $homeServiceCards = [
         'bullets' => ['Water softener installation', 'Reverse osmosis drinking water', 'Whole-house filtration'],
     ],
     'leak-detection-repair' => [
-        'photo' => 'rockn-pipe-through-slab', 'icon' => 'layers',
-        'alt'   => 'Drain pipe exposed in a trench cut through a concrete slab',
+        'photo' => 'rockn-slab-trench-repair', 'icon' => 'layers',
+        'alt'   => 'Floor cut open in a home laundry area to reach the plumbing under the slab',
         'desc'  => 'Finding hidden and under-slab leaks, then repairing or replacing the water line.',
         'bullets' => ['Hidden leaks tracked down', 'Slab leak repair', 'Water line repair or replacement'],
     ],
     'irrigation-sprinkler-repair' => [
-        'photo' => 'rockn-crew-excavation', 'icon' => 'sprout',
-        'alt'   => "Rock'n G crew with a mini excavator and hand tools working on a buried line",
+        'photo' => 'rockn-irrigation-valve-repair', 'icon' => 'sprout',
+        'alt'   => 'Exposed irrigation valve and PVC piping in a dug-out pit beside a house',
         'desc'  => "Repairs to lawn sprinkler and irrigation systems that leak or won't run.",
         'bullets' => ['Broken heads and leaking lines', 'Irrigation system repairs', 'Lawn sprinkler troubleshooting'],
     ],
@@ -232,7 +232,7 @@ ob_start();
 }
 .home-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .home-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent);

@@ -177,7 +177,7 @@ ob_start();
 }
 .sv-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .sv-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent);

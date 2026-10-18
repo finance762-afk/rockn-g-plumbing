@@ -34,27 +34,27 @@
 /* === Tokens === */
 :root {
   /* Brand — from logo analysis (build-plan design.colors) */
-  --color-primary: #1a2b3c;
-  --color-primary-rgb: 26, 43, 60;
-  --color-primary-dark: color-mix(in srgb, #1a2b3c 78%, black);
-  --color-primary-deep: color-mix(in srgb, #1a2b3c 62%, black);
-  --color-secondary: #4d5e6f;
-  --color-secondary-rgb: 77, 94, 111;
-  --color-accent: #06b6d4;
-  --color-accent-rgb: 6, 182, 212;
-  --color-accent-dark: color-mix(in srgb, #06b6d4 55%, black);      /* accent as TEXT on light — 55% keeps warm accents ≥4.5:1 on paper (2026-09-04) */
-  --color-accent-bright: color-mix(in srgb, #06b6d4 80%, white);    /* eyebrows on dark bands */
+  --color-primary: #2a5c34;
+  --color-primary-rgb: 42, 92, 52;
+  --color-primary-dark: color-mix(in srgb, #2a5c34 78%, black);
+  --color-primary-deep: color-mix(in srgb, #2a5c34 62%, black);
+  --color-secondary: #3a3a3a;
+  --color-secondary-rgb: 58, 58, 58;
+  --color-accent: #b30e02;
+  --color-accent-rgb: 179, 14, 2;
+  --color-accent-dark: color-mix(in srgb, #b30e02 55%, black);      /* accent as TEXT on light — 55% keeps warm accents ≥4.5:1 on paper (2026-09-04) */
+  --color-accent-bright: color-mix(in srgb, #b30e02 50%, white);    /* eyebrows on dark bands — 50% keeps red ≥4.5:1 on dark/dark-alt/primary-deep (2026-10-18) */
 
   /* Ground and ink — warm, hue-biased neutrals (never pure grey) */
-  --color-paper: #f6f3ec;
-  --color-paper-2: color-mix(in srgb, #f6f3ec 92%, #1a2b3c 8%);
+  --color-paper: #f7f7f7;
+  --color-paper-2: color-mix(in srgb, #f7f7f7 92%, #2a5c34 8%);
   --color-surface: #ffffff;
   --color-ink: #1b2320;
-  --color-ink-2: color-mix(in srgb, #1b2320 82%, #f6f3ec);
-  --color-muted: color-mix(in srgb, #1b2320 72%, #f6f3ec);           /* 72% = ≥4.5:1 small text on paper (was 58%, failed WCAG AA at 3.6:1) */
-  --color-line: color-mix(in srgb, #1b2320 14%, #f6f3ec);
-  --color-dark: #14181a;
-  --color-dark-alt: color-mix(in srgb, #14181a 80%, #1a2b3c);
+  --color-ink-2: color-mix(in srgb, #1b2320 82%, #f7f7f7);
+  --color-muted: color-mix(in srgb, #1b2320 72%, #f7f7f7);           /* 72% = ≥4.5:1 small text on paper (was 58%, failed WCAG AA at 3.6:1) */
+  --color-line: color-mix(in srgb, #1b2320 14%, #f7f7f7);
+  --color-dark: #242424;
+  --color-dark-alt: color-mix(in srgb, #242424 80%, #2a5c34);
 
   /* Legacy aliases (v6 pages + prompts) */
   --color-white: #ffffff; --color-black: #111111;
@@ -180,7 +180,7 @@ section, .section { position: relative; padding: clamp(4rem, 10vh, 8rem) 0; over
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--color-primary); color: #fff; box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--color-primary) 70%, transparent); }
 .btn-primary:hover { background: var(--color-primary-dark); transform: translateY(-1px); }
-.btn-accent, .btn-nav-cta { background: var(--color-accent); color: var(--color-ink); }
+.btn-accent, .btn-nav-cta { background: var(--color-accent); color: var(--color-white); }
 .btn-accent:hover, .btn-nav-cta:hover { background: var(--color-accent-dark); color: #fff; }
 .btn-secondary, .btn-outline, .btn-ghost { background: transparent; color: var(--color-ink); border-color: var(--color-line); }
 .btn-secondary:hover, .btn-outline:hover, .btn-ghost:hover { border-color: var(--color-ink); }
@@ -382,9 +382,9 @@ body.menu-open .site-header { z-index: 960; } /* keep the bar (and the hamburger
 .services-grid--featured > :first-child .service-card__image { height: 100%; min-height: 240px; }
 .services-grid--featured > :first-child .service-card__image picture, .services-grid--featured > :first-child .service-card__image img { height: 100%; }
 @media (max-width: 720px) { .services-grid--featured > :first-child { display: flex; } .services-grid--featured > :first-child .service-card__image { height: auto; aspect-ratio: 5 / 3; } }
-.services-grid--featured > :first-child .service-card__image::after, .svc__photo[data-label]::after { content: attr(data-featured-label); position: absolute; top: 1rem; left: 1rem; font-family: var(--font-accent); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; background: var(--color-accent); color: var(--color-ink); padding: .35rem .6rem; border-radius: var(--radius-sm); }
+.services-grid--featured > :first-child .service-card__image::after, .svc__photo[data-label]::after { content: attr(data-featured-label); position: absolute; top: 1rem; left: 1rem; font-family: var(--font-accent); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; background: var(--color-accent); color: var(--color-white); padding: .35rem .6rem; border-radius: var(--radius-sm); }
 .svc__photo[data-label]::after { content: attr(data-label); }
-.services-grid--featured > :first-child[data-featured-label]::after { content: attr(data-featured-label); position: absolute; top: 1rem; left: 1rem; font-family: var(--font-accent); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; background: var(--color-accent); color: var(--color-ink); padding: .35rem .6rem; border-radius: var(--radius-sm); z-index: 1; }
+.services-grid--featured > :first-child[data-featured-label]::after { content: attr(data-featured-label); position: absolute; top: 1rem; left: 1rem; font-family: var(--font-accent); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; background: var(--color-accent); color: var(--color-white); padding: .35rem .6rem; border-radius: var(--radius-sm); z-index: 1; }
 .service-card__body, .svc__body { padding: 1.25rem 1.25rem 1.35rem; display: grid; gap: .55rem; align-content: start; flex: 1; }
 .service-card__icon, .svc__icon { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 12%, white); }
 .service-card__icon svg, .svc__icon svg { width: 22px; height: 22px; }
@@ -457,7 +457,7 @@ body.menu-open .site-header { z-index: 960; } /* keep the bar (and the hamburger
 .review-stars svg, .stars svg, .rating-stars svg { fill: currentColor; } /* lucide star is an outline — filled reads as a rating */ /* critical.css sets svg{display:block} — without flex the five stars stack vertically (A&S 2026-09-08) */
 .review-text { font-size: .98rem; line-height: 1.55; color: rgba(255,255,255,.88); margin: 0; }
 .review-author { display: flex; align-items: center; gap: .6rem; font-size: .85rem; color: rgba(255,255,255,.7); }
-.review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--color-accent); color: var(--color-ink); display: grid; place-items: center; font-weight: 700; }
+.review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--color-accent); color: var(--color-white); display: grid; place-items: center; font-weight: 700; }
 .review-name { color: #fff; font-weight: 600; } .review-date { opacity: .7; }
 .review-badge-strip { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.25rem; }
 .reviews-embed { min-height: 200px; }
@@ -549,7 +549,7 @@ dialog.estimate-dialog::backdrop { background: rgba(0,0,0,.55); backdrop-filter:
 .mobile-cta-bar--3 { grid-template-columns: 1fr 1fr 1fr; }
 .mobile-cta.is-visible, .mobile-cta-bar.is-visible { transform: none; }
 .mobile-cta-bar a, .mobile-cta-bar button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-height: 46px; border-radius: var(--radius); font-weight: 600; text-decoration: none; font-size: .95rem; }
-.mobile-cta-bar__call { background: var(--color-primary); color: #fff; } .mobile-cta-bar__estimate { background: var(--color-accent); color: var(--color-ink); } .mobile-cta-bar__text { background: var(--color-paper-2); color: var(--color-ink); }
+.mobile-cta-bar__call { background: var(--color-primary); color: #fff; } .mobile-cta-bar__estimate { background: var(--color-accent); color: var(--color-white); } .mobile-cta-bar__text { background: var(--color-paper-2); color: var(--color-ink); }
 @media (max-width: 760px) { .mobile-cta, .mobile-cta-bar { display: grid; } body { padding-bottom: 70px; } .cookie-bar, .cookie-banner { left: .6rem; right: .6rem; bottom: 76px; max-width: none; } }
 .back-to-top { position: fixed; right: 1rem; bottom: 1rem; z-index: 920; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--color-line); background: var(--color-surface); color: var(--color-ink); display: none; place-items: center; cursor: pointer; }
 .back-to-top.visible { display: grid; }

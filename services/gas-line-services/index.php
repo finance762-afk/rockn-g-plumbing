@@ -147,7 +147,7 @@ ob_start();
 }
 .gl-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .gl-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent);

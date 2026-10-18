@@ -147,7 +147,7 @@ ob_start();
 }
 .sl-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .sl-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent);

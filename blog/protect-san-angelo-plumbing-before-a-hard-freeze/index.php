@@ -424,7 +424,7 @@ ob_start();
   height: 30px;
   border-radius: 50%;
   background: var(--color-accent);
-  color: var(--color-primary-deep);
+  color: var(--color-white);
   font-family: var(--font-accent);
 }
 .fz-steps b {
