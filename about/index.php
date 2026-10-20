@@ -503,6 +503,11 @@ ob_start();
     margin-inline: auto var(--space-6);
   }
 }
+@media (max-width: 767px) {
+  .ab-card p {
+    font-size: var(--fs-body);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .ab-card,
   .ab-job img {
@@ -661,7 +666,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <?php foreach ($abJobs as $i => $abJ):
           $abSvc = serviceBySlug($abJ['slug']); ?>
         <figure class="ab-job <?php echo ['reveal-left', 'reveal-up', 'reveal-right'][$i]; ?>">
-          <?php echo pictureTag($abJ['photo'], $abJ['alt'], '(max-width: 900px) 100vw, 380px'); ?>
+          <?php echo pictureTag($abJ['photo'], $abJ['alt'], '(max-width: 900px) calc(100vw - 2rem), 380px'); ?>
           <figcaption><?php echo h($abJ['cap']); ?><a href="<?php echo h(serviceUrl($abSvc)); ?>"><?php echo h($abSvc['name']); ?> &rarr;</a></figcaption>
         </figure>
         <?php endforeach; ?>

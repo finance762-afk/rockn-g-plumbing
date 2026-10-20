@@ -83,6 +83,11 @@ $cbService = !empty($ctaBandService) ? $ctaBandService : '';
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 767px) {
+  .cta-band .consent {
+    font-size: var(--fs-body);
+  }
+}
 </style>
 <section class="cta-band" aria-labelledby="<?php echo h($cbId); ?>-title">
   <div class="cta-band__inner">

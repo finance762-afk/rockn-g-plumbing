@@ -1,6 +1,47 @@
 {
   "pages": [
     {
+      "path": "site-wide",
+      "useful_because": "Facts the team flagged across the whole site before launch (Oct 18, 2026).",
+      "needs_confirmation": [
+        {
+          "fact": "Service area: Ballinger, Paint Rock and Miles",
+          "question": "Do you serve Ballinger, Paint Rock and Miles?",
+          "where": "areas we serve"
+        },
+        {
+          "fact": "Tankless water heaters",
+          "question": "Do you install and service tankless water heaters?",
+          "where": "water heater page"
+        },
+        {
+          "fact": "Reverse osmosis systems",
+          "question": "Do you install and service reverse osmosis systems?",
+          "where": "water filtration page"
+        },
+        {
+          "fact": "Commercial plumbing",
+          "question": "Do you do commercial plumbing work?",
+          "where": "services"
+        },
+        {
+          "fact": "Years in business",
+          "question": "Is \"20+ years, three generations\" accurate? Our records show you have been in business since 2020.",
+          "where": "about page, homepage"
+        },
+        {
+          "fact": "Business hours and after-hours emergency calls",
+          "question": "What are your business hours, and do you take emergency calls after hours? (Whatever you tell us will also go on your Google Business Profile so the two match.)",
+          "where": "site-wide, Google Business Profile"
+        },
+        {
+          "fact": "Shop address",
+          "question": "Is 1225 S Monroe your shop address that customers can visit, or should it stay off the website?",
+          "where": "site-wide (contact, footer, schema)"
+        }
+      ]
+    },
+    {
       "path": "/",
       "useful_because": "The homepage is the only page that puts all eight Rock'n G services side by side with the client's own job photos (trench excavation, under-floor drain lines, a garage softener and filter install, gas piping to a standby generator, a finished kitchen remodel), and it carries a symptom board that maps what a homeowner notices (hot water running short, crust on faucets, several drains gurgling, a warm spot on the floor, soggy yard patches) to the likely cause and the Rock'n G service that handles it, plus a gas-smell safety note. It also states the verified facts in one place: Eli Gomez as Responsible Master Plumber on Texas license M-44822, three generations, 20+ years, Mon–Fri 8–6 hours, free estimates, military discounts, and the Tom Green County towns served.",
       "needs_confirmation": [
@@ -23,16 +64,6 @@
           "fact": "FAQ questions are built from intake facts, not recorded customer questions",
           "question": "What are the questions customers ask you most often on the phone? We'll swap them into the homepage FAQ.",
           "where": "FAQ section"
-        },
-        {
-          "fact": "Water heater types serviced (gas, electric, brands)",
-          "question": "Do you work on both gas and electric water heaters, and are there brands of tankless units you install?",
-          "where": "services grid — Water Heater card"
-        },
-        {
-          "fact": "Whether Rock'n G owns the excavation equipment shown in photos",
-          "question": "Is the mini excavator in your job photos your own equipment? If so we can say digs are handled in-house.",
-          "where": "services grid — Sewer card"
         },
         {
           "fact": "Insurance coverage",

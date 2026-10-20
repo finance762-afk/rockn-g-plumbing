@@ -24,7 +24,7 @@ $breadcrumbs     = [['name' => 'Services', 'url' => '/services/'], ['name' => $s
 
 $heroImage   = 'rockn-water-treatment-garage';
 $heroAlt     = 'Water softener tank, brine tank and blue whole-house filter housings plumbed into a garage utility corner';
-$heroPreload = ['srcset' => imageVariantSrcset($heroImage, 'avif'), 'sizes' => '100vw'];
+$heroPreload = ['name' => $heroImage];
 $ogImage     = '/assets/images/' . $heroImage . '.jpg';
 
 $telHref  = 'tel:' . $phoneE164;
@@ -147,7 +147,7 @@ ob_start();
 }
 .wh-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .wh-hero .hero-form-card {
   border-block-start: 4px solid var(--color-warning);
@@ -525,7 +525,7 @@ ob_start();
 }
 .wh-steps span {
   color: var(--color-ink-2);
-  font-size: var(--fs-small);
+  font-size: max(var(--fs-small), .8125rem);
 }
 @supports (animation-timeline: view()) {
   .wh-steps li {
@@ -534,8 +534,9 @@ ob_start();
     animation-range: entry 5% cover 35%;
   }
   @keyframes wh-step-in {
-    from { opacity: .6; transform: translateX(var(--space-4)); border-color: var(--color-line); }
-    to   { opacity: 1; transform: none; border-color: var(--color-accent); }
+    /* no opacity fade: at .6 the step text dropped to 3.3–4.5:1 contrast while the card scrolled in */
+    from { transform: translateX(var(--space-4)); border-color: var(--color-line); }
+    to   { transform: none; border-color: var(--color-accent); }
   }
 }
 
@@ -820,7 +821,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <!-- ============ HERO ============ -->
 <section class="hero hero--photo hero--interior wh-hero" aria-labelledby="wh-h1">
-  <div class="hero-bg"><?php echo pictureTag($heroImage, $heroAlt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']); ?></div>
+  <div class="hero-bg"><?php echo heroPictureTag($heroImage, $heroAlt); ?></div>
   <div class="hero-overlay"></div>
   <span class="grain" aria-hidden="true"></span>
   <div class="container">
@@ -1050,7 +1051,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See the full list of <a href="/services/">plumbing services Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['gas-line-services', 'leak-detection-repair', 'new-construction-remodel-plumbing'], '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['gas-line-services', 'leak-detection-repair', 'new-construction-remodel-plumbing'], relatedServiceSizes(640)); ?>
       </div>
     </div>
   </section>

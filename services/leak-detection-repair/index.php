@@ -24,7 +24,7 @@ $breadcrumbs     = [['name' => 'Services', 'url' => '/services/'], ['name' => $s
 
 $heroImage   = 'rockn-pipe-through-slab';
 $heroAlt     = "White PVC pipe running down into a trench cut through a concrete-edged opening in a home's floor";
-$heroPreload = ['srcset' => imageVariantSrcset($heroImage, 'avif'), 'sizes' => '100vw'];
+$heroPreload = ['name' => $heroImage];
 $ogImage     = '/assets/images/' . $heroImage . '.jpg';
 
 $telHref  = 'tel:' . $phoneE164;
@@ -133,7 +133,7 @@ ob_start();
 }
 .ld-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .ld-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent-bright);
@@ -210,10 +210,15 @@ ob_start();
   box-shadow: var(--shadow);
 }
 .ld-clue input {
+  /* invisible, but sized and placed over the 30px .ld-clue__box so the real control is a full-size target */
   position: absolute;
+  inset-block-start: var(--space-5);
+  inset-inline-start: var(--space-5);
   opacity: 0;
-  width: 1px;
-  height: 1px;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  font-size: 16px;
 }
 .ld-clue__box {
   grid-row: span 2;
@@ -238,7 +243,7 @@ ob_start();
 .ld-clue input:checked + .ld-clue__box {
   background: var(--color-accent);
   border-color: var(--color-accent-dark);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .ld-check li:has(input:checked) .ld-clue {
   border-color: var(--color-accent);
@@ -822,7 +827,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <!-- ============ HERO ============ -->
 <section class="hero hero--photo hero--interior ld-hero" aria-labelledby="ld-h1">
-  <div class="hero-bg"><?php echo pictureTag($heroImage, $heroAlt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']); ?></div>
+  <div class="hero-bg"><?php echo heroPictureTag($heroImage, $heroAlt); ?></div>
   <div class="hero-overlay"></div>
   <span class="grain" aria-hidden="true"></span>
   <div class="container">
@@ -1041,7 +1046,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See every <a href="/services/">plumbing service Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['water-heaters', 'sewer-line-repair', 'drain-cleaning'], '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['water-heaters', 'sewer-line-repair', 'drain-cleaning'], relatedServiceSizes(640)); ?>
       </div>
     </div>
   </section>

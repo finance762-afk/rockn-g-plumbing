@@ -24,30 +24,30 @@ $currentPage     = 'home';
 $heroImage        = 'rockn-hero-crew-excavation';
 $heroAlt          = "Rock'n G Plumbing crew in red company shirts digging out a buried line beside a mini excavator";
 $heroPreloadImage = '/assets/images/' . $heroImage . '.jpg';
-$heroPreload      = ['srcset' => imageVariantSrcset($heroImage, 'avif'), 'sizes' => '100vw'];
+$heroPreload      = ['name' => $heroImage];
 
 $telHref  = 'tel:' . $phoneE164;
 $phoneFmt = formatPhone($phone);
 $weekday  = hoursGroups($hours)[0];      // ['Mon–Fri', '8:00 AM – 6:00 PM']
 
-// Services grid — order leads with the brief's secondary keywords (water heaters, drains). Photos are the client's own
-// (assets/images/rockn-*); services with no matching photo reuse the closest job photo, and the alt says what it shows.
+// Services grid — order leads with the brief's secondary keywords (water heaters, drains). Every card now uses a distinct
+// client photo (assets/images/rockn-*); the newer ones come from the client's original website, and each alt says what it shows.
 $homeServiceCards = [
     'water-heaters' => [
-        'photo' => 'rockn-water-treatment-garage', 'icon' => 'flame',
-        'alt'   => 'Water treatment tank and blue filter housings plumbed into a garage utility corner',
+        'photo' => 'rockn-tankless-water-heater', 'icon' => 'flame',
+        'alt'   => 'Wall-mounted tankless water heater with copper and PEX supply manifolds in a utility room',
         'desc'  => 'Water heater repair, full replacement, and tankless water heater installation.',
         'bullets' => ['Repairs on failing tank heaters', 'Worn-out tanks replaced', 'Tankless units installed'],
     ],
     'drain-cleaning' => [
-        'photo' => 'rockn-under-floor-drain-lines', 'icon' => 'waves',
-        'alt'   => 'White PVC drain lines run down through the floor framing of a home under repair',
+        'photo' => 'rockn-drain-pipe-buildup', 'icon' => 'waves',
+        'alt'   => 'Inside of a cut-open drain pipe heavily lined with buildup',
         'desc'  => 'Clearing kitchen, bathroom and laundry drains that run slow or back up.',
         'bullets' => ['Kitchen and bathroom drains', 'Slow and repeat clogs', 'Backups cleared, not masked'],
     ],
     'sewer-line-repair' => [
-        'photo' => 'rockn-trench-dig', 'icon' => 'search',
-        'alt'   => "Rock'n G plumber standing in an excavated trench to reach a buried line",
+        'photo' => 'rockn-sewer-pipe-excavated', 'icon' => 'search',
+        'alt'   => 'Buried sewer pipe opening exposed in red soil during an excavation',
         'desc'  => 'Camera inspection to find the problem, then sewer line repair or cleaning.',
         'bullets' => ['See the problem on camera', 'Main line repair and cleaning', 'Dig-and-repair when needed'],
     ],
@@ -58,8 +58,8 @@ $homeServiceCards = [
         'bullets' => ['New lines for appliances', 'Runs to standby generators', 'Repairs on existing gas piping'],
     ],
     'new-construction-remodel-plumbing' => [
-        'photo' => 'rockn-kitchen-remodel', 'icon' => 'hammer',
-        'alt'   => 'Remodeled kitchen with a farmhouse sink in the island and a gas cooktop',
+        'photo' => 'rockn-new-construction-interior', 'icon' => 'hammer',
+        'alt'   => 'Open-plan new construction interior with kitchen and wood-beam ceiling',
         'desc'  => 'Plumbing for new builds and remodels, residential and commercial.',
         'bullets' => ['Plumbing for new homes', 'Kitchen and bath remodels', 'Commercial build-outs'],
     ],
@@ -70,14 +70,14 @@ $homeServiceCards = [
         'bullets' => ['Water softener installation', 'Reverse osmosis drinking water', 'Whole-house filtration'],
     ],
     'leak-detection-repair' => [
-        'photo' => 'rockn-pipe-through-slab', 'icon' => 'layers',
-        'alt'   => 'Drain pipe exposed in a trench cut through a concrete slab',
+        'photo' => 'rockn-slab-trench-repair', 'icon' => 'layers',
+        'alt'   => 'Floor cut open in a home laundry area to reach the plumbing under the slab',
         'desc'  => 'Finding hidden and under-slab leaks, then repairing or replacing the water line.',
         'bullets' => ['Hidden leaks tracked down', 'Slab leak repair', 'Water line repair or replacement'],
     ],
     'irrigation-sprinkler-repair' => [
-        'photo' => 'rockn-crew-excavation', 'icon' => 'sprout',
-        'alt'   => "Rock'n G crew with a mini excavator and hand tools working on a buried line",
+        'photo' => 'rockn-irrigation-valve-repair', 'icon' => 'sprout',
+        'alt'   => 'Exposed irrigation valve and PVC piping in a dug-out pit beside a house',
         'desc'  => "Repairs to lawn sprinkler and irrigation systems that leak or won't run.",
         'bullets' => ['Broken heads and leaking lines', 'Irrigation system repairs', 'Lawn sprinkler troubleshooting'],
     ],
@@ -232,7 +232,7 @@ ob_start();
 }
 .home-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .home-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent);
@@ -252,7 +252,8 @@ ob_start();
   padding-block: var(--space-3);
 }
 .home-ticker .ticker-track {
-  color: var(--color-ink);
+  color: var(--color-white);   /* white on the red band = 6.3:1 (dark ink was 2.27:1) */
+  font-size: var(--fs-body);
   gap: var(--space-10);
 }
 .home-ticker .ticker-track span {
@@ -879,7 +880,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <!-- ============ HERO (bold-industrial photo hero) ============ -->
 <section class="hero hero--photo home-hero" aria-labelledby="home-h1">
-  <div class="hero-bg"><?php echo pictureTag($heroImage, $heroAlt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']); ?></div>
+  <div class="hero-bg"><?php echo heroPictureTag($heroImage, $heroAlt); ?></div>
   <div class="hero-overlay"></div>
   <span class="grain" aria-hidden="true"></span>
   <div class="container">
@@ -947,7 +948,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <?php foreach ($homeServices as $i => $svc): $tint = ($i % 3) + 1; ?>
       <article class="service-card-with-image card-tint-<?php echo $tint; ?> reveal-up reveal-delay-<?php echo $tint; ?>">
         <div class="service-card__image">
-          <?php echo pictureTag($svc['photo'], $svc['alt'], '(max-width: 440px) 100vw, (max-width: 720px) 50vw, (max-width: 1000px) 33vw, 340px'); ?>
+          <?php echo pictureTag($svc['photo'], $svc['alt'], '(max-width: 440px) calc(100vw - 2rem), (max-width: 533px) calc(50vw - 1.5rem), (max-width: 720px) calc(47vw - .5rem), (max-width: 1000px) calc(31.3vw - .7rem), (max-width: 1464px) calc(25vw - 1.75rem), 338px', ['card' => true]); ?>
         </div>
         <div class="service-card__body">
           <div class="service-card__icon"><?php echo icon($svc['icon'], 22); ?></div>
@@ -958,7 +959,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <li><?php echo h($bullet); ?></li>
             <?php endforeach; ?>
           </ul>
-          <a href="<?php echo h(serviceUrl($svc)); ?>" class="service-card__cta" aria-label="Learn more about <?php echo h($svc['name']); ?>">Learn more</a>
+          <a href="<?php echo h(serviceUrl($svc)); ?>" class="service-card__cta">Learn more<span class="visually-hidden"> about <?php echo h($svc['name']); ?></span></a>
         </div>
       </article>
       <?php endforeach; ?>
@@ -1112,7 +1113,7 @@ if ($homeReviews !== ''): ?>
       <p>Rock'n G Plumbing's blog answers the questions that come up before a plumbing job: what drives a water heater price, how to protect pipes before a freeze, and what an estimate should spell out.</p>
     </div>
     <a class="home-blog__feature reveal-scale" href="/blog/<?php echo h($homePost['slug']); ?>/">
-      <div class="home-blog__image"><?php echo pictureTag($homePost['photo'], $homePost['alt'], '(max-width: 900px) 100vw, 640px'); ?></div>
+      <div class="home-blog__image"><?php echo pictureTag($homePost['photo'], $homePost['alt'], '(max-width: 533px) calc(100vw - 2rem), (max-width: 900px) 94vw, (max-width: 1464px) calc(54.5vw - 2rem), 764px', ['card' => true]); ?></div>
       <div class="home-blog__body">
         <span class="home-blog__tag"><?php echo h($homePost['category']); ?></span>
         <h3><?php echo h($homePost['title']); ?></h3>
@@ -1151,7 +1152,7 @@ if ($homeReviews !== ''): ?>
         </div>
         <fieldset class="form-consent-fieldset">
           <legend class="form-consent-legend">Communication consent</legend>
-          <label class="form-consent-item" for="est-email-opt"><input id="est-email-opt" type="checkbox" name="email_opt_in" value="yes"><span><strong>Email updates (optional):</strong> I agree to receive emails from <?php echo h($siteName); ?> about my inquiry, services, promotions, and news. I can unsubscribe anytime via the link in any email or by emailing <?php echo h($contactEmail); ?>. Message frequency varies.</span></label>
+          <label class="form-consent-item" for="est-email-opt"><input id="est-email-opt" type="checkbox" name="email_opt_in" value="yes"><span><strong>Email updates (optional):</strong> I agree to receive emails from <?php echo h($siteName); ?> about my inquiry, services, promotions, and news. I can unsubscribe anytime via the link in any email or by emailing <!--email_off--><?php echo h($contactEmail); ?><!--/email_off-->. Message frequency varies.</span></label>
           <label class="form-consent-item" for="est-sms-opt"><input id="est-sms-opt" type="checkbox" name="sms_opt_in" value="yes"><span><strong>Text messages (optional):</strong> I agree to receive text messages from <?php echo h($siteName); ?> at the phone number I provided, including appointment reminders, service updates and promotional offers. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe, HELP for help. <strong>Consent is not a condition of purchase.</strong></span></label>
           <label class="form-consent-item" for="est-terms"><input id="est-terms" type="checkbox" name="terms_accepted" value="yes" required><span>I have read and agree to the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms of Service</a>. *</span></label>
         </fieldset>
@@ -1168,7 +1169,7 @@ if ($homeReviews !== ''): ?>
       </ol>
       <div class="nap">
         <div><?php echo icon('phone', 18); ?><a href="<?php echo h($telHref); ?>"><?php echo h($phoneFmt); ?></a></div>
-        <div><?php echo icon('mail', 18); ?><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a></div>
+        <div><?php echo icon('mail', 18); ?><!--email_off--><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a><!--/email_off--></div>
         <div><?php echo icon('clock', 18); ?><span><?php echo h($businessHours); ?></span></div>
       </div>
       <div class="home-estimate__area">

@@ -23,7 +23,7 @@ $breadcrumbs     = [['name' => 'Services', 'url' => '/services/'], ['name' => $s
 
 $heroImage   = 'rockn-kitchen-remodel';
 $heroAlt     = 'Finished kitchen with a farmhouse sink set in a granite island, a gas cooktop and wood cabinets';
-$heroPreload = ['srcset' => imageVariantSrcset($heroImage, 'avif'), 'sizes' => '100vw'];
+$heroPreload = ['name' => $heroImage];
 $ogImage     = '/assets/images/' . $heroImage . '.jpg';
 
 $telHref  = 'tel:' . $phoneE164;
@@ -161,7 +161,7 @@ ob_start();
 }
 .nc-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .nc-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent);
@@ -883,7 +883,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <!-- ============ HERO ============ -->
 <section class="hero hero--photo hero--interior nc-hero" aria-labelledby="nc-h1">
-  <div class="hero-bg"><?php echo pictureTag($heroImage, $heroAlt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']); ?></div>
+  <div class="hero-bg"><?php echo heroPictureTag($heroImage, $heroAlt); ?></div>
   <div class="hero-overlay"></div>
   <span class="grain" aria-hidden="true"></span>
   <div class="container">
@@ -1151,7 +1151,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See every <a href="/services/">plumbing service Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['water-heaters', 'gas-line-services', 'drain-cleaning'], '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['water-heaters', 'gas-line-services', 'drain-cleaning'], relatedServiceSizes(640)); ?>
       </div>
     </div>
   </section>

@@ -419,7 +419,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
     <article class="wc-article" aria-labelledby="wc-h1">
       <figure class="wc-featured blog-post__featured-image">
-        <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 1000px) 100vw, 780px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
+        <?php echo pictureTag($post['photo'], $post['alt'], '(max-width: 533px) calc(100vw - 2rem), (max-width: 1000px) 94vw, (max-width: 1464px) calc(100vw - 428px), 1036px', ['loading' => 'eager', 'fetchpriority' => 'high']); ?>
         <figcaption>A Rock'n G water treatment install in a garage utility corner. Equipment that shares a wall with the water heater is one more thing a replacement has to fit around.</figcaption>
       </figure>
 
@@ -453,7 +453,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <section id="hard-water" aria-labelledby="h-hard">
           <h2 id="h-hard">Does San Angelo's hard water change what a water heater costs over time?</h2>
           <p>Yes. Minerals in hard water settle on the bottom of a tank heater, the burner or element works harder to heat through them, and the tank rumbles, loses hot water and wears out sooner. Tankless units build up scale inside the heat exchanger and need periodic descaling. Treating the water before it reaches the heater slows both problems.</p>
-          <p>That is why a replacement is a good moment to ask about a softener. Rock'n G Plumbing installs <a href="/services/water-filtration-softeners/">water softeners, reverse osmosis and whole-house filters</a>, and the photo at the top of this page shows one of its garage installs: control valve, resin tank, brine tank and two filter housings on a single wall. A garage utility corner fills up quickly, so tell the plumber what is already there before the heater is sized and placed.</p>
+          <p>That is why a replacement is a good moment to ask about a softener. Rock'n G Plumbing installs <a href="/services/water-filtration-softeners/">water softeners, reverse osmosis and whole-house filters</a>. A garage utility corner fills up quickly, so tell the plumber what is already there before the heater is sized and placed.</p>
         </section>
 
         <?php

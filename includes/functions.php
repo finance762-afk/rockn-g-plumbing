@@ -196,14 +196,23 @@ if (!function_exists('imgDims')) {
     }
 }
 
+if (!function_exists('assetVer')) {
+    /** '/assets/images/x.webp' → '/assets/images/x.webp?v=<filemtime>' (cache-bust past Cloudflare); unchanged if the file is missing. */
+    function assetVer(string $webPath): string {
+        $file = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/') . $webPath;
+        $mtime = is_file($file) ? @filemtime($file) : false;
+        return $mtime ? $webPath . '?v=' . $mtime : $webPath;
+    }
+}
+
 if (!function_exists('imageVariantSrcset')) {
-    /** '/assets/images/x-480.avif 480w, …' for the -480/-960/-1600 variants of $name that exist on disk ('' if none). */
-    function imageVariantSrcset(string $name, string $ext): string {
+    /** '/assets/images/x-320.avif?v=… 320w, …' for the $widths variants of $name that exist on disk ('' if none). */
+    function imageVariantSrcset(string $name, string $ext, array $widths = [320, 480, 640, 960, 1600]): string {
         $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
         $out = [];
-        foreach ([480, 960, 1600] as $w) {
+        foreach ($widths as $w) {
             $web = '/assets/images/' . $name . '-' . $w . '.' . $ext;
-            if (is_file($root . $web)) $out[] = $web . ' ' . $w . 'w';
+            if (is_file($root . $web)) $out[] = assetVer($web) . ' ' . $w . 'w';
         }
         return implode(', ', $out);
     }
@@ -213,25 +222,100 @@ if (!function_exists('pictureTag')) {
     /**
      * <picture> for an on-disk photo: AVIF source first, WebP srcset on the <img>, the .jpg as src.
      * $name is the basename in /assets/images/ without extension. Only variants present on disk are listed.
-     * $opts: class (img), loading ('lazy'|'eager'), fetchpriority, width/height (default: true size of the .jpg).
+     * $opts: class (img), loading ('lazy'|'eager'), fetchpriority, width/height (default: true size of the .jpg),
+     *        card (true = card srcset: 320/480/640 + the 720×540 4:3 crop, no 960/1600; width/height default 720×540).
      */
     function pictureTag(string $name, string $alt, string $sizes, array $opts = []): string {
         $src = '/assets/images/' . $name . '.jpg';
         $file = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/') . $src;
-        $info = is_file($file) ? @getimagesize($file) : false;
+        $card = !empty($opts['card']);
+        $info = $card ? [720, 540] : (is_file($file) ? @getimagesize($file) : false);
         $w   = (int) ($opts['width']  ?? ($info[0] ?? 1200));
         $hgt = (int) ($opts['height'] ?? ($info[1] ?? 800));
         $eager = ($opts['loading'] ?? 'lazy') === 'eager';
-        $avif = imageVariantSrcset($name, 'avif');
-        $webp = imageVariantSrcset($name, 'webp');
+        $widths = $card ? [320, 480, 640, 720] : [320, 480, 640, 960, 1600];
+        $avif = imageVariantSrcset($name, 'avif', $widths);
+        $webp = imageVariantSrcset($name, 'webp', $widths);
         $out = '<picture>';
         if ($avif !== '') $out .= '<source type="image/avif" srcset="' . h($avif) . '" sizes="' . h($sizes) . '">';
-        $out .= '<img src="' . h($src) . '"';
+        $out .= '<img src="' . h(assetVer($src)) . '"';
         if ($webp !== '') $out .= ' srcset="' . h($webp) . '" sizes="' . h($sizes) . '"';
         $out .= sprintf(' alt="%s" width="%d" height="%d"', h($alt), $w, $hgt);
         if (!empty($opts['class'])) $out .= ' class="' . h($opts['class']) . '"';
         $out .= $eager ? ' loading="eager"' : ' loading="lazy" decoding="async"';
         if (!empty($opts['fetchpriority'])) $out .= ' fetchpriority="' . h($opts['fetchpriority']) . '"';
+        return $out . '></picture>';
+    }
+}
+
+if (!function_exists('heroPictureTag')) {
+    /**
+     * Photo-hero <picture> (LCP image): phones (≤767px) get the single 720w <name>-hero720 file (original aspect ratio —
+     * NOT the 4:3 card "-720" crop); wider screens get the 960/1600 variants. URLs match heroPreloadLinks() byte-for-byte.
+     * Falls back to pictureTag() when the -hero720 avif is missing.
+     */
+    function heroPictureTag(string $name, string $alt): string {
+        $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
+        $m720 = '/assets/images/' . $name . '-hero720';
+        if (!is_file($root . $m720 . '.avif')) {
+            return pictureTag($name, $alt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']);
+        }
+        $src  = '/assets/images/' . $name . '.jpg';
+        $info = is_file($root . $src) ? @getimagesize($root . $src) : false;
+        $w    = (int) ($info[0] ?? 1200);
+        $hgt  = (int) ($info[1] ?? 800);
+        $avif = imageVariantSrcset($name, 'avif', [960, 1600]);
+        $webp = imageVariantSrcset($name, 'webp', [960, 1600]);
+        $out  = '<picture>';
+        $out .= '<source media="(max-width: 767px)" type="image/avif" srcset="' . h(assetVer($m720 . '.avif')) . '">';
+        if (is_file($root . $m720 . '.webp')) {
+            $out .= '<source media="(max-width: 767px)" type="image/webp" srcset="' . h(assetVer($m720 . '.webp')) . '">';
+        }
+        if ($avif !== '') $out .= '<source type="image/avif" srcset="' . h($avif) . '" sizes="100vw">';
+        $out .= '<img src="' . h(assetVer($src)) . '"';
+        if ($webp !== '') $out .= ' srcset="' . h($webp) . '" sizes="100vw"';
+        $out .= sprintf(' alt="%s" width="%d" height="%d"', h($alt), $w, $hgt);
+        return $out . ' loading="eager" fetchpriority="high"></picture>';
+    }
+}
+
+if (!function_exists('heroPreloadLinks')) {
+    /**
+     * Preloads for heroPictureTag(): the -hero720 avif on phones, the 960/1600 avif srcset on wider screens.
+     * Falls back to the old single avif-srcset preload when the -hero720 avif is missing (mirrors pictureTag()).
+     */
+    function heroPreloadLinks(string $name): string {
+        $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
+        $m720 = '/assets/images/' . $name . '-hero720.avif';
+        if (!is_file($root . $m720)) {
+            $set = imageVariantSrcset($name, 'avif');
+            return $set === '' ? '' : '<link rel="preload" as="image" type="image/avif" imagesrcset="' . h($set) . '" imagesizes="100vw" fetchpriority="high">';
+        }
+        $out = '<link rel="preload" as="image" type="image/avif" href="' . h(assetVer($m720)) . '" media="(max-width: 767px)" fetchpriority="high">';
+        $avif = imageVariantSrcset($name, 'avif', [960, 1600]);
+        if ($avif !== '') {
+            $out .= "\n" . '<link rel="preload" as="image" type="image/avif" imagesrcset="' . h($avif) . '" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">';
+        }
+        return $out;
+    }
+}
+
+if (!function_exists('logoPictureTag')) {
+    /**
+     * <picture> for a logo PNG with its -160/-320 WebP variants (only those on disk are listed); the PNG stays the fallback src.
+     * $sizes is the rendered CSS width of the logo; $attrs are extra <img> attributes (class, loading, decoding …).
+     */
+    function logoPictureTag(string $pngPath, string $alt, int $w, int $h, string $sizes, array $attrs = []): string {
+        $root = rtrim((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
+        $base = preg_replace('/\.png$/i', '', $pngPath);
+        $set = [];
+        foreach ([160, 320] as $vw) {
+            if (is_file($root . $base . '-' . $vw . '.webp')) $set[] = assetVer($base . '-' . $vw . '.webp') . ' ' . $vw . 'w';
+        }
+        $out = '<picture>';
+        if ($set) $out .= '<source type="image/webp" srcset="' . h(implode(', ', $set)) . '" sizes="' . h($sizes) . '">';
+        $out .= sprintf('<img src="%s" alt="%s" width="%d" height="%d"', h(assetVer($pngPath)), h($alt), $w, $h);
+        foreach ($attrs as $k => $v) $out .= ' ' . h($k) . '="' . h($v) . '"';
         return $out . '></picture>';
     }
 }

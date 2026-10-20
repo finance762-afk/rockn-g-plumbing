@@ -186,9 +186,9 @@
     "notes": "",
     "style": "bold",
     "colors": {
-      "accent": "#06b6d4",
-      "primary": "#1a2b3c",
-      "secondary": "#4d5e6f",
+      "accent": "#b30e02",
+      "primary": "#2a5c34",
+      "secondary": "#3a3a3a",
       "extracted_from_logo": true
     },
     "logo_analysis": {
@@ -198,7 +198,7 @@
       "header_logo": "assets/images/logo-mark-v1.png (dark ink, transparent) at 88px desktop / 72px mobile on the white glass bar",
       "footer_logo": "assets/images/logo-mark-light-v1.png (white ink, transparent) on the dark footer / mobile menu",
       "nav": "light glass bar, dark links; mobile overlay brand-dark",
-      "favicon": "G block, white on #1a2b3c",
+      "favicon": "G block, white on #2a5c34",
       "vector_requested": true
     },
     "archetype": "bold-industrial"

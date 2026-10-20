@@ -75,6 +75,24 @@ DirectoryIndex index.php index.html
     # old town pages -> the one Christoval page or the single areas hub (no templated town pages)
     RewriteRule ^service-area/?$ /areas-we-serve/ [R=301,L]
     RewriteRule ^service-area/(?!christoval-tx/?$).+$ /areas-we-serve/ [R=301,L]
+    # old root-level blog posts -> /blog/ (blog migration plan §2, Oct 18 2026); /?$ covers both slash variants
+    RewriteRule ^drain-cleaning-and-sewer-solutions-for-homes-in-ballinger-tx/?$ /blog/recurring-drain-clogs-san-angelo/ [R=301,L]
+    RewriteRule ^drain-repair-and-gas-line-work-in-san-angelo-tx-what-to-expect-when-you-need-both/?$ /blog/drain-repair-and-gas-line-work-in-san-angelo-tx-what-to-expect-when-you-need-both/ [R=301,L]
+    RewriteRule ^gas-line-services-in-san-angelo-tx-safe-installation-and-repair-solutions/?$ /blog/gas-line-services-in-san-angelo-tx-safe-installation-and-repair-solutions/ [R=301,L]
+    RewriteRule ^irrigation-system-installation-and-repair-near-paint-rock-tx-properties/?$ /blog/sprinkler-repair-watering-rules-san-angelo/ [R=301,L]
+    RewriteRule ^new-construction-vs-remodel-plumbing-in-san-angelo-tx-what-s-different-and-why-it-matters/?$ /blog/new-construction-vs-remodel-plumbing-in-san-angelo-tx-what-s-different-and-why-it-matters/ [R=301,L]
+    RewriteRule ^pipe-repair-and-replacement-solutions-for-carlsbad-tx-homes-and-businesses/?$ /blog/slab-leaks-pipe-repair-san-angelo/ [R=301,L]
+    RewriteRule ^understanding-backflow-prevention-for-miles-tx-water-systems/?$ /blog/what-is-backflow-san-angelo/ [R=301,L]
+    RewriteRule ^water-heater-installation-and-repair-services-available-in-christoval-tx/?$ /blog/water-heater-installation-and-repair-services-available-in-christoval-tx/ [R=301,L]
+    # extra old-site URLs (approved by P1 SEO BOT, Oct 18 2026); mirrored in deploy/nginx-redirects.conf
+    RewriteRule ^contact-us/?$ https://www.rockngplumbing.com/contact/ [R=301,L]
+    RewriteRule ^resources/?$ https://www.rockngplumbing.com/blog/ [R=301,L]
+    RewriteRule ^feed/(rss2|atom)/?$ https://www.rockngplumbing.com/blog/ [R=301,L]
+    RewriteRule ^commercial-plumbing-services/?$ https://www.rockngplumbing.com/services/new-construction-remodel-plumbing/ [R=301,L]
+    RewriteRule ^emergency-plumbing-services/?$ https://www.rockngplumbing.com/contact/ [R=301,L]
+    RewriteRule ^fixture-installation/?$ https://www.rockngplumbing.com/ [R=301,L]
+    RewriteRule ^water-heaters-filtration/?$ https://www.rockngplumbing.com/services/water-heaters/ [R=301,L]
+    RewriteRule ^pipe-repair-replacement/?$ https://www.rockngplumbing.com/services/leak-detection-repair/ [R=301,L]
 
     RewriteCond %{REQUEST_URI} !^/assets/
     RewriteCond %{REQUEST_URI} !^/includes/

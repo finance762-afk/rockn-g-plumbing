@@ -215,7 +215,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <p>If you run into an accessibility barrier on this site, please tell us which page and what happened. We aim to respond within 5 business days.</p>
 
       <h2>6. Alternative Ways to Reach Us</h2>
-      <p>If the website is not accessible to you, call <a href="tel:<?php echo h($companyPhoneE164); ?>"><?php echo h($companyPhone); ?></a> during business hours or email <a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a>. We can give you service information by phone or in another format on request.</p>
+      <p>If the website is not accessible to you, call <a href="tel:<?php echo h($companyPhoneE164); ?>"><?php echo h($companyPhone); ?></a> during business hours or email <!--email_off--><a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><!--/email_off-->. We can give you service information by phone or in another format on request.</p>
 
       <h2>7. Changes to This Statement</h2>
       <p>We update this statement as the site changes. The "Last Updated" date shows the most recent version.</p>
@@ -223,7 +223,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <h2>8. Contact Us</h2>
       <div class="lg-contact">
         <p><strong><?php echo h($companyName); ?></strong><br>
-        Email: <a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><br>
+        Email: <!--email_off--><a href="mailto:<?php echo h($companyEmail); ?>"><?php echo h($companyEmail); ?></a><!--/email_off--><br>
         Phone: <a href="tel:<?php echo h($companyPhoneE164); ?>"><?php echo h($companyPhone); ?></a><br>
         Hours: <?php echo h($weekday[0]); ?>, <?php echo h($weekday[1]); ?><br>
         Location: <?php echo h($companyAddress); ?></p>

@@ -52,7 +52,7 @@ $footTexts = !empty($textUsNumber) ? 'sms:' . preg_replace('/[^0-9+]/', '', $tex
       <div class="footer-grid">
 
         <div class="footer-brand">
-          <a class="footer-logo" href="/" aria-label="<?php echo h($siteName); ?> — home"><img src="<?php echo h($footLogoSrc); ?>" alt="<?php echo h($siteName); ?> logo" width="<?php echo $footLogoW; ?>" height="<?php echo $footLogoH; ?>" loading="lazy" decoding="async"></a>
+          <a class="footer-logo" href="/" aria-label="<?php echo h($siteName); ?> — home"><?php echo logoPictureTag($footLogoSrc, $siteName . ' logo', $footLogoW, $footLogoH, '150px', ['loading' => 'lazy', 'decoding' => 'async']); ?></a>
           <p>Three generations of plumbers serving residential, commercial and industrial customers in <?php echo h($address['city']); ?> and Christoval, <?php echo h($address['state']); ?>.</p>
           <?php if (!empty($license['label'])): ?>
           <p class="footer-license"><?php echo icon('badge-check', 18); ?><span><?php echo h($license['label']); ?></span></p>
@@ -95,7 +95,7 @@ $footTexts = !empty($textUsNumber) ? 'sms:' . preg_replace('/[^0-9+]/', '', $tex
           <h4>Contact</h4>
           <div class="footer-nap">
             <div><?php echo icon('phone', 18); ?><a href="<?php echo h($footTel); ?>"><?php echo h($footPhone); ?></a></div>
-            <div><?php echo icon('mail', 18); ?><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a></div>
+            <div><?php echo icon('mail', 18); ?><!--email_off--><a href="mailto:<?php echo h($email); ?>"><?php echo h($email); ?></a><!--/email_off--></div>
             <div><?php echo icon('map-pin', 18); ?><span><?php echo empty($addressPublic) ? 'Serving ' . h($address['city']) . ' and Christoval, ' . h($address['state']) : h($address['city'] . ', ' . $address['state']); ?></span></div>
           </div>
           <h4 class="footer-hours-title" style="margin-top:1.4rem">Hours</h4>

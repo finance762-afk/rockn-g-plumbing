@@ -73,10 +73,27 @@ if (!function_exists('serviceCardData')) {
     }
 
     /**
+     * img "sizes" for the 4-up framework grid inside .container-wide (homepage + /services/): 1 col ≤440, 2 ≤720,
+     * 3 ≤1000, else 4; gap 1rem; container-wide = 100vw − 2rem ≤533, 94vw ≤1066, 100vw − 4rem up to 1400px.
+     */
+    function serviceGridSizes(): string {
+        return '(max-width: 440px) calc(100vw - 2rem), (max-width: 533px) calc(50vw - 1.5rem), (max-width: 720px) calc(47vw - .5rem), (max-width: 1000px) calc(31.3vw - .7rem), (max-width: 1464px) calc(25vw - 1.75rem), 338px';
+    }
+
+    /**
+     * img "sizes" for the 3-up related-services grid inside .container (service + area pages): 1 col ≤$oneColMax,
+     * 2 ≤1000, else 3; gap 1rem; container = 100vw − 2rem ≤400, 92vw ≤800, 100vw − 4rem up to 1200px.
+     */
+    function relatedServiceSizes(int $oneColMax = 640): string {
+        return '(max-width: 400px) calc(100vw - 2rem), (max-width: ' . $oneColMax . 'px) 92vw, (max-width: 800px) calc(46vw - .5rem), (max-width: 1000px) calc(50vw - 2.5rem), (max-width: 1200px) calc(33.3vw - 2rem), 368px';
+    }
+
+    /**
      * <article class="service-card-with-image"> cards for $slugs in the order given. Tints and reveal delays rotate
      * 1 → 2 → 3 so adjacent cards never share a tint. $sizes is the img "sizes" value for the grid the cards sit in.
      */
-    function renderServiceCards(array $slugs, string $sizes = '(max-width: 440px) 100vw, (max-width: 720px) 50vw, (max-width: 1000px) 33vw, 340px'): string {
+    function renderServiceCards(array $slugs, string $sizes = ''): string {
+        if ($sizes === '') $sizes = serviceGridSizes();
         $scData = serviceCardData();
         $scOut = '';
         $scI = 0;
@@ -86,7 +103,7 @@ if (!function_exists('serviceCardData')) {
             $scCard = $scData[$scSlug];
             $scTint = ($scI % 3) + 1;
             $scOut .= '<article class="service-card-with-image card-tint-' . $scTint . ' reveal-up reveal-delay-' . $scTint . '">'
-                . '<div class="service-card__image">' . pictureTag($scCard['photo'], $scCard['alt'], $sizes) . '</div>'
+                . '<div class="service-card__image">' . pictureTag($scCard['photo'], $scCard['alt'], $sizes, ['card' => true]) . '</div>'
                 . '<div class="service-card__body">'
                 . '<div class="service-card__icon">' . icon($scCard['icon'], 22) . '</div>'
                 . '<h3>' . h($scSvc['name']) . '</h3>'
@@ -94,7 +111,7 @@ if (!function_exists('serviceCardData')) {
                 . '<ul>';
             foreach ($scCard['bullets'] as $scBullet) $scOut .= '<li>' . h($scBullet) . '</li>';
             $scOut .= '</ul>'
-                . '<a href="' . h(serviceUrl($scSvc)) . '" class="service-card__cta" aria-label="Learn more about ' . h($scSvc['name']) . '">Learn more</a>'
+                . '<a href="' . h(serviceUrl($scSvc)) . '" class="service-card__cta">Learn more<span class="visually-hidden"> about ' . h($scSvc['name']) . '</span></a>'
                 . '</div></article>' . "\n";
             $scI++;
         }

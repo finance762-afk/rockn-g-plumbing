@@ -309,7 +309,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="answer-block">The newest guide, published <?php echo h($bgFeatured['date']); ?> by Page One Insights LLC for Rock'n G Plumbing, is &ldquo;<?php echo h($bgFeatured['title']); ?>&rdquo; (<?php echo h($bgFeatured['readtime']); ?>).</p>
       </div>
       <a class="bg-feature reveal-scale" href="/blog/<?php echo h($bgFeatured['slug']); ?>/">
-        <div class="bg-feature__image"><?php echo pictureTag($bgFeatured['photo'], $bgFeatured['alt'], '(max-width: 900px) 100vw, 700px', ['loading' => 'eager']); ?></div>
+        <div class="bg-feature__image"><?php echo pictureTag($bgFeatured['photo'], $bgFeatured['alt'], '(max-width: 533px) calc(100vw - 2rem), (max-width: 900px) 94vw, (max-width: 1464px) 56vw, 817px', ['loading' => 'eager']); ?></div>
         <div class="bg-feature__body">
           <span class="bg-feature__tag"><?php echo h($bgFeatured['category']); ?></span>
           <h3><?php echo h($bgFeatured['title']); ?></h3>
@@ -331,7 +331,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       </div>
       <?php if ($bgRest): ?>
       <div class="blog-grid">
-        <?php foreach ($bgRest as $bp) echo renderBlogCard($bp); ?>
+        <?php foreach ($bgRest as $bp) echo renderBlogCard($bp, '(max-width: 400px) calc(100vw - 2rem), (max-width: 600px) 92vw, (max-width: 800px) calc(46vw - .75rem), (max-width: 900px) calc(50vw - 2.75rem), (max-width: 1200px) calc(33.3vw - 2.33rem), 363px'); ?>
       </div>
       <?php endif; ?>
       <div class="bg-soon reveal-up">

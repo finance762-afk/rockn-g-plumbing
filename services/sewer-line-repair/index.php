@@ -23,7 +23,7 @@ $breadcrumbs     = [['name' => 'Services', 'url' => '/services/'], ['name' => $s
 
 $heroImage   = 'rockn-crew-excavation';
 $heroAlt     = "Rock'n G Plumbing crew in red shirts beside a mini excavator and an open trench cut through pavement";
-$heroPreload = ['srcset' => imageVariantSrcset($heroImage, 'avif'), 'sizes' => '100vw'];
+$heroPreload = ['name' => $heroImage];
 $ogImage     = '/assets/images/' . $heroImage . '.jpg';
 
 $telHref  = 'tel:' . $phoneE164;
@@ -147,7 +147,7 @@ ob_start();
 }
 .sl-hero .hero-form-open {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-white);
 }
 .sl-hero .hero-form-card {
   border-block-start: 4px solid var(--color-accent);
@@ -893,7 +893,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <!-- ============ HERO ============ -->
 <section class="hero hero--photo hero--interior sl-hero" aria-labelledby="sl-h1">
-  <div class="hero-bg"><?php echo pictureTag($heroImage, $heroAlt, '100vw', ['loading' => 'eager', 'fetchpriority' => 'high']); ?></div>
+  <div class="hero-bg"><?php echo heroPictureTag($heroImage, $heroAlt); ?></div>
   <div class="hero-overlay"></div>
   <span class="grain" aria-hidden="true"></span>
   <div class="container">
@@ -1068,7 +1068,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     <div class="container-wide">
       <div class="sl-spread reveal-up">
         <figure class="sl-spread__photo">
-          <?php echo pictureTag('rockn-trench-dig', "Rock'n G plumber in a red company shirt standing in an open trench dug through pavement", '(max-width: 900px) 100vw, 640px'); ?>
+          <?php echo pictureTag('rockn-trench-dig', "Rock'n G plumber in a red company shirt standing in an open trench dug through pavement", '(max-width: 900px) calc(100vw - 2rem), 640px'); ?>
           <figcaption>A Rock'n G plumber down in the trench on the same dig shown at the top of this page.</figcaption>
         </figure>
         <div class="sl-spread__copy">
@@ -1133,7 +1133,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="prose">See every <a href="/services/">plumbing service Rock'n G offers in San Angelo</a>.</p>
       </div>
       <div class="services-grid">
-        <?php echo renderServiceCards(['drain-cleaning', 'leak-detection-repair', 'new-construction-remodel-plumbing'], '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 380px'); ?>
+        <?php echo renderServiceCards(['drain-cleaning', 'leak-detection-repair', 'new-construction-remodel-plumbing'], relatedServiceSizes(640)); ?>
       </div>
     </div>
   </section>
